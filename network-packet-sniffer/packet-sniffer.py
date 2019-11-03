@@ -1,6 +1,9 @@
 import socket
 import textwrap
 import struct
+import keras
+from keras.models import Sequential, load_model
+from keras.layers import Dense
 
 
 '''
@@ -240,6 +243,11 @@ def format_multi_line_data(prefix, string, size = 80):
             size -= 1
     return '\n'.join([prefix + line for line in textwrap.wrap(string, size)])
 
+# Defining lists to be used
+connection_duration = {} #stores the mapping between the IP pair and the time of the connection
+src_bytes = {}
+dest_bytes = {}
+
 def main_function_to_capture_stuff():
     connection = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3)) #1
 
@@ -257,27 +265,79 @@ def main_function_to_capture_stuff():
             print("\t\tVersion: {version}, Header length: {length}, Time to live: {ttl}\n\t\tIP Protocol: {ip_protocol}, Source IP: {source}, Destination IP: {dest}".format(version= ip_version, length= ip_header_length, ttl= time_to_live, ip_protocol= ip_protocol, source= ip_source, dest= ip_destination))
 
             if(ip_protocol == 1): # there's ICMP data inside
+                datapoint_protocol = 'icmp'
                 icmp_type, code, checksum, data_after_ICMP_unpack = unpack_ICMP_protocol(data_after_IP_unpack)
                 print("\tICMP packet: ")
                 print("\t\tType:{type}, Code: {code}, Checksum: {checksum}".format(type=icmp_type,code=code, checksum=checksum))
-                print("\t\tData: ")
-                print(format_multi_line_data("\t\t\t", data_after_ICMP_unpack))
-            
+                print("\t\tData: [Uncomment line in code to see the data here]")
+                #print(format_multi_line_data("\t\t\t", data_after_ICMP_unpack))            
             elif(ip_protocol == 6): # there's TCP data inside
+                datapoint_protocol = 'tcp'
                 source_port, destination_port, sequence, ack, flag_ack, flag_fin, flag_psh, flag_rst, flag_syn, flag_urg, data_after_TCP_unpack = unpack_TCP_segment(data_after_IP_unpack)
                 print("\tTCP Packet: ")
                 print("\t\tSource Port:{source_port}, Destination port:{destination_port}, Sequence:{sequence}, Acknowledgement: {ack}".format(source_port=source_port, destination_port=destination_port, sequence=sequence, ack=ack))
                 print("\t\tFlag ACK: {flag_ack}, Flag FIN: {flag_fin}, FLAG PSH: {flag_psh}, Flag RST: {flag_rst}, Flag SYN: {flag_syn}, Flag URG: {flag_urg}".format(flag_urg=flag_urg, flag_syn=flag_syn, flag_rst=flag_rst, flag_psh=flag_psh, flag_fin=flag_fin, flag_ack=flag_ack))
-                print("\t\tData:")
-                print(format_multi_line_data("\t\t\t", data_after_TCP_unpack))
+                print("\t\tData: [Uncomment line in code to see the data here]")
+                #print(format_multi_line_data("\t\t\t", data_after_TCP_unpack))
             
             elif(ip_protocol == 17): # There's UDP data inside
+                datapoint_protocol = 'udp'
                 source_port, destination_port, length, data_after_UDP_unpack = unpack_UDP_segment(data_after_IP_unpack)
                 print("\tUDP Packet: ")
                 print("\t\tSource Port: {source_port}, Destination port: {dest_port}, Lenth: {length}".format(source_port=source_port, dest_port=destination_port,length=length))
-                print("\t\tData:")
-                print(format_multi_line_data("\t\t\t" ,data_after_UDP_unpack))
+                print("\t\tData: [Uncomment line in code to see the data here]")
+                #print(format_multi_line_data("\t\t\t" ,data_after_UDP_unpack))
+            
 
 
+            ###############################################################################################
 
+            # Predict the nature of this packet from the model trained, is it a part of malicious activity?
+            # We'll extract the information required by the model one by one, and feed into the model
+
+            '''
+                Duration: 
+                    - The length (number of seconds) of the connection
+                    - HOW: Get the unique source, destination IP pairing and keep adding TIME_TO_LIVE
+                Protocol Type
+                    - Is the connection TCP, UDP, or ICMP
+                    - Access the variable ip_protocol
+                Service
+                    - http, telnet etc.
+                    - Don't know how to extract that as of now
+                src_bytes
+                    - number of data bytes from source to destination
+                    - the data after unpacking particular protocol is of class bytes, meaning finding
+                      length of the data gives the number of bytes transmitted
+                    - create a dictionary and keep adding the value to get the total number of bytes transferred
+                      within a time frame
+                dest_bytes
+                    - number of data bytes from destination to source
+                    - same as above, just a different dictionary
+                flag
+                    - don't know any flag as raised here
+                 
+            '''
+            datapoint = []
+            source_destination_string = str(ip_source) + '-' + str(ip_destination)
+            destination_source_string = str(ip_destination) + '-' + str(ip_source)
+
+            # duration data point generation
+            if (source_destination_string not in connection_duration.keys):
+                connection_duration[source_destination_string] = time_to_live
+            else:
+                connection_duration[source_destination_string] += time_to_live
+
+            datapoint.append(connection_duration[source_destination_string]) 
+
+            
+
+model = Sequential()
+model.add(Dense(10, input_dim=120, kernel_initializer='normal', activation='relu'))
+model.add(Dense(50, input_dim=120, kernel_initializer='normal', activation='relu'))
+model.add(Dense(10, input_dim=120, kernel_initializer='normal', activation='relu'))
+model.add(Dense(1, kernel_initializer='normal'))
+model.add(Dense(23,activation='softmax'))
+
+model = keras.models.load_model("best_model.model")
 main_function_to_capture_stuff()
