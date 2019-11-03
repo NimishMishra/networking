@@ -83,3 +83,13 @@ def unpack_frames(data):
 
 def main_function_to_capture_stuff():
     connection = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3)) #1
+
+    while True: # this runs forever and collects the data coming across the network into the raw socket we established
+        raw_data, address = connection.recvfrom(65535) # @PARAM: the max buffer size: 65535
+        
+        
+
+
+
+
+main_function_to_capture_stuff()
