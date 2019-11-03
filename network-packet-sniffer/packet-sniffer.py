@@ -2,6 +2,35 @@ import socket
 import textwrap
 import struct
 
+'''
+    @PARAMS: program to help extract the IP header data
+    @RETURN:
+
+    Find the image reference: https://nmap.org/book/tcpip-ref.html
+
+    Things to extract here:
+
+    IP Version: 
+    Protocol:
+    Source IP:
+    Destination IP:
+    Header length: Gives the length of the entire IP header. So you know where the data starts, so you can slice accordingly
+
+    Arrangement of the IP header:
+
+    Version-header-length
+      1 [1 nibble each]                  
+
+'''
+
+
+def unpack_IP_data(data):
+    ip_version_header_length = data[0] # Pick the first byte that contains the IP version and the header length
+    ip_version = ip_version_header_length >> 4 # Pick the first 4 bits (1st nibble) by removing the last 4 bits
+    ip_header_length = (ip_version_header_length & 15) # Mask the entire byte by 00001111 and perform bitwise AND. It returns 0000ABCD so you get the 2nd nibble
+
+    time_to_live, ip_protocol_ source_ip, destination_ip = struct.unpack('! 8x B B 2X 4s 4s', data[:20]) #1
+
 
 '''
     @ PARAMS: mac_address (the sniffed MAC address)
@@ -13,13 +42,14 @@ import struct
 def format_address(mac_address):
     formatted_mac_address = map('{:02X}'.format, mac_address) #:02X format will convert into captialized hexadecimal format
     # map takes the current mac_address and formats into the desired format
+    formatted_mac_address = ':'.join(formatted_mac_address) # joins the little chunks AA, BB, CC etc into AA:BB:CC:...
     return formatted_mac_address
 
 
 
 '''
     @PARAMS: data (the data, either from the computer to the router, or from the router to the computer)
-    @RETURN:
+    @RETURN: the formatted MAC addresses and the remaining data
 
     This function aids to unpack the ethernet frame to extract useful information.
     ETHERNET FRAME:
@@ -85,8 +115,10 @@ def main_function_to_capture_stuff():
     connection = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3)) #1
 
     while True: # this runs forever and collects the data coming across the network into the raw socket we established
-        raw_data, address = connection.recvfrom(65535) # @PARAM: the max buffer size: 65535
-        
+        raw_data, address = connection.recvfrom(65536) # @PARAM: the max buffer size: 65535
+        formatted_destination_address, formatted_source_address, formatted_protocol, remaining_data = unpack_frames(raw_data)
+        print('\nEthernet Frame:')
+        print('\n\tDestination: {destination}, Source: {source}, Protocol: {proto}'.format(destination= formatted_destination_address, source= formatted_source_address, proto= formatted_protocol))
         
 
 
