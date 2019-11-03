@@ -2,6 +2,17 @@ import socket
 import textwrap
 import struct
 
+
+'''
+    @PARAMS: the unformatted IP address
+    @RETURN: the formatted IP
+
+    This function converts the unformatted address data into the formatted IP, like xxx.yyy.zzz.www
+'''
+
+def format_IP_address(address):
+    return '.'.join(str, address)
+
 '''
     @PARAMS: program to help extract the IP header data
     @RETURN:
@@ -16,11 +27,23 @@ import struct
     Destination IP:
     Header length: Gives the length of the entire IP header. So you know where the data starts, so you can slice accordingly
 
-    Arrangement of the IP header:
+    Arrangement of the IP header (all numbers are in bytes, nibbles externally mentioned):
 
-    Version-header-length
-      1 [1 nibble each]                  
 
+    Version-header-length    Type-of-service     Total Length
+      1 [1 nibble each]           1                   2                  <-- 4 bytes slice: [0:3]
+
+        Identification          IP flags         Fragment Offset
+            2 bytes             1 nibble            1.5 nibbles          <-- 4 bytes slice: [4:7]
+
+        Time to live          Protocol           Header Checksum         <-- 4 bytes slice: [8:11]
+            2                     2                     2
+
+                                    Source address
+                                          4                              <-- 4 bytes [12:15]
+                                    
+                                    Destination address 
+                                          4                              <-- 4 bytes [16:19]
 '''
 
 
@@ -29,8 +52,8 @@ def unpack_IP_data(data):
     ip_version = ip_version_header_length >> 4 # Pick the first 4 bits (1st nibble) by removing the last 4 bits
     ip_header_length = (ip_version_header_length & 15) # Mask the entire byte by 00001111 and perform bitwise AND. It returns 0000ABCD so you get the 2nd nibble
 
-    time_to_live, ip_protocol_ source_ip, destination_ip = struct.unpack('! 8x B B 2X 4s 4s', data[:20]) #1
-
+    time_to_live, ip_protocol, source_ip, destination_ip = struct.unpack('! 8x B B 2X 4s 4s', data[:20]) #1
+    return ip_version, ip_header_length, time_to_live, ip_protocol, format_IP_address(source_ip), format_IP_address(destination_ip), data[ip_header_length:] # the last argument is the data payload
 
 '''
     @ PARAMS: mac_address (the sniffed MAC address)
@@ -110,6 +133,68 @@ def unpack_frames(data):
 
     #2  
 '''
+
+
+'''
+    @PARAMS: the data to unpack
+    @RETURN: the unpacked ICMP protocol
+
+    This function unpacks the ICMP protocol packets
+'''
+
+def unpack_ICMP_protocol(data):
+    icmp_type, code, checksum = struct.unpack('! B B H', data[:4])
+    return icmp_type, code, checksum, data[4:] # The last is the actual payload, after the header ended
+
+'''
+    @PARAMS: the data to unpack the TCP segment from
+    @RETURN: the unpacked TCP packet
+
+    This function returns the unpacked TCP segment.
+
+    A typical TCP/IP packet looks like (1n = 1 nibble = 4 bits)
+
+    ------------------------------------------- 32 bits ----------------------------------------------
+    ---------------- 16 bits ---------------------------- | ---------- 16 bits -----------------------
+                                                          |                                           |
+    Version (1n)  Length (1n)  Type of Service (8 bits)   |     Total length (16 bits)                |
+                                                          |                                           |
+                    Identification (16 bits)              | Flags (3 bits)  Fragment Offset (13 bits) |
+                                                          |                                           |
+    Time to live (8 bits)   Protocol (8 bits)             |       Header checksum (16 bits)           |  IPv4 Header
+                                                          |                                           |
+                                                    Source address (32 bits)                          |
+                                                    Destination address (32 bits)                     |
+                                                    Options (32 bits)                                 |
+                                                    Data (32 bits)                                    |
+    --------------------------------------------------------------------------------------------------
+
+                   Source port (16 bits)                  |         Destination Port (16 bits)        |
+                                                                                                      |
+                                                   Sequence Number (32 bits)                          |
+                                                 Acknowledgement number (32 bits)                     |
+                                                                                                      |  TCP packet
+    Offset (1n) Reserved (1n)  TCP flags (8 bits)         |             Window (16 bits)              |
+                                                                                                      |
+                    Checksum (16 bits)                    |          Urgent Pointer (16 bits)         |
+                                                                                                      |
+                                                   TCP options (32 bits)                              |
+    ---------------- 16 bits ---------------------------- | ---------- 16 bits -----------------------
+    ------------------------------------------- 32 bits ----------------------------------------------
+'''
+
+def unpack_TCP_packet(data):
+    # we have already unpacked the IP packet; now on to unpack the TCP packet
+    (source_port, destination_port, sequence, ack, offset_reserved_flags) = struct.unpack('! H H L L H', data[:14]) # H = 16 bits, L = 32 bits; total length = 14 bytes (count it)
+    offset = (offset_reserved_flags >> 12) * 4 # right shift the entire thing 12 bits
+    flag_urg = (offset_reserved_flags & 32) >> 5
+    flag_ack = (offset_reserved_flags & 16) >> 4
+    flag_psh = (offset_reserved_flags & 8) >> 3
+    flag_rst = (offset_reserved_flags & 4) >> 2
+    flag_syn = (offset_reserved_flags & 2) >> 1
+    flag_fin = (offset_reserved_flags & 1)
+
+    return source_port, destination_port, sequence, ack, flag_ack, flag_fin, flag_psh, flag_rst, flag_syn, flag_urg, data[offset:]
 
 def main_function_to_capture_stuff():
     connection = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3)) #1
