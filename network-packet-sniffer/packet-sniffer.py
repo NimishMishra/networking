@@ -12,7 +12,9 @@ import struct
 '''
 def format_address(mac_address):
     formatted_mac_address = map('{:02X}'.format, mac_address) #:02X format will convert into captialized hexadecimal format
-    
+    # map takes the current mac_address and formats into the desired format
+    return formatted_mac_address
+
 
 
 '''
@@ -44,3 +46,40 @@ def unpack_frames(data):
     formatted_sender_mac_address = format_address(sender_mac_address)
     formatted_protocol = socket.htons(protocol) # makes sure we are endian compatible (little endian as our modern computers process out things)
     return formatted_receiver_mac_address, formatted_sender_mac_address, formatted_protocol, remaining_data
+
+
+
+'''
+    @PARAMS: none
+    @RETURN: ...
+
+    This function basically serves to setup the connections and start sniffing network traffic
+    This is a complex function, hence I provide a detailed documentation and report:
+    
+    SOCKETS: python module to help two nodes on a network communicate with each other
+
+    Normal layers in a typical network setup:
+    Ethernet Layer Processing --> IP Layer Processing --> Transport Layer Processing --> Socket Interface --> User application
+            |                                                       |
+            |                                                       |
+            |                                                       |
+            V                                                       V
+        Raw sockets                                             Other sockets
+        receive data                                            receive data from
+        from here                                                  here
+
+    #1  the socket family has a component that can be used to set up a RAW SOCKET (basically a raw connection between the computer and the router)
+        This raw connection bypasses the normal TCP/IP protocol. Thus the ethernet network packets are directly captured by this application, without being
+        processed by the TCP/IP protocols.
+
+        WHY raw sockets and NOT stream sockets or data gram sockets?
+            Because the others receive data from the transport layer, meaning they have only the payload and no headers.
+            No headers mean no information about the source, destination IP and MAC addresses
+
+        socket.htons() --> serves to convert the data into big-endian or little-endian as desired
+
+    #2  
+'''
+
+def main_function_to_capture_stuff():
+    connection = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3)) #1
