@@ -4,6 +4,7 @@ import struct
 import keras
 from keras.models import Sequential, load_model
 from keras.layers import Dense
+from ids_google_colab_training import x_test
 
 
 '''
@@ -57,6 +58,9 @@ def unpack_IP_data(data):
 
     time_to_live, ip_protocol, source_ip, destination_ip = struct.unpack('! 8x B B 2x 4s 4s', data[:20]) #1
     return ip_version, ip_header_length, time_to_live, ip_protocol, format_IP_address(source_ip), format_IP_address(destination_ip), data[ip_header_length:] # the last argument is the data payload
+
+def predict():
+    print("The network connection is: normal" + str(model.predict(x_test)[0]))
 
 '''
     @ PARAMS: mac_address (the sniffed MAC address)
@@ -323,12 +327,16 @@ def main_function_to_capture_stuff():
             destination_source_string = str(ip_destination) + '-' + str(ip_source)
 
             # duration data point generation
-            if (source_destination_string not in connection_duration.keys):
+            if (source_destination_string not in connection_duration.keys()):
                 connection_duration[source_destination_string] = time_to_live
             else:
                 connection_duration[source_destination_string] += time_to_live
 
             datapoint.append(connection_duration[source_destination_string]) 
+
+
+            predict()
+
 
             
 

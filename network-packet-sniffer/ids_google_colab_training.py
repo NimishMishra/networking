@@ -22,59 +22,59 @@ import numpy as np
 import os
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
-from keras.models import Sequential
+from keras.models import Sequential, load_model
 from keras.layers import Dense, Activation
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 
+
+# downloading the data
 try:
     path = get_file('kddcup.data_10_percent.gz', origin='http://kdd.ics.uci.edu/databases/kddcup99/kddcup.data_10_percent.gz')
 except:
     print('Error downloading')
-    raise
     
-print(path) 
 
-# This file is a CSV, just no CSV extension or headers
-# Download from: http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html
-df = pd.read_csv(path, header=None)
+df = pd.read_csv(path, header=None) # reads the CSV into a pandas dataframe
 
-print("Read {} rows.".format(len(df)))
-# df = df.sample(frac=0.1, replace=False) # Uncomment this line to sample only 10% of the dataset
-df.dropna(inplace=True,axis=1) # For now, just drop NA's (rows with missing values)
+print("Read {} rows.".format(len(df))) # prints the number of rows read in the dataset
 
-# The CSV file has no column heads, so add them
+df.dropna(inplace=True,axis=1)  # drops the columns having null values in their cells
+
+# The following description of data is taken from https://kdd.ics.uci.edu/databases/kddcup99/task.html
+
 df.columns = [
-    'duration',
-    'protocol_type',
-    'service',
-    'flag',
-    'src_bytes',
-    'dst_bytes',
-    'land',
-    'wrong_fragment',
-    'urgent',
-    'hot',
-    'num_failed_logins',
-    'logged_in',
-    'num_compromised',
-    'root_shell',
-    'su_attempted',
-    'num_root',
-    'num_file_creations',
-    'num_shells',
-    'num_access_files',
-    'num_outbound_cmds',
-    'is_host_login',
-    'is_guest_login',
-    'count',
-    'srv_count',
-    'serror_rate',
-    'srv_serror_rate',
-    'rerror_rate',
-    'srv_rerror_rate',
-    'same_srv_rate',
-    'diff_srv_rate',
-    'srv_diff_host_rate',
+    'duration',                 # the duration of the connection
+    'protocol_type',            # TCP, UDP, or ICMP? UDP = user datagram protocol, transmission control protocol, internet control message protocol
+    'service',                  # network service on the destination, e.g., http, telnet, etc. 
+    'flag',                     # normal or error status of the connection 
+    'src_bytes',                # number of data bytes from source to destination 
+    'dst_bytes',                # number of data bytes from destination to source 
+    'land',                     # 1 if connection is from/to the same host/port; 0 otherwise 
+    'wrong_fragment',           # number of ``wrong'' fragments 
+    'urgent',                   # number of urgent packets
+    'hot',                      # number of ``hot'' indicators
+    'num_failed_logins',        # number of failed login attempts 
+    'logged_in',                # 1 if successfully logged in; 0 otherwise 
+    'num_compromised',          # number of ``compromised'' conditions 
+    'root_shell',               # 	1 if root shell is obtained; 0 otherwise 
+    'su_attempted',             # 	1 if ``su root'' command attempted; 0 otherwise 
+    'num_root',                 # 	number of ``root'' accesses 
+    'num_file_creations',       # 	number of file creation operations 
+    'num_shells',               # 	number of shell prompts 
+    'num_access_files',         # 	number of operations on access control files 
+    'num_outbound_cmds',        #   number of outbound commands in an ftp session 
+    'is_host_login',            #   1 if the login belongs to the ``hot'' list; 0 otherwise 
+    'is_guest_login',           #   1 if the login is a ``guest''login; 0 otherwise 
+    'count',                    # number of connections to the same host as the current connection in the past two seconds 
+    
+    'srv_count',                #   number of connections to the same service as the current connection in the past two seconds
+    'serror_rate',              #   % of connections that have ``SYN'' errors 
+    'srv_serror_rate',          #   % of connections that have ``SYN'' errors
+    'rerror_rate',              #   % of connections that have ``REJ'' errors
+    'srv_rerror_rate',          #   % of connections that have ``REJ'' errors 
+    'same_srv_rate',            #   % of connections to the same service
+    'diff_srv_rate',            #   % of connections to different services 
+    'srv_diff_host_rate',       #   % of connections to different hosts
     'dst_host_count',
     'dst_host_srv_count',
     'dst_host_same_srv_rate',
@@ -88,40 +88,11 @@ df.columns = [
     'outcome'
 ]
 
+
 # display 5 rows
 df[0:5]
 
-ENCODING = 'utf-8'
-
-def expand_categories(values):
-    result = []
-    s = values.value_counts()
-    t = float(len(values))
-    for v in s.index:
-        result.append("{}:{}%".format(v,round(100*(s[v]/t),2)))
-    return "[{}]".format(",".join(result))
-        
-def analyze(df):
-    print()
-    cols = df.columns.values
-    total = float(len(df))
-
-    print("{} rows".format(int(total)))
-    for col in cols:
-        uniques = df[col].unique()
-        unique_count = len(uniques)
-        if unique_count>100:
-            print("** {}:{} ({}%)".format(col,unique_count,int(((unique_count)/total)*100)))
-        else:
-            print("** {}:{}".format(col,expand_categories(df[col])))
-            expand_categories(df[col])
-
-# Analyze KDD-99
-
-
-analyze(df)
-
-# Encode a numeric column as zscores
+# The following function normalizes the input features
 def encode_numeric_zscore(df, name, mean=None, sd=None):
     if mean is None:
         mean = df[name].mean()
@@ -131,7 +102,7 @@ def encode_numeric_zscore(df, name, mean=None, sd=None):
 
     df[name] = (df[name] - mean) / sd
     
-# Encode text values to dummy variables(i.e. [1,0,0],[0,1,0],[0,0,1] for red,green,blue)
+# for all categorical features, this function performs one-hot encoding
 def encode_text_dummy(df, name):
     dummies = pd.get_dummies(df[name])
     for x in dummies.columns:
@@ -139,8 +110,7 @@ def encode_text_dummy(df, name):
         df[dummy_name] = dummies[x]
     df.drop(name, axis=1, inplace=True)
 
-# Now encode the feature vector
-
+# based on whether the feature is continuous or categorical, this either normalizes it or hot encodes it
 encode_numeric_zscore(df, 'duration')
 encode_text_dummy(df, 'protocol_type')
 encode_text_dummy(df, 'service')
@@ -183,17 +153,14 @@ encode_numeric_zscore(df, 'dst_host_srv_serror_rate')
 encode_numeric_zscore(df, 'dst_host_rerror_rate')
 encode_numeric_zscore(df, 'dst_host_srv_rerror_rate')
 
-# display 5 rows
 
+# remove all the columns having few null values
 df.dropna(inplace=True,axis=1)
 df[0:5]
-# This is the numeric feature vector, as it goes to the neural net
 
-
-# Convert to numpy - Classification
-x_columns = df.columns.drop('outcome')
-x = df[x_columns].values
-dummies = pd.get_dummies(df['outcome']) # Classification
+x_columns = df.columns.drop('outcome') # drop the result column from the train set
+x = df[x_columns].values # converting the dataframe into values
+dummies = pd.get_dummies(df['outcome']) # converting into one-hot encoding
 outcomes = dummies.columns
 num_classes = len(outcomes)
 y = dummies.values
@@ -201,35 +168,26 @@ y = dummies.values
 df.groupby('outcome')['outcome'].count()
 
 
-
-# Create a test/train split.  25% test
-# Split into train/test
+# performing a 25 % test split (leaving the rest for the train test)
 x_train, x_test, y_train, y_test = train_test_split(
     x, y, test_size=0.25, random_state=42)
 
-# Create neural net
-model = Sequential()
-model.add(Dense(10, input_dim=x.shape[1], kernel_initializer='normal', activation='relu'))
+
+model = Sequential() # the Keras Sequential deep neural network model
+# adding the deep hidden layers in the network
+model.add(Dense(10, input_dim=x.shape[1], kernel_initializer='normal', activation='relu')) 
 model.add(Dense(50, input_dim=x.shape[1], kernel_initializer='normal', activation='relu'))
 model.add(Dense(10, input_dim=x.shape[1], kernel_initializer='normal', activation='relu'))
 model.add(Dense(1, kernel_initializer='normal'))
-model.add(Dense(y.shape[1],activation='softmax'))
+model.add(Dense(y.shape[1],activation='softmax')) # softmax reveals the probabilities for the classes in the network output
 model.compile(loss='categorical_crossentropy', optimizer='adam')
 monitor = EarlyStopping(monitor='val_loss', min_delta=1e-3, patience=5, verbose=1, mode='auto')
 filepath="model_{epoch:02d}-{loss:.4f}.model"
 checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
 callbacks_list = [checkpoint, monitor]
-model.fit(x_train,y_train,validation_data=(x_test,y_test),callbacks=callbacks_list,verbose=2,epochs=1000)
+#model.fit(x_train,y_train,validation_data=(x_test,y_test),callbacks=callbacks_list,verbose=2,epochs=1000)
 
-model = Sequential()
-model.add(Dense(10, input_dim=120, kernel_initializer='normal', activation='relu'))
-model.add(Dense(50, input_dim=120, kernel_initializer='normal', activation='relu'))
-model.add(Dense(10, input_dim=120, kernel_initializer='normal', activation='relu'))
-model.add(Dense(1, kernel_initializer='normal'))
-model.add(Dense(23,activation='softmax'))
-
-
-# Measure accuracy
+model = load_model('best_model.model')
 pred = model.predict(x_test)
 pred = np.argmax(pred,axis=1)
 y_eval = np.argmax(y_test,axis=1)
