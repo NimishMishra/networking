@@ -26,3 +26,6 @@ while True:
     # to send some data to the client, here you go:
     # first argument: the data in bytes, second argument: the encoding
     connectedsocket.send(bytes("Welcome to my server", "utf-8"))
+    break
+
+connectedsocket.send(bytes("", "utf-8"))
