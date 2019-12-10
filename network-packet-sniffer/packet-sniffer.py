@@ -84,8 +84,8 @@ def format_address(mac_address):
     This function aids to unpack the ethernet frame to extract useful information.
     ETHERNET FRAME:
 
-    SYNC   Receiver   Sender   Type    Payload    CRC
-      8       6         6       2      46-1500     4   (all are in bytes)
+    Receiver   Sender   Type    Payload    CRC
+      6         6       2      46-1500     4   (all are in bytes)
 
     SYNC: electronic information that looks to ensure the computer and the router are in synchronization
     CRC: information that looks to ensure the data is trasmitted correctly, maybe error correcting codes
