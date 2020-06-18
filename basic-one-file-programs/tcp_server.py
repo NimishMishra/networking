@@ -19,5 +19,5 @@ while True:
     # send data to client
     client.send(bytes("data", 'utf-8'))
 
-    #close the socket. Takes over a minute or two
+    #close the socket. Takes over a minute or two 
     client.close()
