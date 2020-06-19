@@ -36,8 +36,10 @@ def receive_data():
     # do something on the data
     
     output = run_command(response)
-    if(type(output) is not str):
+    try:
         output = output.decode('utf-8')
+    except:
+        pass
     # send result back
     send_data("Result: " + output)
 
