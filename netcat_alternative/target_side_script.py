@@ -51,7 +51,7 @@ def navigate_directory(command):
 #   do NOT create a file if it does not previously exist
 def file_handler(command):
     command_splits = command.split(" ")
-    if(len(command) > 3):
+    if(len(command_splits) > 3):
         return "file command has more than two arguments."
     
     elif(command_splits[0] != 'file'):
@@ -69,7 +69,7 @@ def file_handler(command):
     if(mode == 'r'):
         data_read = file_object.read()
         file_object.close()
-        return data
+        return data_read
     
     elif(mode == 'w' or mode == 'a'):
         response = ""
@@ -78,7 +78,7 @@ def file_handler(command):
             received_data = received_data.decode('utf-8')
             if(received_data == "FILE_UPDATE_QUIT"):
                 break
-            response = response + str(received_data)
+            response = response + str(received_data) + "\n"
         file_object.write(response)
         file_object.close()
         return "Data written successfully"
