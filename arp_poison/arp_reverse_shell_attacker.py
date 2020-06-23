@@ -1,7 +1,7 @@
 import socket
 
 BUFFER_SIZE = 1024
-attacker_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+attacker_server = socket.socket(socket.AF_INET6, socket.SOCK_STREAM) 
 
 # lets the attacker server listen on the specified port number
 def attacker_server_binder(hostname, port_number):

