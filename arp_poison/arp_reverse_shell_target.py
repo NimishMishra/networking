@@ -6,7 +6,8 @@ import time
 from attacker_arp_poison import entry
 
 
-attacker_hostname = "2409:4063:4e96:68ad:616d:ac6c:f50d:5e7c"
+
+attacker_hostname = "IPv6 IP here"
 attacker_port = 12345
 
 # connects with the attacker 
