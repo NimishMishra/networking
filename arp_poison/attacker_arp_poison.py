@@ -2,13 +2,13 @@ from scapy.all import *
 import sys
 import time
 
+response = ""
+
 def get_mac_address(ip_address):
     packet = Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst=ip_address)
     answered, unanswered = srp(packet, timeout=2, verbose=0)
 
     for sent,received in answered:
-        # print(s.show())
-        # print(r.show())
         return received[ARP].hwsrc
 
 def restore_arp_tables(gateway_ip, gateway_mac, target_ip, target_mac):
@@ -57,6 +57,18 @@ def sniffer(target_ip):
     filter_string = "ip host " + target_ip
     sniff(count=5, prn=callback, filter= filter_string)
 
+
+def discovery(dst, time):
+    global response
+    ethernet_layer = Ether(dst="ff:ff:ff:ff:ff:ff")
+    arp_layer = ARP(pdst= dst)
+    ans, unans = srp(ethernet_layer/arp_layer, timeout=int(time))
+
+    for sent, received in ans:
+        response = response + received[ARP].psrc + " "
+    
+    return response
+
 def entry(target_ip, gateway_ip):
     
     # assuming we have performed the reverse attack, we know the following
@@ -80,3 +92,6 @@ def entry(target_ip, gateway_ip):
 # output = entry("192.168.43.125", "192.168.43.70")
 # print(output)
 # print(len(output))
+
+# output = discovery('192.168.43.1/24', 10)
+# print(output)
