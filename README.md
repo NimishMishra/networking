@@ -10,4 +10,4 @@
 
 ## OverTheWire challenge walkthrough
 
-[Bandit](https://overthewire.org/wargames/bandit/) [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/bandit)
+[Bandit challenge](https://overthewire.org/wargames/bandit/); [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/bandit)
