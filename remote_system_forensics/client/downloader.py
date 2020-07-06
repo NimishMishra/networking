@@ -17,16 +17,17 @@ def run_command(command):
 
 def fetch_directory_list():
     global loaded_files
-    COMMAND = "curl http://192.168.43.38:9000"
+    COMMAND = "curl http://192.168.43.38:8080 --silent"
     output = run_command(COMMAND)
-    try:
-        output = output.decode('utf-8')
-    except:
-        pass
+    output = output.decode('utf-8')
     output_split = output.split("\n")
 
     try: 
         for line in output_split:
+            start_index = line.index("href=")
+            line = line[start_index + 6: ]
+            end_index = line.index(">")
+            line = line[0: end_index - 1]
             if(line not in loaded_files):
                 loaded_files.append(line)
     except:
@@ -37,7 +38,7 @@ def download_fetched_files():
     global loaded_files
 
     for file in loaded_files:
-        path = "http://192.168.43.38:9000/" + file
+        path = "http://192.168.43.38:8080/" + file
         command = "curl -o " + file + " " + path + " --silent"
         run_command(command)
 
