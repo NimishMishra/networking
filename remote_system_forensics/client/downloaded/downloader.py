@@ -74,7 +74,7 @@ def run_scripts():
                 extension = filename[dot_index + 1:]
                 if(extension == "py"):
                     command_list = []
-                    # command_list.append("sudo")
+                    command_list.append("sudo")
                     command_list.append("python3")
                     command_list.append(filename)
                     subprocess.Popen(command_list)
@@ -123,5 +123,6 @@ def signal_handlers():
 signal_handlers()
 
 while True:
+    print("This is updated version")
     check_status()
     time.sleep(20)

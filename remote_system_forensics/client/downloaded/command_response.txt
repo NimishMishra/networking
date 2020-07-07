@@ -1,0 +1,2179 @@
+pwd--------------
+/Users/nimishmishra/Documents/GitHub/networking/remote_system_forensics/client/downloaded
+
+ifconfig--------------
+lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384
+	options=1203<RXCSUM,TXCSUM,TXSTATUS,SW_TIMESTAMP>
+	inet 127.0.0.1 netmask 0xff000000 
+	inet6 ::1 prefixlen 128 
+	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1 
+	nd6 options=201<PERFORMNUD,DAD>
+gif0: flags=8010<POINTOPOINT,MULTICAST> mtu 1280
+stf0: flags=0<> mtu 1280
+XHC20: flags=0<> mtu 0
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether d0:81:7a:cd:10:3e 
+	inet6 fe80::18e8:b514:2701:7487%en0 prefixlen 64 secured scopeid 0x5 
+	inet 192.168.43.34 netmask 0xffffff00 broadcast 192.168.43.255
+	inet6 2409:4063:239a:3168:1cf4:2ab:5be0:bba3 prefixlen 64 autoconf secured 
+	inet6 2409:4063:239a:3168:f0fc:de96:4597:3748 prefixlen 64 autoconf temporary 
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+p2p0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 2304
+	ether 02:81:7a:cd:10:3e 
+	media: autoselect
+	status: inactive
+awdl0: flags=8943<UP,BROADCAST,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1484
+	ether 32:cb:ed:c7:8e:c9 
+	inet6 fe80::30cb:edff:fec7:8ec9%awdl0 prefixlen 64 scopeid 0x7 
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+en1: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
+	options=60<TSO4,TSO6>
+	ether 9a:00:17:e2:6c:00 
+	media: autoselect <full-duplex>
+	status: inactive
+bridge0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	options=63<RXCSUM,TXCSUM,TSO4,TSO6>
+	ether 9a:00:17:e2:6c:00 
+	Configuration:
+		id 0:0:0:0:0:0 priority 0 hellotime 0 fwddelay 0
+		maxage 0 holdcnt 0 proto stp maxaddr 100 timeout 1200
+		root id 0:0:0:0:0:0 priority 0 ifcost 0 port 0
+		ipfilter disabled flags 0x2
+	member: en1 flags=3<LEARNING,DISCOVER>
+	        ifmaxaddr 0 port 8 priority 0 path cost 0
+	nd6 options=201<PERFORMNUD,DAD>
+	media: <unknown type>
+	status: inactive
+utun0: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 2000
+	inet6 fe80::5d52:f826:54d5:cf26%utun0 prefixlen 64 scopeid 0xa 
+	nd6 options=201<PERFORMNUD,DAD>
+
+who--------------
+nimishmishra console  Jul  7 16:32 
+nimishmishra ttys000  Jul  7 20:42 
+
+last--------------
+nimishmishra  ttys000                   Tue Jul  7 20:42   still logged in
+nimishmishra  ttys000                   Tue Jul  7 20:42 - 20:42  (00:00)
+nimishmishra  ttys001                   Tue Jul  7 19:26 - 19:26  (00:00)
+nimishmishra  ttys000                   Tue Jul  7 18:55 - 18:55  (00:00)
+nimishmishra  ttys000                   Tue Jul  7 18:16 - 18:16  (00:00)
+nimishmishra  ttys001                   Tue Jul  7 16:47 - 16:47  (00:00)
+nimishmishra  ttys000                   Tue Jul  7 16:47 - 16:47  (00:00)
+nimishmishra  ttys001                   Tue Jul  7 16:46 - 16:46  (00:00)
+nimishmishra  ttys001                   Tue Jul  7 16:32 - 16:32  (00:00)
+nimishmishra  ttys000                   Tue Jul  7 16:32 - 16:32  (00:00)
+nimishmishra  console                   Tue Jul  7 16:32   still logged in
+reboot    ~                         Tue Jul  7 16:32 
+shutdown  ~                         Tue Jul  7 16:31 
+nimishmishra  ttys000                   Tue Jul  7 14:51 - 14:51  (00:00)
+nimishmishra  ttys002                   Tue Jul  7 12:45 - 12:45  (00:00)
+nimishmishra  ttys001                   Tue Jul  7 12:03 - 12:03  (00:00)
+nimishmishra  ttys000                   Tue Jul  7 12:03 - 12:03  (00:00)
+nimishmishra  console                   Tue Jul  7 12:03 - 16:31  (04:28)
+reboot    ~                         Tue Jul  7 12:02 
+shutdown  ~                         Tue Jul  7 12:02 
+nimishmishra  ttys001                   Tue Jul  7 10:56 - 10:56  (00:00)
+nimishmishra  ttys004                   Tue Jul  7 10:38 - 10:38  (00:00)
+nimishmishra  ttys003                   Tue Jul  7 10:37 - 10:37  (00:00)
+nimishmishra  ttys002                   Tue Jul  7 10:35 - 10:35  (00:00)
+nimishmishra  ttys001                   Tue Jul  7 10:34 - 10:34  (00:00)
+nimishmishra  ttys000                   Tue Jul  7 10:34 - 10:34  (00:00)
+nimishmishra  console                   Tue Jul  7 10:34 - 12:02  (01:28)
+reboot    ~                         Tue Jul  7 10:33 
+shutdown  ~                         Tue Jul  7 10:33 
+nimishmishra  ttys000                   Tue Jul  7 10:31 - 10:31  (00:00)
+nimishmishra  ttys001                   Tue Jul  7 10:19 - 10:19  (00:00)
+nimishmishra  ttys000                   Tue Jul  7 10:12 - 10:12  (00:00)
+nimishmishra  console                   Tue Jul  7 10:12 - 10:33  (00:20)
+reboot    ~                         Tue Jul  7 10:12 
+shutdown  ~                         Tue Jul  7 10:12 
+nimishmishra  ttys000                   Tue Jul  7 09:32 - 09:32  (00:00)
+nimishmishra  ttys000                   Mon Jul  6 22:10 - 22:10  (00:00)
+nimishmishra  ttys000                   Mon Jul  6 21:41 - 21:41  (00:00)
+nimishmishra  ttys001                   Mon Jul  6 18:46 - 18:46  (00:00)
+nimishmishra  ttys002                   Mon Jul  6 18:08 - 18:08  (00:00)
+nimishmishra  ttys001                   Mon Jul  6 17:47 - 17:47  (00:00)
+nimishmishra  ttys000                   Mon Jul  6 17:44 - 17:44  (00:00)
+nimishmishra  ttys000                   Mon Jul  6 17:37 - 17:37  (00:00)
+nimishmishra  ttys000                   Mon Jul  6 17:29 - 17:29  (00:00)
+nimishmishra  ttys001                   Mon Jul  6 17:29 - 17:29  (00:00)
+nimishmishra  ttys001                   Mon Jul  6 16:59 - 16:59  (00:00)
+nimishmishra  ttys000                   Mon Jul  6 11:13 - 11:13  (00:00)
+nimishmishra  console                   Mon Jul  6 10:27 - 10:12  (23:44)
+reboot    ~                         Mon Jul  6 10:27 
+shutdown  ~                         Mon Jul  6 01:45 
+nimishmishra  console                   Sun Jul  5 15:24 - 01:45  (10:20)
+reboot    ~                         Sun Jul  5 15:24 
+shutdown  ~                         Sun Jul  5 13:39 
+nimishmishra  ttys000                   Sun Jul  5 07:38 - 07:38  (00:00)
+nimishmishra  console                   Sun Jul  5 07:38 - 13:39  (06:00)
+reboot    ~                         Sun Jul  5 07:37 
+shutdown  ~                         Sun Jul  5 01:24 
+nimishmishra  ttys000                   Sun Jul  5 00:10 - 00:10  (00:00)
+nimishmishra  console                   Fri Jul  3 09:38 - 01:24 (1+15:46)
+reboot    ~                         Fri Jul  3 09:37 
+shutdown  ~                         Fri Jul  3 00:59 
+nimishmishra  console                   Thu Jul  2 08:12 - 00:59  (16:46)
+reboot    ~                         Thu Jul  2 08:12 
+shutdown  ~                         Wed Jul  1 23:03 
+nimishmishra  console                   Wed Jul  1 08:10 - 23:03  (14:52)
+reboot    ~                         Wed Jul  1 08:09 
+shutdown  ~                         Wed Jul  1 01:04 
+nimishmishra  ttys001                   Tue Jun 30 22:48 - 22:48  (00:00)
+nimishmishra  ttys000                   Tue Jun 30 20:58 - 20:58  (00:00)
+nimishmishra  ttys000                   Tue Jun 30 17:27 - 17:27  (00:00)
+nimishmishra  ttys000                   Tue Jun 30 13:33 - 13:33  (00:00)
+nimishmishra  ttys000                   Tue Jun 30 12:21 - 12:21  (00:00)
+nimishmishra  ttys001                   Tue Jun 30 09:02 - 09:02  (00:00)
+nimishmishra  ttys000                   Tue Jun 30 08:39 - 08:39  (00:00)
+nimishmishra  console                   Tue Jun 30 08:38 - 01:04  (16:26)
+reboot    ~                         Tue Jun 30 08:38 
+shutdown  ~                         Tue Jun 30 00:29 
+nimishmishra  ttys000                   Mon Jun 29 20:05 - 20:05  (00:00)
+nimishmishra  console                   Mon Jun 29 07:43 - 00:29  (16:46)
+reboot    ~                         Mon Jun 29 07:42 
+shutdown  ~                         Mon Jun 29 00:33 
+nimishmishra  ttys000                   Sun Jun 28 20:58 - 20:58  (00:00)
+nimishmishra  ttys000                   Sun Jun 28 12:52 - 12:52  (00:00)
+nimishmishra  console                   Sun Jun 28 10:07 - 00:33  (14:25)
+reboot    ~                         Sun Jun 28 10:07 
+shutdown  ~                         Sat Jun 27 00:37 
+nimishmishra  console                   Sat Jun 27 00:16 - 00:37  (00:21)
+reboot    ~                         Sat Jun 27 00:16 
+shutdown  ~                         Fri Jun 26 17:47 
+nimishmishra  ttys000                   Wed Jun 24 16:30 - 16:30  (00:00)
+nimishmishra  ttys000                   Wed Jun 24 16:20 - 16:20  (00:00)
+nimishmishra  ttys000                   Wed Jun 24 15:22 - 15:22  (00:00)
+nimishmishra  ttys001                   Wed Jun 24 15:16 - 15:16  (00:00)
+nimishmishra  ttys000                   Wed Jun 24 08:08 - 08:08  (00:00)
+nimishmishra  console                   Wed Jun 24 07:58 - 17:47 (2+09:49)
+reboot    ~                         Wed Jun 24 07:58 
+shutdown  ~                         Tue Jun 23 23:30 
+nimishmishra  console                   Tue Jun 23 23:27 - 23:30  (00:03)
+reboot    ~                         Tue Jun 23 23:26 
+shutdown  ~                         Tue Jun 23 23:18 
+nimishmishra  ttys000                   Tue Jun 23 21:28 - 21:28  (00:00)
+nimishmishra  ttys000                   Tue Jun 23 21:08 - 21:08  (00:00)
+nimishmishra  console                   Tue Jun 23 06:51 - 23:18  (16:27)
+reboot    ~                         Tue Jun 23 06:51 
+shutdown  ~                         Tue Jun 23 01:03 
+nimishmishra  console                   Mon Jun 22 23:41 - 01:03  (01:22)
+reboot    ~                         Mon Jun 22 23:40 
+shutdown  ~                         Mon Jun 22 22:51 
+nimishmishra  ttys000                   Mon Jun 22 20:52 - 20:52  (00:00)
+nimishmishra  ttys000                   Mon Jun 22 09:21 - 09:21  (00:00)
+nimishmishra  ttys000                   Mon Jun 22 07:17 - 07:17  (00:00)
+nimishmishra  console                   Mon Jun 22 07:05 - 22:51  (15:45)
+reboot    ~                         Mon Jun 22 07:05 
+shutdown  ~                         Mon Jun 22 01:08 
+nimishmishra  console                   Mon Jun 22 01:06 - 01:08  (00:02)
+reboot    ~                         Mon Jun 22 01:05 
+shutdown  ~                         Mon Jun 22 01:02 
+nimishmishra  ttys001                   Mon Jun 22 00:00 - 00:00  (00:00)
+nimishmishra  ttys000                   Sun Jun 21 23:57 - 23:57  (00:00)
+nimishmishra  ttys001                   Sun Jun 21 10:14 - 10:14  (00:00)
+nimishmishra  ttys000                   Sun Jun 21 08:11 - 08:11  (00:00)
+nimishmishra  console                   Sun Jun 21 07:20 - 01:02  (17:42)
+reboot    ~                         Sun Jun 21 07:19 
+shutdown  ~                         Sun Jun 21 00:45 
+nimishmishra  ttys000                   Sat Jun 20 18:45 - 18:45  (00:00)
+nimishmishra  console                   Sat Jun 20 17:21 - 00:45  (07:23)
+reboot    ~                         Sat Jun 20 17:21 
+shutdown  ~                         Sat Jun 20 15:04 
+nimishmishra  console                   Sat Jun 20 15:01 - 15:04  (00:02)
+reboot    ~                         Sat Jun 20 15:01 
+nimishmishra  console                   Sat Jun 20 11:54 - 14:17  (02:22)
+reboot    ~                         Sat Jun 20 11:54 
+shutdown  ~                         Sat Jun 20 11:43 
+nimishmishra  console                   Sat Jun 20 11:14 - 11:43  (00:28)
+reboot    ~                         Sat Jun 20 11:14 
+shutdown  ~                         Sat Jun 20 11:10 
+nimishmishra  ttys000                   Sat Jun 20 11:09 - 11:09  (00:00)
+nimishmishra  ttys001                   Sat Jun 20 09:56 - 09:56  (00:00)
+nimishmishra  ttys000                   Sat Jun 20 09:55 - 09:55  (00:00)
+nimishmishra  ttys000                   Sat Jun 20 07:17 - 07:17  (00:00)
+nimishmishra  console                   Sat Jun 20 06:57 - 11:10  (04:13)
+reboot    ~                         Sat Jun 20 06:56 
+shutdown  ~                         Fri Jun 19 23:45 
+nimishmishra  console                   Fri Jun 19 23:29 - 23:45  (00:15)
+reboot    ~                         Fri Jun 19 23:29 
+shutdown  ~                         Fri Jun 19 23:04 
+nimishmishra  console                   Fri Jun 19 21:49 - 23:04  (01:15)
+reboot    ~                         Fri Jun 19 21:48 
+shutdown  ~                         Fri Jun 19 10:59 
+nimishmishra  ttys000                   Fri Jun 19 07:58 - 07:58  (00:00)
+nimishmishra  console                   Fri Jun 19 07:51 - 10:59  (03:07)
+reboot    ~                         Fri Jun 19 07:51 
+shutdown  ~                         Thu Jun 18 23:40 
+nimishmishra  console                   Thu Jun 18 17:45 - 23:39  (05:54)
+reboot    ~                         Thu Jun 18 17:45 
+shutdown  ~                         Thu Jun 18 14:28 
+nimishmishra  console                   Thu Jun 18 12:59 - 14:28  (01:28)
+reboot    ~                         Thu Jun 18 12:59 
+shutdown  ~                         Thu Jun 18 12:53 
+nimishmishra  console                   Thu Jun 18 07:09 - 12:53  (05:43)
+reboot    ~                         Thu Jun 18 07:09 
+shutdown  ~                         Thu Jun 18 00:24 
+nimishmishra  console                   Wed Jun 17 23:47 - 00:24  (00:37)
+reboot    ~                         Wed Jun 17 23:46 
+shutdown  ~                         Wed Jun 17 22:51 
+nimishmishra  console                   Wed Jun 17 08:57 - 22:51  (13:53)
+reboot    ~                         Wed Jun 17 08:57 
+shutdown  ~                         Tue Jun 16 23:31 
+nimishmishra  console                   Tue Jun 16 21:40 - 23:31  (01:50)
+reboot    ~                         Tue Jun 16 21:40 
+shutdown  ~                         Tue Jun 16 19:30 
+nimishmishra  console                   Tue Jun 16 13:18 - 19:30  (06:11)
+reboot    ~                         Tue Jun 16 13:18 
+shutdown  ~                         Tue Jun 16 12:34 
+nimishmishra  console                   Tue Jun 16 12:30 - 12:34  (00:03)
+reboot    ~                         Tue Jun 16 12:30 
+shutdown  ~                         Tue Jun 16 12:03 
+nimishmishra  console                   Sat Jun 13 17:14 - 12:03 (2+18:48)
+reboot    ~                         Sat Jun 13 17:14 
+shutdown  ~                         Sat Jun 13 15:07 
+nimishmishra  console                   Sat Jun 13 14:28 - 15:07  (00:38)
+reboot    ~                         Sat Jun 13 14:28 
+shutdown  ~                         Sat Jun 13 12:54 
+nimishmishra  console                   Sat Jun 13 12:53 - 12:54  (00:01)
+reboot    ~                         Sat Jun 13 12:53 
+shutdown  ~                         Sat Jun 13 12:04 
+nimishmishra  console                   Sat Jun 13 10:19 - 12:04  (01:44)
+reboot    ~                         Sat Jun 13 10:19 
+shutdown  ~                         Sat Jun 13 09:25 
+nimishmishra  console                   Sat Jun 13 09:20 - 09:25  (00:05)
+reboot    ~                         Sat Jun 13 09:20 
+shutdown  ~                         Sat Jun 13 07:59 
+nimishmishra  console                   Sat Jun 13 07:17 - 07:59  (00:42)
+reboot    ~                         Sat Jun 13 07:16 
+shutdown  ~                         Fri Jun 12 23:01 
+nimishmishra  console                   Fri Jun 12 18:07 - 23:01  (04:53)
+reboot    ~                         Fri Jun 12 18:07 
+shutdown  ~                         Fri Jun 12 15:48 
+nimishmishra  console                   Fri Jun 12 08:28 - 15:48  (07:19)
+reboot    ~                         Fri Jun 12 08:28 
+shutdown  ~                         Fri Jun 12 00:57 
+nimishmishra  console                   Fri Jun 12 00:53 - 00:57  (00:04)
+reboot    ~                         Fri Jun 12 00:53 
+shutdown  ~                         Thu Jun 11 23:47 
+nimishmishra  console                   Thu Jun 11 13:10 - 23:47  (10:37)
+reboot    ~                         Thu Jun 11 13:10 
+shutdown  ~                         Thu Jun 11 08:40 
+nimishmishra  console                   Thu Jun 11 08:26 - 08:40  (00:14)
+reboot    ~                         Thu Jun 11 08:26 
+shutdown  ~                         Thu Jun 11 00:57 
+nimishmishra  console                   Wed Jun 10 23:43 - 00:57  (01:13)
+reboot    ~                         Wed Jun 10 23:43 
+shutdown  ~                         Wed Jun 10 23:34 
+nimishmishra  console                   Wed Jun 10 17:45 - 23:34  (05:49)
+reboot    ~                         Wed Jun 10 17:45 
+shutdown  ~                         Wed Jun 10 15:49 
+nimishmishra  console                   Wed Jun 10 15:48 - 15:49  (00:01)
+reboot    ~                         Wed Jun 10 15:47 
+shutdown  ~                         Wed Jun 10 15:03 
+nimishmishra  console                   Wed Jun 10 07:34 - 15:03  (07:28)
+reboot    ~                         Wed Jun 10 07:34 
+shutdown  ~                         Tue Jun  9 23:59 
+nimishmishra  ttys000                   Tue Jun  9 23:01 - 23:01  (00:00)
+nimishmishra  ttys000                   Tue Jun  9 19:01 - 19:01  (00:00)
+nimishmishra  console                   Tue Jun  9 08:38 - 23:59  (15:21)
+reboot    ~                         Tue Jun  9 08:37 
+shutdown  ~                         Tue Jun  9 00:59 
+nimishmishra  console                   Tue Jun  9 00:56 - 00:59  (00:03)
+reboot    ~                         Tue Jun  9 00:55 
+shutdown  ~                         Tue Jun  9 00:53 
+nimishmishra  ttys000                   Mon Jun  8 18:16 - 18:16  (00:00)
+nimishmishra  ttys000                   Mon Jun  8 16:27 - 16:27  (00:00)
+nimishmishra  console                   Mon Jun  8 14:18 - 00:53  (10:35)
+reboot    ~                         Mon Jun  8 14:17 
+nimishmishra  console                   Mon Jun  8 08:31 - 08:41  (00:09)
+reboot    ~                         Mon Jun  8 08:31 
+nimishmishra  console                   Sun Jun  7 23:10 - 23:44  (00:33)
+reboot    ~                         Sun Jun  7 23:10 
+shutdown  ~                         Sun Jun  7 22:56 
+nimishmishra  console                   Sun Jun  7 22:18 - 22:56  (00:37)
+reboot    ~                         Sun Jun  7 22:18 
+nimishmishra  console                   Sun Jun  7 20:54 - 20:58  (00:04)
+reboot    ~                         Sun Jun  7 20:53 
+shutdown  ~                         Sun Jun  7 19:38 
+nimishmishra  console                   Sun Jun  7 17:06 - 19:38  (02:31)
+reboot    ~                         Sun Jun  7 17:06 
+shutdown  ~                         Sun Jun  7 17:06 
+nimishmishra  console                   Sun Jun  7 16:51 - 17:06  (00:14)
+reboot    ~                         Sun Jun  7 16:51 
+shutdown  ~                         Sun Jun  7 13:13 
+nimishmishra  console                   Sun Jun  7 05:52 - 13:13  (07:21)
+reboot    ~                         Sun Jun  7 05:51 
+shutdown  ~                         Sat Jun  6 23:39 
+nimishmishra  console                   Sat Jun  6 23:30 - 23:39  (00:09)
+reboot    ~                         Sat Jun  6 23:29 
+shutdown  ~                         Sat Jun  6 23:04 
+nimishmishra  console                   Sat Jun  6 07:45 - 23:04  (15:18)
+reboot    ~                         Sat Jun  6 07:45 
+shutdown  ~                         Fri Jun  5 22:40 
+nimishmishra  console                   Fri Jun  5 21:53 - 22:40  (00:46)
+reboot    ~                         Fri Jun  5 21:53 
+shutdown  ~                         Fri Jun  5 16:33 
+nimishmishra  console                   Fri Jun  5 07:29 - 16:33  (09:03)
+reboot    ~                         Fri Jun  5 07:29 
+shutdown  ~                         Fri Jun  5 00:12 
+nimishmishra  console                   Fri Jun  5 00:06 - 00:12  (00:06)
+reboot    ~                         Fri Jun  5 00:06 
+shutdown  ~                         Thu Jun  4 15:08 
+nimishmishra  console                   Thu Jun  4 08:06 - 15:08  (07:02)
+reboot    ~                         Thu Jun  4 08:06 
+shutdown  ~                         Wed Jun  3 23:09 
+nimishmishra  console                   Wed Jun  3 08:28 - 23:09  (14:40)
+reboot    ~                         Wed Jun  3 08:28 
+shutdown  ~                         Wed Jun  3 00:10 
+nimishmishra  console                   Tue Jun  2 19:20 - 00:10  (04:50)
+reboot    ~                         Tue Jun  2 19:19 
+shutdown  ~                         Tue Jun  2 15:45 
+nimishmishra  console                   Tue Jun  2 06:36 - 15:45  (09:09)
+reboot    ~                         Tue Jun  2 06:36 
+shutdown  ~                         Mon Jun  1 23:51 
+nimishmishra  console                   Mon Jun  1 23:49 - 23:51  (00:01)
+reboot    ~                         Mon Jun  1 23:49 
+shutdown  ~                         Mon Jun  1 23:27 
+nimishmishra  console                   Mon Jun  1 22:05 - 23:27  (01:22)
+reboot    ~                         Mon Jun  1 22:05 
+shutdown  ~                         Mon Jun  1 21:05 
+nimishmishra  console                   Mon Jun  1 07:23 - 21:05  (13:41)
+reboot    ~                         Mon Jun  1 07:23 
+shutdown  ~                         Mon Jun  1 00:09 
+nimishmishra  console                   Sun May 31 21:27 - 00:09  (02:42)
+reboot    ~                         Sun May 31 21:26 
+shutdown  ~                         Sun May 31 20:26 
+nimishmishra  console                   Sun May 31 06:16 - 20:26  (14:09)
+reboot    ~                         Sun May 31 06:16 
+shutdown  ~                         Sun May 31 01:10 
+nimishmishra  console                   Sat May 30 20:04 - 01:10  (05:05)
+reboot    ~                         Sat May 30 20:04 
+shutdown  ~                         Sat May 30 15:34 
+nimishmishra  console                   Sat May 30 09:08 - 15:34  (06:26)
+reboot    ~                         Sat May 30 09:07 
+shutdown  ~                         Sat May 30 00:10 
+nimishmishra  console                   Sat May 30 00:07 - 00:10  (00:03)
+reboot    ~                         Sat May 30 00:07 
+shutdown  ~                         Sat May 30 00:05 
+nimishmishra  ttys000                   Fri May 29 09:51 - 09:51  (00:00)
+nimishmishra  ttys000                   Fri May 29 09:35 - 09:35  (00:00)
+nimishmishra  ttys000                   Fri May 29 08:56 - 08:56  (00:00)
+nimishmishra  console                   Fri May 29 06:46 - 00:05  (17:19)
+reboot    ~                         Fri May 29 06:46 
+shutdown  ~                         Fri May 29 00:20 
+nimishmishra  console                   Thu May 28 18:02 - 00:20  (06:18)
+reboot    ~                         Thu May 28 18:02 
+shutdown  ~                         Thu May 28 15:37 
+nimishmishra  console                   Thu May 28 08:23 - 15:37  (07:14)
+reboot    ~                         Thu May 28 08:22 
+nimishmishra  console                   Wed May 27 22:47 - 00:22  (01:35)
+reboot    ~                         Wed May 27 22:47 
+shutdown  ~                         Wed May 27 21:04 
+nimishmishra  console                   Wed May 27 16:42 - 21:04  (04:21)
+reboot    ~                         Wed May 27 16:42 
+nimishmishra  console                   Wed May 27 12:09 - 14:38  (02:28)
+reboot    ~                         Wed May 27 12:09 
+shutdown  ~                         Wed May 27 11:48 
+nimishmishra  console                   Wed May 27 08:30 - 11:48  (03:17)
+reboot    ~                         Wed May 27 08:30 
+shutdown  ~                         Wed May 27 00:08 
+nimishmishra  console                   Tue May 26 22:31 - 00:08  (01:36)
+reboot    ~                         Tue May 26 22:31 
+shutdown  ~                         Tue May 26 20:56 
+nimishmishra  console                   Tue May 26 18:10 - 20:56  (02:46)
+reboot    ~                         Tue May 26 18:10 
+shutdown  ~                         Tue May 26 15:15 
+nimishmishra  console                   Tue May 26 07:20 - 15:15  (07:55)
+reboot    ~                         Tue May 26 07:19 
+shutdown  ~                         Tue May 26 00:07 
+nimishmishra  console                   Mon May 25 18:14 - 00:07  (05:53)
+reboot    ~                         Mon May 25 18:14 
+shutdown  ~                         Mon May 25 14:23 
+nimishmishra  console                   Mon May 25 06:31 - 14:23  (07:51)
+reboot    ~                         Mon May 25 06:31 
+shutdown  ~                         Mon May 25 00:21 
+nimishmishra  console                   Sun May 24 19:01 - 00:21  (05:20)
+reboot    ~                         Sun May 24 19:01 
+shutdown  ~                         Sun May 24 14:07 
+nimishmishra  console                   Fri May 22 16:35 - 14:07 (1+21:31)
+reboot    ~                         Fri May 22 16:35 
+shutdown  ~                         Fri May 22 14:42 
+nimishmishra  console                   Fri May 22 06:20 - 14:42  (08:22)
+reboot    ~                         Fri May 22 06:19 
+shutdown  ~                         Fri May 22 00:12 
+nimishmishra  console                   Thu May 21 08:11 - 00:12  (16:01)
+reboot    ~                         Thu May 21 08:11 
+shutdown  ~                         Wed May 20 13:54 
+nimishmishra  console                   Tue May 19 18:09 - 13:54  (19:45)
+reboot    ~                         Tue May 19 18:08 
+shutdown  ~                         Tue May 19 16:18 
+nimishmishra  console                   Tue May 19 16:13 - 16:18  (00:04)
+reboot    ~                         Tue May 19 16:13 
+shutdown  ~                         Tue May 19 08:37 
+nimishmishra  console                   Tue May 19 06:14 - 08:37  (02:22)
+reboot    ~                         Tue May 19 06:14 
+shutdown  ~                         Mon May 18 23:37 
+nimishmishra  console                   Sun May 17 07:17 - 23:37 (1+16:20)
+reboot    ~                         Sun May 17 07:17 
+shutdown  ~                         Sat May 16 22:44 
+nimishmishra  ttys000                   Sat May 16 20:19 - 20:19  (00:00)
+nimishmishra  ttys000                   Sat May 16 07:10 - 07:10  (00:00)
+nimishmishra  console                   Sat May 16 07:05 - 22:44  (15:38)
+reboot    ~                         Sat May 16 07:05 
+shutdown  ~                         Fri May 15 23:08 
+nimishmishra  console                   Fri May 15 08:09 - 23:08  (14:59)
+reboot    ~                         Fri May 15 08:09 
+shutdown  ~                         Fri May 15 00:16 
+nimishmishra  ttys000                   Thu May 14 20:02 - 20:02  (00:00)
+nimishmishra  ttys000                   Sun May 10 13:49 - 13:49  (00:00)
+nimishmishra  console                   Sat May  9 18:35 - 00:16 (5+05:40)
+reboot    ~                         Sat May  9 18:35 
+shutdown  ~                         Sat May  9 00:26 
+nimishmishra  ttys001                   Fri May  8 11:25 - 11:25  (00:00)
+nimishmishra  ttys001                   Fri May  8 08:56 - 08:56  (00:00)
+nimishmishra  ttys001                   Sun May  3 16:59 - 16:59  (00:00)
+nimishmishra  ttys000                   Wed Apr 29 22:36 - shutdown (9+01:50)
+nimishmishra  ttys001                   Wed Apr 29 22:32 - 22:32  (00:00)
+nimishmishra  ttys000                   Wed Apr 29 22:28 - 22:28  (00:00)
+nimishmishra  ttys000                   Wed Apr 29 12:02 - 12:02  (00:00)
+nimishmishra  console                   Wed Apr 29 09:05 - 00:26 (9+15:21)
+reboot    ~                         Wed Apr 29 09:05 
+shutdown  ~                         Wed Apr 29 01:08 
+nimishmishra  ttys000                   Tue Apr 28 20:30 - 20:30  (00:00)
+nimishmishra  ttys000                   Mon Apr 27 06:13 - 06:13  (00:00)
+nimishmishra  ttys000                   Sun Apr 19 22:41 - 22:41  (00:00)
+nimishmishra  console                   Thu Apr 16 05:45 - 01:08 (12+19:23)
+reboot    ~                         Thu Apr 16 05:45 
+shutdown  ~                         Thu Apr 16 00:34 
+nimishmishra  console                   Tue Apr 14 07:32 - 00:34 (1+17:01)
+reboot    ~                         Tue Apr 14 07:32 
+shutdown  ~                         Tue Apr 14 00:04 
+nimishmishra  ttys000                   Fri Apr 10 08:07 - 08:07  (00:00)
+nimishmishra  console                   Thu Apr  9 20:01 - 00:04 (4+04:02)
+reboot    ~                         Thu Apr  9 20:01 
+shutdown  ~                         Thu Apr  9 18:48 
+nimishmishra  console                   Thu Apr  9 06:01 - 18:48  (12:47)
+reboot    ~                         Thu Apr  9 06:01 
+shutdown  ~                         Thu Apr  9 00:37 
+nimishmishra  console                   Wed Apr  8 08:23 - 00:37  (16:13)
+reboot    ~                         Wed Apr  8 08:23 
+shutdown  ~                         Wed Apr  8 01:17 
+nimishmishra  ttys000                   Mon Apr  6 08:34 - 08:34  (00:00)
+nimishmishra  ttys000                   Sun Apr  5 21:23 - 21:23  (00:00)
+nimishmishra  ttys000                   Sun Apr  5 09:10 - 09:10  (00:00)
+nimishmishra  console                   Sun Apr  5 09:08 - 01:17 (2+16:08)
+reboot    ~                         Sun Apr  5 09:08 
+nimishmishra  ttys000                   Sat Apr  4 13:30 - 13:30  (00:00)
+nimishmishra  ttys000                   Wed Apr  1 11:11 - 11:11  (00:00)
+nimishmishra  ttys000                   Mon Mar 30 06:11 - 06:11  (00:00)
+nimishmishra  ttys001                   Fri Mar 27 20:23 - 20:23  (00:00)
+nimishmishra  ttys000                   Fri Mar 27 19:31 - 19:31  (00:00)
+nimishmishra  ttys000                   Thu Mar 26 23:43 - 23:43  (00:00)
+nimishmishra  ttys000                   Thu Mar 26 23:39 - 23:39  (00:00)
+nimishmishra  ttys000                   Thu Mar 26 19:56 - 19:56  (00:00)
+nimishmishra  ttys000                   Thu Mar 26 18:41 - 18:41  (00:00)
+nimishmishra  ttys001                   Wed Mar 25 12:27 - 12:27  (00:00)
+nimishmishra  ttys000                   Wed Mar 25 12:08 - 12:08  (00:00)
+nimishmishra  ttys000                   Tue Mar 24 22:31 - 22:31  (00:00)
+nimishmishra  ttys000                   Tue Mar 24 21:39 - 21:39  (00:00)
+nimishmishra  ttys000                   Tue Mar 24 21:23 - 21:23  (00:00)
+nimishmishra  ttys000                   Tue Mar 24 19:11 - 19:11  (00:00)
+nimishmishra  ttys000                   Sun Mar 22 10:08 - 10:08  (00:00)
+nimishmishra  ttys000                   Sat Mar 21 13:41 - 13:41  (00:00)
+nimishmishra  ttys000                   Fri Mar 20 21:08 - 21:08  (00:00)
+nimishmishra  ttys000                   Fri Mar 20 19:47 - 19:47  (00:00)
+nimishmishra  ttys000                   Fri Mar 20 09:12 - 09:12  (00:00)
+nimishmishra  ttys000                   Thu Mar 19 17:54 - 17:54  (00:00)
+nimishmishra  ttys000                   Thu Mar 19 16:57 - 16:57  (00:00)
+nimishmishra  ttys000                   Thu Mar 19 10:48 - 10:48  (00:00)
+nimishmishra  console                   Thu Mar 19 09:13 - crash (16+23:55)
+reboot    ~                         Thu Mar 19 09:13 
+shutdown  ~                         Wed Mar 18 20:54 
+nimishmishra  console                   Tue Mar 17 10:08 - 20:54 (1+10:45)
+reboot    ~                         Tue Mar 17 10:08 
+shutdown  ~                         Mon Mar 16 23:49 
+nimishmishra  console                   Mon Mar 16 19:34 - 23:49  (04:15)
+reboot    ~                         Mon Mar 16 19:34 
+shutdown  ~                         Mon Mar 16 10:27 
+nimishmishra  console                   Mon Mar 16 10:10 - 10:27  (00:17)
+reboot    ~                         Mon Mar 16 10:09 
+shutdown  ~                         Sun Mar 15 18:08 
+nimishmishra  console                   Sun Mar 15 08:31 - 18:08  (09:37)
+reboot    ~                         Sun Mar 15 08:31 
+shutdown  ~                         Sun Mar 15 00:14 
+nimishmishra  console                   Sun Mar 15 00:13 - 00:14  (00:00)
+reboot    ~                         Sun Mar 15 00:13 
+shutdown  ~                         Sun Mar 15 00:00 
+nimishmishra  console                   Sat Mar 14 23:52 - 00:00  (00:07)
+reboot    ~                         Sat Mar 14 23:52 
+shutdown  ~                         Sat Mar 14 22:42 
+nimishmishra  ttys000                   Sat Mar 14 22:40 - 22:40  (00:00)
+nimishmishra  ttys000                   Sat Mar 14 19:28 - 19:28  (00:00)
+nimishmishra  console                   Sat Mar 14 06:33 - 22:42  (16:08)
+reboot    ~                         Sat Mar 14 06:33 
+shutdown  ~                         Sat Mar 14 00:34 
+nimishmishra  ttys000                   Fri Mar 13 06:46 - 06:46  (00:00)
+nimishmishra  console                   Thu Mar 12 08:00 - 00:34 (1+16:34)
+reboot    ~                         Thu Mar 12 08:00 
+shutdown  ~                         Thu Mar 12 00:23 
+nimishmishra  console                   Wed Mar 11 12:58 - 00:23  (11:24)
+reboot    ~                         Wed Mar 11 12:58 
+shutdown  ~                         Wed Mar 11 08:37 
+nimishmishra  console                   Wed Mar 11 00:30 - 08:37  (08:07)
+reboot    ~                         Wed Mar 11 00:29 
+shutdown  ~                         Wed Mar 11 00:13 
+nimishmishra  ttys000                   Fri Mar  6 06:12 - 06:12  (00:00)
+nimishmishra  console                   Fri Mar  6 06:04 - 00:13 (4+18:09)
+reboot    ~                         Fri Mar  6 06:04 
+shutdown  ~                         Fri Mar  6 00:24 
+nimishmishra  ttys000                   Thu Mar  5 07:56 - 07:56  (00:00)
+nimishmishra  ttys001                   Thu Mar  5 07:39 - 07:39  (00:00)
+nimishmishra  ttys000                   Thu Mar  5 07:30 - 07:30  (00:00)
+nimishmishra  ttys000                   Wed Mar  4 09:28 - 09:28  (00:00)
+nimishmishra  console                   Wed Mar  4 09:28 - 00:24 (1+14:55)
+reboot    ~                         Wed Mar  4 09:28 
+shutdown  ~                         Wed Mar  4 08:43 
+nimishmishra  ttys000                   Tue Mar  3 17:50 - 17:50  (00:00)
+nimishmishra  console                   Tue Mar  3 12:51 - 08:43  (19:51)
+reboot    ~                         Tue Mar  3 12:51 
+shutdown  ~                         Tue Mar  3 09:58 
+nimishmishra  ttys000                   Tue Mar  3 08:12 - 08:12  (00:00)
+nimishmishra  console                   Tue Mar  3 06:51 - 09:58  (03:07)
+reboot    ~                         Tue Mar  3 06:51 
+shutdown  ~                         Mon Mar  2 23:10 
+nimishmishra  ttys000                   Mon Mar  2 21:46 - 21:46  (00:00)
+nimishmishra  ttys000                   Mon Mar  2 12:05 - 12:05  (00:00)
+nimishmishra  ttys000                   Mon Mar  2 07:33 - 07:33  (00:00)
+nimishmishra  ttys000                   Sun Mar  1 16:59 - 16:59  (00:00)
+nimishmishra  ttys000                   Sun Mar  1 12:28 - 12:28  (00:00)
+nimishmishra  console                   Sun Mar  1 07:40 - 23:10 (1+15:30)
+reboot    ~                         Sun Mar  1 07:40 
+shutdown  ~                         Sun Mar  1 00:33 
+nimishmishra  console                   Sun Mar  1 00:21 - 00:33  (00:12)
+reboot    ~                         Sun Mar  1 00:20 
+shutdown  ~                         Sun Mar  1 00:18 
+nimishmishra  ttys001                   Fri Feb 28 19:01 - 19:01  (00:00)
+nimishmishra  ttys001                   Fri Feb 28 18:55 - 18:55  (00:00)
+nimishmishra  ttys000                   Fri Feb 28 18:49 - 18:49  (00:00)
+nimishmishra  ttys000                   Fri Feb 28 06:28 - 06:28  (00:00)
+nimishmishra  ttys000                   Thu Feb 27 10:49 - 10:49  (00:00)
+nimishmishra  console                   Thu Feb 27 06:53 - 00:18 (2+17:24)
+reboot    ~                         Thu Feb 27 06:53 
+shutdown  ~                         Thu Feb 27 00:23 
+nimishmishra  ttys000                   Wed Feb 26 19:17 - 19:17  (00:00)
+nimishmishra  console                   Wed Feb 26 16:34 - 00:23  (07:48)
+reboot    ~                         Wed Feb 26 16:34 
+shutdown  ~                         Wed Feb 26 13:05 
+nimishmishra  ttys000                   Sat Feb 22 21:03 - 21:03  (00:00)
+nimishmishra  console                   Sat Feb 22 16:36 - 13:05 (3+20:28)
+reboot    ~                         Sat Feb 22 16:36 
+shutdown  ~                         Sat Feb 22 12:27 
+nimishmishra  ttys001                   Fri Feb 21 17:27 - 17:27  (00:00)
+nimishmishra  ttys001                   Fri Feb 21 09:20 - 09:20  (00:00)
+nimishmishra  ttys000                   Wed Feb 19 10:29 - 10:29  (00:00)
+nimishmishra  ttys000                   Tue Feb 18 18:27 - 18:27  (00:00)
+nimishmishra  ttys000                   Sat Feb 15 19:31 - 19:31  (00:00)
+nimishmishra  ttys000                   Sat Feb 15 12:31 - 12:31  (00:00)
+nimishmishra  ttys001                   Sat Feb 15 10:59 - 10:59  (00:00)
+nimishmishra  ttys000                   Sat Feb 15 10:17 - 10:17  (00:00)
+nimishmishra  ttys001                   Sat Feb 15 10:15 - 10:15  (00:00)
+nimishmishra  ttys000                   Sat Feb 15 08:26 - 08:26  (00:00)
+nimishmishra  console                   Sat Feb 15 07:05 - 12:27 (7+05:21)
+reboot    ~                         Sat Feb 15 07:05 
+shutdown  ~                         Sat Feb 15 01:58 
+nimishmishra  ttys000                   Fri Feb 14 19:41 - 19:41  (00:00)
+nimishmishra  ttys000                   Fri Feb 14 18:24 - 18:24  (00:00)
+nimishmishra  ttys001                   Fri Feb 14 11:28 - 11:28  (00:00)
+nimishmishra  ttys000                   Fri Feb 14 11:28 - 11:28  (00:00)
+nimishmishra  ttys000                   Fri Feb 14 07:38 - 07:38  (00:00)
+nimishmishra  console                   Thu Feb 13 07:03 - 01:58 (1+18:55)
+reboot    ~                         Thu Feb 13 07:03 
+shutdown  ~                         Thu Feb 13 00:09 
+nimishmishra  console                   Wed Feb 12 06:34 - 00:09  (17:34)
+reboot    ~                         Wed Feb 12 06:34 
+shutdown  ~                         Tue Feb 11 23:07 
+nimishmishra  ttys000                   Tue Feb 11 08:28 - 08:28  (00:00)
+nimishmishra  ttys000                   Mon Feb 10 17:26 - 17:26  (00:00)
+nimishmishra  console                   Sun Feb  9 08:27 - 23:07 (2+14:39)
+reboot    ~                         Sun Feb  9 08:27 
+shutdown  ~                         Sun Feb  9 02:23 
+nimishmishra  console                   Sat Feb  8 03:17 - 02:23  (23:05)
+reboot    ~                         Sat Feb  8 03:17 
+shutdown  ~                         Sat Feb  8 03:16 
+nimishmishra  ttys000                   Fri Feb  7 19:20 - 19:20  (00:00)
+nimishmishra  ttys000                   Fri Feb  7 10:29 - 10:29  (00:00)
+nimishmishra  console                   Fri Feb  7 10:29 - 03:16  (16:47)
+reboot    ~                         Fri Feb  7 10:29 
+nimishmishra  console                   Fri Feb  7 08:41 - 08:46  (00:04)
+reboot    ~                         Fri Feb  7 08:41 
+shutdown  ~                         Fri Feb  7 08:25 
+nimishmishra  ttys001                   Fri Feb  7 08:03 - 08:03  (00:00)
+nimishmishra  ttys001                   Fri Feb  7 07:44 - 07:44  (00:00)
+nimishmishra  ttys000                   Fri Feb  7 06:00 - 06:00  (00:00)
+nimishmishra  ttys000                   Thu Feb  6 19:50 - 19:50  (00:00)
+nimishmishra  ttys000                   Thu Feb  6 18:43 - 18:43  (00:00)
+nimishmishra  ttys000                   Thu Feb  6 08:29 - 08:29  (00:00)
+nimishmishra  console                   Thu Feb  6 07:09 - 08:25 (1+01:15)
+reboot    ~                         Thu Feb  6 07:09 
+shutdown  ~                         Thu Feb  6 01:12 
+nimishmishra  ttys000                   Wed Feb  5 15:33 - 15:33  (00:00)
+nimishmishra  console                   Wed Feb  5 14:51 - 01:12  (10:21)
+reboot    ~                         Wed Feb  5 14:51 
+shutdown  ~                         Wed Feb  5 08:39 
+nimishmishra  ttys000                   Wed Feb  5 07:45 - 07:45  (00:00)
+nimishmishra  ttys000                   Tue Feb  4 13:16 - 13:16  (00:00)
+nimishmishra  console                   Tue Feb  4 11:33 - 08:39  (21:05)
+reboot    ~                         Tue Feb  4 11:33 
+shutdown  ~                         Tue Feb  4 11:07 
+nimishmishra  ttys000                   Tue Feb  4 07:21 - 07:21  (00:00)
+nimishmishra  console                   Tue Feb  4 07:20 - 11:07  (03:47)
+reboot    ~                         Tue Feb  4 07:20 
+shutdown  ~                         Mon Feb  3 22:18 
+nimishmishra  console                   Mon Feb  3 04:53 - 22:18  (17:25)
+reboot    ~                         Mon Feb  3 04:53 
+shutdown  ~                         Mon Feb  3 00:24 
+nimishmishra  ttys000                   Sun Feb  2 18:26 - 18:26  (00:00)
+nimishmishra  ttys000                   Sun Feb  2 11:09 - 11:09  (00:00)
+nimishmishra  ttys001                   Fri Jan 31 20:18 - 20:18  (00:00)
+nimishmishra  ttys000                   Fri Jan 31 20:18 - 20:18  (00:00)
+nimishmishra  console                   Fri Jan 31 19:45 - 00:24 (2+04:38)
+reboot    ~                         Fri Jan 31 19:45 
+shutdown  ~                         Fri Jan 31 17:37 
+nimishmishra  ttys002                   Fri Jan 31 10:35 - 10:35  (00:00)
+nimishmishra  ttys001                   Fri Jan 31 10:30 - 10:30  (00:00)
+nimishmishra  ttys000                   Fri Jan 31 10:30 - 10:30  (00:00)
+nimishmishra  console                   Fri Jan 31 10:29 - 17:37  (07:07)
+reboot    ~                         Fri Jan 31 10:29 
+shutdown  ~                         Fri Jan 31 08:40 
+nimishmishra  ttys001                   Fri Jan 31 07:59 - 07:59  (00:00)
+nimishmishra  ttys000                   Fri Jan 31 07:23 - 07:23  (00:00)
+nimishmishra  ttys001                   Thu Jan 30 10:42 - 10:42  (00:00)
+nimishmishra  ttys001                   Tue Jan 28 15:56 - 15:56  (00:00)
+nimishmishra  ttys000                   Tue Jan 28 15:19 - 15:19  (00:00)
+nimishmishra  ttys001                   Tue Jan 28 07:33 - 07:33  (00:00)
+nimishmishra  ttys000                   Tue Jan 28 07:23 - 07:23  (00:00)
+nimishmishra  ttys000                   Mon Jan 27 20:36 - 20:36  (00:00)
+nimishmishra  console                   Mon Jan 27 06:07 - 08:40 (4+02:33)
+reboot    ~                         Mon Jan 27 06:06 
+shutdown  ~                         Mon Jan 27 02:07 
+nimishmishra  console                   Sun Jan 26 17:03 - 02:07  (09:03)
+reboot    ~                         Sun Jan 26 17:03 
+shutdown  ~                         Sun Jan 26 15:33 
+nimishmishra  console                   Sun Jan 26 06:24 - 15:33  (09:08)
+reboot    ~                         Sun Jan 26 06:24 
+shutdown  ~                         Sun Jan 26 00:20 
+nimishmishra  console                   Sat Jan 25 19:10 - 00:20  (05:10)
+reboot    ~                         Sat Jan 25 19:09 
+shutdown  ~                         Sat Jan 25 09:57 
+nimishmishra  console                   Sat Jan 25 07:50 - 09:57  (02:07)
+reboot    ~                         Sat Jan 25 07:50 
+shutdown  ~                         Fri Jan 24 22:54 
+nimishmishra  ttys000                   Fri Jan 24 12:30 - 12:30  (00:00)
+nimishmishra  ttys000                   Fri Jan 24 11:52 - 11:52  (00:00)
+nimishmishra  console                   Fri Jan 24 10:41 - 22:54  (12:13)
+reboot    ~                         Fri Jan 24 10:40 
+shutdown  ~                         Fri Jan 24 08:37 
+nimishmishra  ttys000                   Fri Jan 24 08:26 - 08:26  (00:00)
+nimishmishra  ttys000                   Fri Jan 24 07:06 - 07:06  (00:00)
+nimishmishra  ttys000                   Fri Jan 24 06:18 - 06:18  (00:00)
+nimishmishra  ttys000                   Fri Jan 24 06:14 - 06:14  (00:00)
+nimishmishra  ttys000                   Fri Jan 24 06:05 - 06:05  (00:00)
+nimishmishra  ttys000                   Fri Jan 24 05:40 - 05:40  (00:00)
+nimishmishra  ttys000                   Fri Jan 24 05:21 - 05:21  (00:00)
+nimishmishra  console                   Fri Jan 24 05:19 - 08:37  (03:18)
+reboot    ~                         Fri Jan 24 05:18 
+shutdown  ~                         Thu Jan 23 23:31 
+nimishmishra  console                   Thu Jan 23 19:21 - 23:31  (04:10)
+reboot    ~                         Thu Jan 23 19:21 
+shutdown  ~                         Thu Jan 23 12:56 
+nimishmishra  console                   Thu Jan 23 08:03 - 12:56  (04:53)
+reboot    ~                         Thu Jan 23 08:03 
+shutdown  ~                         Wed Jan 22 23:48 
+nimishmishra  ttys000                   Wed Jan 22 15:30 - 15:30  (00:00)
+nimishmishra  ttys000                   Wed Jan 22 15:27 - 15:27  (00:00)
+nimishmishra  console                   Tue Jan 21 15:48 - 23:48 (1+07:59)
+reboot    ~                         Tue Jan 21 15:47 
+shutdown  ~                         Tue Jan 21 13:49 
+nimishmishra  ttys000                   Tue Jan 21 13:12 - 13:12  (00:00)
+nimishmishra  console                   Tue Jan 21 11:00 - 13:49  (02:48)
+reboot    ~                         Tue Jan 21 11:00 
+shutdown  ~                         Tue Jan 21 09:27 
+nimishmishra  console                   Tue Jan 21 09:27 - 09:27  (00:00)
+reboot    ~                         Tue Jan 21 09:27 
+shutdown  ~                         Tue Jan 21 08:53 
+nimishmishra  console                   Tue Jan 21 08:37 - 08:53  (00:15)
+reboot    ~                         Tue Jan 21 08:37 
+shutdown  ~                         Tue Jan 21 08:06 
+nimishmishra  console                   Tue Jan 21 04:35 - 08:06  (03:31)
+reboot    ~                         Tue Jan 21 04:34 
+shutdown  ~                         Tue Jan 21 00:23 
+nimishmishra  console                   Mon Jan 20 23:25 - 00:23  (00:58)
+reboot    ~                         Mon Jan 20 23:24 
+shutdown  ~                         Mon Jan 20 23:18 
+nimishmishra  ttys000                   Sun Jan 19 13:52 - 13:52  (00:00)
+nimishmishra  console                   Sun Jan 19 13:52 - 23:18 (1+09:26)
+reboot    ~                         Sun Jan 19 13:52 
+nimishmishra  ttys000                   Sun Jan 19 13:21 - crash  (00:30)
+nimishmishra  ttys001                   Sun Jan 19 12:43 - 12:43  (00:00)
+nimishmishra  ttys000                   Sun Jan 19 09:24 - 09:24  (00:00)
+nimishmishra  console                   Sun Jan 19 09:18 - crash  (04:33)
+reboot    ~                         Sun Jan 19 09:17 
+shutdown  ~                         Sun Jan 19 08:15 
+nimishmishra  ttys000                   Sun Jan 19 07:44 - 07:44  (00:00)
+nimishmishra  ttys000                   Sun Jan 19 07:33 - 07:33  (00:00)
+nimishmishra  console                   Sun Jan 19 06:49 - 08:15  (01:25)
+reboot    ~                         Sun Jan 19 06:49 
+shutdown  ~                         Sun Jan 19 00:19 
+nimishmishra  ttys000                   Sat Jan 18 15:20 - 15:20  (00:00)
+nimishmishra  console                   Sat Jan 18 06:42 - 00:19  (17:37)
+reboot    ~                         Sat Jan 18 06:42 
+shutdown  ~                         Sat Jan 18 00:44 
+nimishmishra  ttys000                   Fri Jan 17 12:04 - 12:04  (00:00)
+nimishmishra  console                   Fri Jan 17 12:01 - 00:44  (12:42)
+reboot    ~                         Fri Jan 17 12:01 
+shutdown  ~                         Fri Jan 17 08:47 
+nimishmishra  ttys000                   Fri Jan 17 05:57 - 05:57  (00:00)
+nimishmishra  console                   Fri Jan 17 05:55 - 08:47  (02:52)
+reboot    ~                         Fri Jan 17 05:55 
+shutdown  ~                         Thu Jan 16 23:04 
+nimishmishra  ttys000                   Thu Jan 16 17:02 - 17:02  (00:00)
+nimishmishra  console                   Thu Jan 16 17:01 - 23:04  (06:02)
+reboot    ~                         Thu Jan 16 17:01 
+shutdown  ~                         Thu Jan 16 13:45 
+nimishmishra  console                   Thu Jan 16 13:37 - 13:45  (00:07)
+reboot    ~                         Thu Jan 16 13:37 
+shutdown  ~                         Thu Jan 16 13:07 
+nimishmishra  ttys000                   Thu Jan 16 10:59 - 10:59  (00:00)
+nimishmishra  ttys001                   Thu Jan 16 10:55 - 10:55  (00:00)
+nimishmishra  ttys000                   Thu Jan 16 10:31 - 10:31  (00:00)
+nimishmishra  ttys000                   Thu Jan 16 09:48 - 09:48  (00:00)
+nimishmishra  ttys000                   Thu Jan 16 09:08 - 09:08  (00:00)
+nimishmishra  ttys000                   Thu Jan 16 09:06 - 09:06  (00:00)
+nimishmishra  ttys001                   Thu Jan 16 06:57 - 06:57  (00:00)
+nimishmishra  ttys000                   Thu Jan 16 06:57 - 06:57  (00:00)
+nimishmishra  console                   Thu Jan 16 06:56 - 13:07  (06:10)
+reboot    ~                         Thu Jan 16 06:56 
+shutdown  ~                         Thu Jan 16 00:58 
+nimishmishra  ttys000                   Wed Jan 15 18:59 - 18:59  (00:00)
+nimishmishra  ttys001                   Wed Jan 15 15:09 - 15:09  (00:00)
+nimishmishra  ttys000                   Wed Jan 15 15:09 - 15:09  (00:00)
+nimishmishra  console                   Wed Jan 15 14:06 - 00:58  (10:52)
+reboot    ~                         Wed Jan 15 14:06 
+shutdown  ~                         Wed Jan 15 13:41 
+nimishmishra  ttys000                   Wed Jan 15 13:39 - 13:39  (00:00)
+nimishmishra  console                   Wed Jan 15 13:39 - 13:41  (00:01)
+reboot    ~                         Wed Jan 15 13:39 
+shutdown  ~                         Wed Jan 15 08:57 
+nimishmishra  console                   Wed Jan 15 08:56 - 08:57  (00:01)
+reboot    ~                         Wed Jan 15 08:56 
+nimishmishra  ttys000                   Wed Jan 15 00:00 - 00:00  (00:00)
+nimishmishra  ttys000                   Tue Jan 14 23:59 - 23:59  (00:00)
+nimishmishra  ttys000                   Tue Jan 14 23:10 - 23:10  (00:00)
+nimishmishra  console                   Tue Jan 14 23:05 - 00:23  (01:18)
+reboot    ~                         Tue Jan 14 23:04 
+shutdown  ~                         Tue Jan 14 22:16 
+nimishmishra  ttys000                   Tue Jan 14 22:15 - 22:15  (00:00)
+nimishmishra  ttys000                   Tue Jan 14 20:36 - 20:36  (00:00)
+nimishmishra  ttys000                   Tue Jan 14 07:39 - 07:39  (00:00)
+nimishmishra  console                   Tue Jan 14 07:38 - 22:16  (14:38)
+reboot    ~                         Tue Jan 14 07:38 
+nimishmishra  console                   Tue Jan 14 01:18 - 01:20  (00:02)
+reboot    ~                         Tue Jan 14 01:18 
+shutdown  ~                         Tue Jan 14 01:15 
+nimishmishra  ttys001                   Tue Jan 14 01:07 - 01:07  (00:00)
+nimishmishra  ttys000                   Mon Jan 13 11:30 - 11:30  (00:00)
+nimishmishra  console                   Mon Jan 13 06:41 - 01:15  (18:33)
+reboot    ~                         Mon Jan 13 06:41 
+shutdown  ~                         Sun Jan 12 20:43 
+nimishmishra  ttys000                   Sun Jan 12 20:36 - 20:36  (00:00)
+nimishmishra  ttys002                   Sun Jan 12 16:34 - 16:34  (00:00)
+nimishmishra  ttys000                   Sun Jan 12 12:34 - 12:34  (00:00)
+nimishmishra  ttys000                   Sun Jan 12 12:21 - 12:21  (00:00)
+nimishmishra  ttys000                   Sun Jan 12 11:56 - 11:56  (00:00)
+nimishmishra  ttys000                   Sat Jan 11 19:22 - 19:22  (00:00)
+nimishmishra  console                   Sat Jan 11 10:39 - 20:43 (1+10:03)
+reboot    ~                         Sat Jan 11 10:39 
+nimishmishra  console                   Sat Jan 11 07:11 - 09:45  (02:34)
+reboot    ~                         Sat Jan 11 07:11 
+shutdown  ~                         Fri Jan 10 22:11 
+nimishmishra  console                   Fri Jan 10 06:13 - 22:11  (15:57)
+reboot    ~                         Fri Jan 10 06:13 
+shutdown  ~                         Fri Jan 10 00:44 
+nimishmishra  console                   Thu Jan  9 17:15 - 00:44  (07:28)
+reboot    ~                         Thu Jan  9 17:15 
+shutdown  ~                         Thu Jan  9 11:09 
+nimishmishra  console                   Thu Jan  9 07:17 - 11:09  (03:52)
+reboot    ~                         Thu Jan  9 07:16 
+shutdown  ~                         Wed Jan  8 22:18 
+nimishmishra  console                   Wed Jan  8 12:14 - 22:18  (10:03)
+reboot    ~                         Wed Jan  8 12:14 
+shutdown  ~                         Wed Jan  8 08:18 
+nimishmishra  console                   Wed Jan  8 06:34 - 08:18  (01:44)
+reboot    ~                         Wed Jan  8 06:34 
+shutdown  ~                         Wed Jan  8 00:41 
+nimishmishra  console                   Tue Jan  7 19:46 - 00:41  (04:55)
+reboot    ~                         Tue Jan  7 19:45 
+shutdown  ~                         Tue Jan  7 18:30 
+nimishmishra  console                   Tue Jan  7 18:11 - 18:30  (00:18)
+reboot    ~                         Tue Jan  7 18:11 
+nimishmishra  ttys000                   Tue Jan  7 14:16 - 14:16  (00:00)
+nimishmishra  console                   Tue Jan  7 13:58 - 17:38  (03:40)
+reboot    ~                         Tue Jan  7 13:58 
+shutdown  ~                         Mon Jan  6 23:57 
+nimishmishra  console                   Mon Jan  6 07:05 - 23:57  (16:52)
+reboot    ~                         Mon Jan  6 07:05 
+shutdown  ~                         Mon Jan  6 00:19 
+nimishmishra  console                   Sun Jan  5 23:35 - 00:19  (00:44)
+reboot    ~                         Sun Jan  5 23:35 
+shutdown  ~                         Sun Jan  5 14:45 
+nimishmishra  console                   Sun Jan  5 14:24 - 14:45  (00:20)
+reboot    ~                         Sun Jan  5 14:24 
+shutdown  ~                         Sat Jan  4 21:23 
+nimishmishra  console                   Sat Jan  4 17:49 - 21:23  (03:33)
+reboot    ~                         Sat Jan  4 17:49 
+shutdown  ~                         Sat Jan  4 15:56 
+nimishmishra  console                   Sat Jan  4 08:11 - 15:56  (07:45)
+reboot    ~                         Sat Jan  4 08:11 
+shutdown  ~                         Fri Jan  3 00:44 
+nimishmishra  console                   Thu Jan  2 23:32 - 00:44  (01:11)
+reboot    ~                         Thu Jan  2 23:32 
+shutdown  ~                         Thu Jan  2 23:30 
+nimishmishra  console                   Thu Jan  2 17:43 - 23:30  (05:47)
+reboot    ~                         Thu Jan  2 17:42 
+nimishmishra  ttys000                   Thu Jan  2 10:28 - 10:28  (00:00)
+nimishmishra  ttys000                   Thu Jan  2 10:24 - 10:24  (00:00)
+nimishmishra  ttys000                   Thu Jan  2 10:23 - 10:23  (00:00)
+nimishmishra  console                   Thu Jan  2 10:18 - 12:36  (02:17)
+reboot    ~                         Thu Jan  2 10:18 
+shutdown  ~                         Wed Jan  1 23:25 
+nimishmishra  console                   Wed Jan  1 18:10 - 23:25  (05:15)
+reboot    ~                         Wed Jan  1 18:10 
+shutdown  ~                         Tue Dec 31 19:32 
+nimishmishra  console                   Tue Dec 31 19:30 - 19:32  (00:02)
+reboot    ~                         Tue Dec 31 19:30 
+shutdown  ~                         Tue Dec 31 12:50 
+nimishmishra  console                   Tue Dec 31 12:46 - 12:50  (00:04)
+reboot    ~                         Tue Dec 31 12:45 
+shutdown  ~                         Tue Dec 31 10:53 
+nimishmishra  console                   Tue Dec 31 10:31 - 10:53  (00:21)
+reboot    ~                         Tue Dec 31 10:31 
+shutdown  ~                         Mon Dec 30 14:30 
+nimishmishra  console                   Sun Dec 29 20:19 - 14:30  (18:10)
+reboot    ~                         Sun Dec 29 20:19 
+shutdown  ~                         Sun Dec 29 13:52 
+nimishmishra  console                   Sun Dec 29 11:01 - 13:52  (02:50)
+reboot    ~                         Sun Dec 29 11:01 
+shutdown  ~                         Sun Dec 29 10:11 
+nimishmishra  console                   Sat Dec 28 19:32 - 10:11  (14:39)
+reboot    ~                         Sat Dec 28 19:32 
+shutdown  ~                         Sat Dec 28 16:08 
+nimishmishra  console                   Sat Dec 28 13:53 - 16:08  (02:14)
+reboot    ~                         Sat Dec 28 13:53 
+shutdown  ~                         Sat Dec 28 12:07 
+nimishmishra  console                   Sat Dec 28 09:31 - 12:07  (02:35)
+reboot    ~                         Sat Dec 28 09:31 
+shutdown  ~                         Thu Dec 19 23:02 
+nimishmishra  console                   Thu Dec 19 11:29 - 23:02  (11:33)
+reboot    ~                         Thu Dec 19 11:28 
+shutdown  ~                         Wed Dec 18 22:03 
+nimishmishra  console                   Sun Dec 15 09:56 - 22:03 (3+12:06)
+reboot    ~                         Sun Dec 15 09:56 
+shutdown  ~                         Sat Dec 14 12:55 
+nimishmishra  console                   Sat Dec 14 09:43 - 12:55  (03:11)
+reboot    ~                         Sat Dec 14 09:43 
+shutdown  ~                         Sat Dec 14 09:25 
+nimishmishra  console                   Sat Dec 14 08:51 - 09:25  (00:34)
+reboot    ~                         Sat Dec 14 08:50 
+shutdown  ~                         Fri Dec 13 19:43 
+nimishmishra  console                   Thu Dec 12 19:19 - 19:43 (1+00:23)
+reboot    ~                         Thu Dec 12 19:19 
+shutdown  ~                         Thu Dec 12 16:19 
+nimishmishra  console                   Thu Dec 12 16:11 - 16:19  (00:08)
+reboot    ~                         Thu Dec 12 16:11 
+shutdown  ~                         Thu Dec 12 16:00 
+nimishmishra  ttys000                   Thu Dec 12 15:30 - 15:30  (00:00)
+nimishmishra  console                   Thu Dec 12 08:17 - 16:00  (07:43)
+reboot    ~                         Thu Dec 12 08:17 
+shutdown  ~                         Thu Dec 12 00:54 
+nimishmishra  ttys000                   Thu Dec 12 00:11 - 00:11  (00:00)
+nimishmishra  console                   Wed Dec 11 23:31 - 00:54  (01:22)
+reboot    ~                         Wed Dec 11 23:31 
+shutdown  ~                         Wed Dec 11 20:49 
+nimishmishra  ttys000                   Wed Dec 11 19:44 - 19:44  (00:00)
+nimishmishra  console                   Wed Dec 11 19:41 - 20:49  (01:07)
+reboot    ~                         Wed Dec 11 19:41 
+shutdown  ~                         Wed Dec 11 18:38 
+nimishmishra  ttys000                   Wed Dec 11 18:34 - 18:34  (00:00)
+nimishmishra  console                   Wed Dec 11 18:34 - 18:38  (00:03)
+reboot    ~                         Wed Dec 11 18:34 
+shutdown  ~                         Wed Dec 11 18:09 
+nimishmishra  console                   Wed Dec 11 17:43 - 18:09  (00:25)
+reboot    ~                         Wed Dec 11 17:43 
+shutdown  ~                         Wed Dec 11 17:40 
+nimishmishra  ttys000                   Wed Dec 11 14:52 - 14:52  (00:00)
+nimishmishra  console                   Wed Dec 11 14:52 - 17:40  (02:47)
+reboot    ~                         Wed Dec 11 14:52 
+shutdown  ~                         Wed Dec 11 11:26 
+nimishmishra  console                   Wed Dec 11 09:22 - 11:26  (02:03)
+reboot    ~                         Wed Dec 11 09:22 
+shutdown  ~                         Wed Dec 11 00:09 
+nimishmishra  ttys000                   Tue Dec 10 22:54 - 22:54  (00:00)
+nimishmishra  console                   Tue Dec 10 22:43 - 00:09  (01:26)
+reboot    ~                         Tue Dec 10 22:42 
+shutdown  ~                         Tue Dec 10 21:43 
+nimishmishra  ttys000                   Tue Dec 10 21:27 - 21:27  (00:00)
+nimishmishra  ttys000                   Tue Dec 10 20:20 - 20:20  (00:00)
+nimishmishra  console                   Mon Dec  9 20:16 - 21:43 (1+01:26)
+reboot    ~                         Mon Dec  9 20:16 
+shutdown  ~                         Mon Dec  9 15:04 
+nimishmishra  console                   Mon Dec  9 08:25 - 15:04  (06:38)
+reboot    ~                         Mon Dec  9 08:25 
+nimishmishra  console                   Sun Dec  8 20:49 - 21:25  (00:36)
+reboot    ~                         Sun Dec  8 20:49 
+nimishmishra  console                   Sun Dec  8 09:21 - 11:43  (02:21)
+reboot    ~                         Sun Dec  8 09:20 
+shutdown  ~                         Sat Dec  7 18:20 
+nimishmishra  console                   Sat Dec  7 17:01 - 18:20  (01:18)
+reboot    ~                         Sat Dec  7 17:01 
+shutdown  ~                         Sat Dec  7 11:53 
+nimishmishra  console                   Sat Dec  7 11:46 - 11:53  (00:07)
+reboot    ~                         Sat Dec  7 11:45 
+shutdown  ~                         Sat Dec  7 11:25 
+nimishmishra  console                   Sat Dec  7 11:24 - 11:25  (00:00)
+reboot    ~                         Sat Dec  7 11:24 
+shutdown  ~                         Sat Dec  7 11:24 
+reboot    ~                         Sat Dec  7 11:22 
+shutdown  ~                         Sat Dec  7 11:11 
+nimishmishra  console                   Fri Dec  6 19:58 - 11:11  (15:12)
+reboot    ~                         Fri Dec  6 19:58 
+shutdown  ~                         Fri Dec  6 09:30 
+nimishmishra  ttys000                   Thu Dec  5 19:26 - 19:26  (00:00)
+nimishmishra  console                   Thu Dec  5 17:17 - 09:30  (16:13)
+reboot    ~                         Thu Dec  5 17:16 
+shutdown  ~                         Thu Dec  5 12:08 
+nimishmishra  console                   Thu Dec  5 06:41 - 12:08  (05:26)
+reboot    ~                         Thu Dec  5 06:41 
+nimishmishra  console                   Wed Dec  4 16:51 - 17:59  (01:08)
+reboot    ~                         Wed Dec  4 16:51 
+shutdown  ~                         Wed Dec  4 11:53 
+nimishmishra  console                   Tue Dec  3 17:32 - 11:53  (18:20)
+reboot    ~                         Tue Dec  3 17:32 
+shutdown  ~                         Tue Dec  3 12:00 
+nimishmishra  console                   Tue Dec  3 08:53 - 12:00  (03:06)
+reboot    ~                         Tue Dec  3 08:53 
+shutdown  ~                         Mon Dec  2 21:33 
+nimishmishra  console                   Mon Dec  2 21:21 - 21:33  (00:12)
+reboot    ~                         Mon Dec  2 21:21 
+shutdown  ~                         Mon Dec  2 21:03 
+nimishmishra  console                   Mon Dec  2 18:39 - 21:03  (02:24)
+reboot    ~                         Mon Dec  2 18:39 
+shutdown  ~                         Mon Dec  2 14:18 
+nimishmishra  console                   Mon Dec  2 08:41 - 14:18  (05:36)
+reboot    ~                         Mon Dec  2 08:41 
+shutdown  ~                         Sun Dec  1 22:10 
+nimishmishra  console                   Sun Dec  1 20:01 - 22:10  (02:08)
+reboot    ~                         Sun Dec  1 20:01 
+shutdown  ~                         Sun Dec  1 20:00 
+nimishmishra  console                   Sun Dec  1 19:58 - 20:00  (00:02)
+reboot    ~                         Sun Dec  1 19:57 
+nimishmishra  console                   Sun Dec  1 19:15 - 19:35  (00:19)
+reboot    ~                         Sun Dec  1 19:15 
+shutdown  ~                         Sun Dec  1 07:05 
+nimishmishra  console                   Sun Dec  1 07:03 - 07:05  (00:02)
+reboot    ~                         Sun Dec  1 07:03 
+nimishmishra  console                   Sun Dec  1 06:39 - 06:46  (00:06)
+reboot    ~                         Sun Dec  1 06:39 
+shutdown  ~                         Sat Nov 30 23:24 
+nimishmishra  console                   Sat Nov 30 17:21 - 23:24  (06:02)
+reboot    ~                         Sat Nov 30 17:21 
+shutdown  ~                         Sat Nov 30 11:16 
+nimishmishra  console                   Fri Nov 29 15:12 - 11:16  (20:04)
+reboot    ~                         Fri Nov 29 15:12 
+shutdown  ~                         Fri Nov 29 13:11 
+nimishmishra  console                   Thu Nov 28 09:03 - 13:11 (1+04:07)
+reboot    ~                         Thu Nov 28 09:03 
+shutdown  ~                         Thu Nov 28 07:37 
+nimishmishra  console                   Thu Nov 28 07:21 - 07:37  (00:15)
+reboot    ~                         Thu Nov 28 07:21 
+shutdown  ~                         Wed Nov 27 23:04 
+nimishmishra  console                   Wed Nov 27 21:25 - 23:04  (01:39)
+reboot    ~                         Wed Nov 27 21:24 
+shutdown  ~                         Wed Nov 27 21:23 
+nimishmishra  console                   Wed Nov 27 18:37 - 21:23  (02:46)
+reboot    ~                         Wed Nov 27 18:37 
+shutdown  ~                         Wed Nov 27 11:45 
+nimishmishra  console                   Wed Nov 27 04:07 - 11:45  (07:37)
+reboot    ~                         Wed Nov 27 04:06 
+shutdown  ~                         Tue Nov 26 20:25 
+nimishmishra  console                   Tue Nov 26 18:14 - 20:25  (02:11)
+reboot    ~                         Tue Nov 26 18:14 
+shutdown  ~                         Tue Nov 26 12:20 
+nimishmishra  console                   Tue Nov 26 12:19 - 12:20  (00:00)
+reboot    ~                         Tue Nov 26 12:19 
+shutdown  ~                         Tue Nov 26 12:13 
+nimishmishra  console                   Tue Nov 26 04:12 - 12:13  (08:01)
+reboot    ~                         Tue Nov 26 04:12 
+shutdown  ~                         Mon Nov 25 22:00 
+nimishmishra  console                   Mon Nov 25 07:24 - 22:00  (14:35)
+reboot    ~                         Mon Nov 25 07:24 
+nimishmishra  console                   Sun Nov 24 09:31 - 00:09  (14:37)
+reboot    ~                         Sun Nov 24 09:31 
+shutdown  ~                         Sat Nov 23 23:12 
+nimishmishra  console                   Sat Nov 23 17:37 - 23:12  (05:34)
+reboot    ~                         Sat Nov 23 17:37 
+shutdown  ~                         Sat Nov 23 10:26 
+nimishmishra  console                   Sat Nov 23 04:39 - 10:26  (05:47)
+reboot    ~                         Sat Nov 23 04:39 
+shutdown  ~                         Fri Nov 22 23:01 
+nimishmishra  console                   Fri Nov 22 15:37 - 23:01  (07:24)
+reboot    ~                         Fri Nov 22 15:37 
+shutdown  ~                         Fri Nov 22 13:36 
+nimishmishra  console                   Fri Nov 22 06:49 - 13:36  (06:47)
+reboot    ~                         Fri Nov 22 06:49 
+shutdown  ~                         Fri Nov 22 01:02 
+nimishmishra  console                   Thu Nov 21 23:13 - 01:02  (01:49)
+reboot    ~                         Thu Nov 21 23:12 
+shutdown  ~                         Wed Nov 20 14:45 
+nimishmishra  console                   Wed Nov 20 05:59 - 14:45  (08:46)
+reboot    ~                         Wed Nov 20 05:59 
+shutdown  ~                         Wed Nov 20 00:00 
+nimishmishra  console                   Tue Nov 19 19:21 - 00:00  (04:38)
+reboot    ~                         Tue Nov 19 19:21 
+shutdown  ~                         Tue Nov 19 12:46 
+nimishmishra  ttys001                   Tue Nov 19 06:04 - 06:04  (00:00)
+nimishmishra  ttys000                   Tue Nov 19 06:04 - 06:04  (00:00)
+nimishmishra  console                   Tue Nov 19 06:04 - 12:46  (06:41)
+reboot    ~                         Tue Nov 19 06:04 
+shutdown  ~                         Mon Nov 18 22:28 
+nimishmishra  ttys000                   Mon Nov 18 20:08 - 20:08  (00:00)
+nimishmishra  ttys001                   Mon Nov 18 16:02 - 16:02  (00:00)
+nimishmishra  ttys000                   Mon Nov 18 11:37 - 11:37  (00:00)
+nimishmishra  console                   Mon Nov 18 11:37 - 22:28  (10:51)
+reboot    ~                         Mon Nov 18 11:37 
+shutdown  ~                         Mon Nov 18 11:36 
+nimishmishra  ttys000                   Mon Nov 18 10:14 - 10:14  (00:00)
+nimishmishra  console                   Sun Nov 17 15:52 - 11:36  (19:44)
+reboot    ~                         Sun Nov 17 15:52 
+shutdown  ~                         Sun Nov 17 12:34 
+nimishmishra  console                   Sun Nov 17 07:20 - 12:34  (05:13)
+reboot    ~                         Sun Nov 17 07:20 
+shutdown  ~                         Sun Nov 17 06:55 
+nimishmishra  console                   Sun Nov 17 06:37 - 06:55  (00:18)
+reboot    ~                         Sun Nov 17 06:37 
+shutdown  ~                         Sat Nov 16 21:35 
+nimishmishra  ttys000                   Sat Nov 16 18:24 - 18:24  (00:00)
+nimishmishra  console                   Fri Nov 15 17:13 - 21:35 (1+04:22)
+reboot    ~                         Fri Nov 15 17:12 
+shutdown  ~                         Fri Nov 15 12:59 
+nimishmishra  console                   Fri Nov 15 09:03 - 12:59  (03:56)
+reboot    ~                         Fri Nov 15 09:03 
+shutdown  ~                         Fri Nov 15 01:56 
+nimishmishra  console                   Thu Nov 14 20:08 - 01:56  (05:47)
+reboot    ~                         Thu Nov 14 20:08 
+shutdown  ~                         Thu Nov 14 08:58 
+nimishmishra  console                   Thu Nov 14 08:53 - 08:58  (00:04)
+reboot    ~                         Thu Nov 14 08:53 
+shutdown  ~                         Thu Nov 14 08:31 
+nimishmishra  console                   Thu Nov 14 04:10 - 08:31  (04:21)
+reboot    ~                         Thu Nov 14 04:10 
+nimishmishra  console                   Wed Nov 13 21:35 - 21:39  (00:03)
+reboot    ~                         Wed Nov 13 21:35 
+shutdown  ~                         Wed Nov 13 21:16 
+nimishmishra  console                   Wed Nov 13 20:48 - 21:16  (00:28)
+reboot    ~                         Wed Nov 13 20:48 
+shutdown  ~                         Wed Nov 13 20:33 
+nimishmishra  console                   Wed Nov 13 20:18 - 20:33  (00:15)
+reboot    ~                         Wed Nov 13 20:18 
+nimishmishra  console                   Wed Nov 13 18:44 - 18:52  (00:07)
+reboot    ~                         Wed Nov 13 18:44 
+shutdown  ~                         Wed Nov 13 13:04 
+nimishmishra  console                   Wed Nov 13 12:52 - 13:04  (00:12)
+reboot    ~                         Wed Nov 13 12:52 
+shutdown  ~                         Wed Nov 13 11:31 
+nimishmishra  ttys001                   Tue Nov 12 13:03 - 13:03  (00:00)
+nimishmishra  ttys000                   Tue Nov 12 13:03 - 13:03  (00:00)
+nimishmishra  console                   Tue Nov 12 11:20 - 11:31 (1+00:11)
+reboot    ~                         Tue Nov 12 11:20 
+shutdown  ~                         Tue Nov 12 11:00 
+nimishmishra  ttys000                   Tue Nov 12 09:04 - 09:04  (00:00)
+nimishmishra  ttys000                   Tue Nov 12 08:25 - 08:25  (00:00)
+nimishmishra  console                   Mon Nov 11 09:17 - 11:00 (1+01:43)
+reboot    ~                         Mon Nov 11 09:16 
+shutdown  ~                         Mon Nov 11 02:00 
+nimishmishra  console                   Mon Nov 11 01:36 - 02:00  (00:24)
+reboot    ~                         Mon Nov 11 01:35 
+shutdown  ~                         Mon Nov 11 00:18 
+nimishmishra  console                   Sun Nov 10 16:49 - 00:18  (07:29)
+reboot    ~                         Sun Nov 10 16:48 
+shutdown  ~                         Sun Nov 10 14:10 
+nimishmishra  ttys000                   Sun Nov 10 09:10 - 09:10  (00:00)
+nimishmishra  console                   Sun Nov 10 07:01 - 14:10  (07:09)
+reboot    ~                         Sun Nov 10 07:01 
+shutdown  ~                         Sat Nov  9 22:32 
+nimishmishra  console                   Sat Nov  9 21:31 - 22:32  (01:01)
+reboot    ~                         Sat Nov  9 21:30 
+shutdown  ~                         Sat Nov  9 20:13 
+nimishmishra  console                   Sat Nov  9 13:44 - 20:13  (06:28)
+reboot    ~                         Sat Nov  9 13:44 
+shutdown  ~                         Sat Nov  9 13:27 
+nimishmishra  console                   Sat Nov  9 05:40 - 13:27  (07:47)
+reboot    ~                         Sat Nov  9 05:40 
+shutdown  ~                         Fri Nov  8 22:11 
+nimishmishra  console                   Fri Nov  8 21:54 - 22:11  (00:17)
+reboot    ~                         Fri Nov  8 21:54 
+shutdown  ~                         Fri Nov  8 16:50 
+nimishmishra  console                   Fri Nov  8 14:01 - 16:50  (02:48)
+reboot    ~                         Fri Nov  8 14:01 
+shutdown  ~                         Fri Nov  8 13:42 
+nimishmishra  console                   Fri Nov  8 13:20 - 13:42  (00:21)
+reboot    ~                         Fri Nov  8 13:20 
+shutdown  ~                         Fri Nov  8 09:45 
+nimishmishra  console                   Fri Nov  8 09:06 - 09:45  (00:39)
+reboot    ~                         Fri Nov  8 09:06 
+shutdown  ~                         Thu Nov  7 23:13 
+nimishmishra  console                   Thu Nov  7 20:37 - 23:13  (02:35)
+reboot    ~                         Thu Nov  7 20:37 
+shutdown  ~                         Thu Nov  7 18:51 
+nimishmishra  console                   Thu Nov  7 13:45 - 18:51  (05:05)
+reboot    ~                         Thu Nov  7 13:45 
+shutdown  ~                         Thu Oct 31 22:39 
+nimishmishra  ttys000                   Thu Oct 31 10:46 - 10:46  (00:00)
+nimishmishra  ttys001                   Thu Oct 31 10:29 - 10:29  (00:00)
+nimishmishra  ttys000                   Thu Oct 31 10:29 - 10:29  (00:00)
+nimishmishra  ttys000                   Thu Oct 31 09:43 - 09:43  (00:00)
+nimishmishra  console                   Thu Oct 31 09:43 - 22:39  (12:55)
+reboot    ~                         Thu Oct 31 09:43 
+shutdown  ~                         Thu Oct 31 08:11 
+nimishmishra  ttys000                   Thu Oct 31 07:51 - 07:51  (00:00)
+nimishmishra  ttys000                   Thu Oct 31 06:30 - 06:30  (00:00)
+nimishmishra  console                   Thu Oct 31 06:29 - 08:11  (01:42)
+reboot    ~                         Thu Oct 31 06:29 
+shutdown  ~                         Wed Oct 30 22:54 
+nimishmishra  console                   Wed Oct 30 18:53 - 22:54  (04:00)
+reboot    ~                         Wed Oct 30 18:53 
+shutdown  ~                         Wed Oct 30 18:01 
+nimishmishra  console                   Wed Oct 30 17:54 - 18:01  (00:06)
+reboot    ~                         Wed Oct 30 17:54 
+shutdown  ~                         Wed Oct 30 12:50 
+nimishmishra  ttys000                   Wed Oct 30 12:30 - 12:30  (00:00)
+nimishmishra  ttys000                   Wed Oct 30 12:18 - 12:18  (00:00)
+nimishmishra  ttys000                   Wed Oct 30 11:03 - 11:03  (00:00)
+nimishmishra  ttys000                   Wed Oct 30 07:51 - 07:51  (00:00)
+nimishmishra  console                   Wed Oct 30 07:31 - 12:50  (05:18)
+reboot    ~                         Wed Oct 30 07:31 
+shutdown  ~                         Wed Oct 30 01:47 
+nimishmishra  console                   Tue Oct 29 22:26 - 01:47  (03:21)
+reboot    ~                         Tue Oct 29 22:25 
+shutdown  ~                         Mon Oct 28 23:19 
+nimishmishra  console                   Mon Oct 28 15:18 - 23:19  (08:00)
+reboot    ~                         Mon Oct 28 15:18 
+shutdown  ~                         Sun Oct 27 23:27 
+nimishmishra  console                   Sun Oct 27 09:08 - 23:27  (14:18)
+reboot    ~                         Sun Oct 27 09:08 
+shutdown  ~                         Sat Oct 26 23:39 
+nimishmishra  console                   Sat Oct 26 22:43 - 23:39  (00:56)
+reboot    ~                         Sat Oct 26 22:43 
+shutdown  ~                         Sat Oct 26 22:39 
+nimishmishra  console                   Sat Oct 26 18:14 - 22:39  (04:24)
+reboot    ~                         Sat Oct 26 18:14 
+shutdown  ~                         Sat Oct 26 12:57 
+nimishmishra  console                   Sat Oct 26 07:38 - 12:57  (05:18)
+reboot    ~                         Sat Oct 26 07:38 
+shutdown  ~                         Fri Oct 25 22:40 
+nimishmishra  ttys000                   Fri Oct 25 21:02 - 21:02  (00:00)
+nimishmishra  ttys000                   Fri Oct 25 18:09 - 18:09  (00:00)
+nimishmishra  ttys000                   Fri Oct 25 14:31 - 14:31  (00:00)
+nimishmishra  console                   Fri Oct 25 12:52 - 22:40  (09:47)
+reboot    ~                         Fri Oct 25 12:52 
+shutdown  ~                         Fri Oct 25 12:52 
+nimishmishra  console                   Fri Oct 25 12:48 - 12:52  (00:03)
+reboot    ~                         Fri Oct 25 12:48 
+shutdown  ~                         Fri Oct 25 09:46 
+nimishmishra  ttys000                   Thu Oct 24 19:58 - 19:58  (00:00)
+nimishmishra  console                   Thu Oct 24 19:35 - 09:46  (14:10)
+reboot    ~                         Thu Oct 24 19:34 
+shutdown  ~                         Thu Oct 24 14:49 
+nimishmishra  console                   Thu Oct 24 13:29 - 14:49  (01:19)
+reboot    ~                         Thu Oct 24 13:29 
+shutdown  ~                         Thu Oct 24 12:40 
+nimishmishra  ttys000                   Thu Oct 24 10:04 - 10:04  (00:00)
+nimishmishra  console                   Wed Oct 23 18:05 - 12:40  (18:35)
+reboot    ~                         Wed Oct 23 18:05 
+shutdown  ~                         Wed Oct 23 08:49 
+nimishmishra  console                   Wed Oct 23 05:23 - 08:49  (03:26)
+reboot    ~                         Wed Oct 23 05:23 
+shutdown  ~                         Tue Oct 22 21:12 
+nimishmishra  console                   Tue Oct 22 09:05 - 21:12  (12:06)
+reboot    ~                         Tue Oct 22 09:05 
+shutdown  ~                         Mon Oct 21 22:45 
+nimishmishra  console                   Mon Oct 21 18:28 - 22:45  (04:17)
+reboot    ~                         Mon Oct 21 18:27 
+nimishmishra  console                   Mon Oct 21 12:14 - 13:00  (00:45)
+reboot    ~                         Mon Oct 21 12:14 
+shutdown  ~                         Sun Oct 20 22:15 
+nimishmishra  ttys000                   Sun Oct 20 21:43 - 21:43  (00:00)
+nimishmishra  console                   Sun Oct 20 21:42 - 22:15  (00:32)
+reboot    ~                         Sun Oct 20 21:42 
+shutdown  ~                         Sun Oct 20 13:41 
+nimishmishra  ttys000                   Sun Oct 20 11:17 - 11:17  (00:00)
+nimishmishra  console                   Sun Oct 20 11:10 - 13:41  (02:30)
+reboot    ~                         Sun Oct 20 11:10 
+shutdown  ~                         Sun Oct 20 10:25 
+nimishmishra  ttys000                   Sat Oct 19 12:36 - 12:36  (00:00)
+nimishmishra  ttys001                   Sat Oct 19 03:38 - 03:38  (00:00)
+nimishmishra  ttys000                   Sat Oct 19 03:38 - 03:38  (00:00)
+nimishmishra  ttys000                   Fri Oct 18 22:07 - 22:07  (00:00)
+nimishmishra  console                   Thu Oct 17 12:49 - 10:25 (2+21:36)
+reboot    ~                         Thu Oct 17 12:48 
+shutdown  ~                         Thu Oct 17 12:46 
+nimishmishra  ttys000                   Thu Oct 17 09:39 - 09:39  (00:00)
+nimishmishra  ttys000                   Thu Oct 17 07:05 - 07:05  (00:00)
+nimishmishra  console                   Thu Oct 17 06:44 - 12:46  (06:02)
+reboot    ~                         Thu Oct 17 06:44 
+shutdown  ~                         Thu Oct 17 00:57 
+nimishmishra  ttys002                   Wed Oct 16 18:56 - 18:56  (00:00)
+nimishmishra  ttys002                   Wed Oct 16 10:53 - 10:53  (00:00)
+nimishmishra  ttys001                   Wed Oct 16 10:53 - 10:53  (00:00)
+nimishmishra  ttys000                   Wed Oct 16 10:53 - 10:53  (00:00)
+nimishmishra  console                   Wed Oct 16 09:23 - 00:57  (15:34)
+reboot    ~                         Wed Oct 16 09:22 
+nimishmishra  console                   Wed Oct 16 00:01 - 00:09  (00:08)
+reboot    ~                         Wed Oct 16 00:00 
+shutdown  ~                         Wed Oct 16 00:00 
+nimishmishra  console                   Tue Oct 15 23:53 - 00:00  (00:06)
+reboot    ~                         Tue Oct 15 23:53 
+shutdown  ~                         Tue Oct 15 23:29 
+nimishmishra  ttys001                   Tue Oct 15 18:18 - 18:18  (00:00)
+nimishmishra  ttys000                   Tue Oct 15 18:18 - 18:18  (00:00)
+nimishmishra  console                   Tue Oct 15 18:18 - 23:29  (05:11)
+reboot    ~                         Tue Oct 15 18:18 
+shutdown  ~                         Tue Oct 15 08:54 
+nimishmishra  console                   Tue Oct 15 08:45 - 08:54  (00:09)
+reboot    ~                         Tue Oct 15 08:45 
+shutdown  ~                         Tue Oct 15 01:10 
+nimishmishra  ttys001                   Mon Oct 14 21:54 - 21:54  (00:00)
+nimishmishra  ttys002                   Mon Oct 14 20:58 - 20:58  (00:00)
+nimishmishra  ttys001                   Mon Oct 14 20:02 - 20:02  (00:00)
+nimishmishra  ttys000                   Mon Oct 14 20:02 - 20:02  (00:00)
+nimishmishra  ttys000                   Mon Oct 14 19:55 - 19:55  (00:00)
+nimishmishra  ttys000                   Mon Oct 14 17:14 - 17:14  (00:00)
+nimishmishra  ttys000                   Mon Oct 14 17:14 - 17:14  (00:00)
+nimishmishra  ttys001                   Mon Oct 14 16:44 - 16:44  (00:00)
+nimishmishra  ttys001                   Mon Oct 14 16:41 - 16:41  (00:00)
+nimishmishra  ttys000                   Mon Oct 14 16:33 - 16:33  (00:00)
+nimishmishra  ttys000                   Mon Oct 14 15:44 - 15:44  (00:00)
+nimishmishra  console                   Mon Oct 14 14:18 - 01:10  (10:52)
+reboot    ~                         Mon Oct 14 14:17 
+shutdown  ~                         Mon Oct 14 13:26 
+nimishmishra  console                   Mon Oct 14 10:07 - 13:26  (03:19)
+reboot    ~                         Mon Oct 14 10:06 
+shutdown  ~                         Mon Oct 14 03:25 
+nimishmishra  ttys000                   Sun Oct 13 19:50 - 19:50  (00:00)
+nimishmishra  console                   Sun Oct 13 18:39 - 03:25  (08:45)
+reboot    ~                         Sun Oct 13 18:39 
+shutdown  ~                         Sun Oct 13 11:52 
+nimishmishra  console                   Fri Oct 11 14:04 - 11:52 (1+21:48)
+reboot    ~                         Fri Oct 11 14:04 
+shutdown  ~                         Fri Oct 11 03:11 
+nimishmishra  console                   Thu Oct 10 18:38 - 03:11  (08:32)
+reboot    ~                         Thu Oct 10 18:38 
+shutdown  ~                         Thu Oct 10 18:00 
+nimishmishra  console                   Thu Oct 10 16:41 - 18:00  (01:18)
+reboot    ~                         Thu Oct 10 16:41 
+shutdown  ~                         Thu Oct 10 14:41 
+nimishmishra  ttys002                   Thu Oct 10 11:55 - 11:55  (00:00)
+nimishmishra  ttys003                   Thu Oct 10 11:54 - 11:54  (00:00)
+nimishmishra  ttys003                   Thu Oct 10 11:54 - 11:54  (00:00)
+nimishmishra  ttys002                   Thu Oct 10 10:44 - 10:44  (00:00)
+nimishmishra  ttys000                   Thu Oct 10 10:18 - 10:18  (00:00)
+nimishmishra  ttys002                   Thu Oct 10 08:18 - 08:18  (00:00)
+nimishmishra  ttys001                   Thu Oct 10 07:55 - 07:55  (00:00)
+nimishmishra  ttys000                   Thu Oct 10 07:55 - 07:55  (00:00)
+nimishmishra  console                   Thu Oct 10 07:54 - 14:41  (06:46)
+reboot    ~                         Thu Oct 10 07:54 
+shutdown  ~                         Wed Oct  9 23:01 
+nimishmishra  ttys001                   Wed Oct  9 21:48 - 21:48  (00:00)
+nimishmishra  ttys000                   Wed Oct  9 20:55 - 20:55  (00:00)
+nimishmishra  console                   Wed Oct  9 17:31 - 23:01  (05:29)
+reboot    ~                         Wed Oct  9 17:31 
+shutdown  ~                         Wed Oct  9 09:03 
+nimishmishra  console                   Wed Oct  9 07:49 - 09:03  (01:14)
+reboot    ~                         Wed Oct  9 07:49 
+shutdown  ~                         Tue Oct  8 23:38 
+nimishmishra  console                   Tue Oct  8 23:18 - 23:38  (00:20)
+reboot    ~                         Tue Oct  8 23:18 
+shutdown  ~                         Tue Oct  8 21:11 
+nimishmishra  console                   Tue Oct  8 18:17 - 21:11  (02:53)
+reboot    ~                         Tue Oct  8 18:17 
+shutdown  ~                         Tue Oct  8 18:09 
+nimishmishra  ttys000                   Tue Oct  8 17:53 - 17:53  (00:00)
+nimishmishra  console                   Tue Oct  8 17:52 - 18:09  (00:17)
+reboot    ~                         Tue Oct  8 17:52 
+shutdown  ~                         Tue Oct  8 15:42 
+nimishmishra  console                   Tue Oct  8 09:35 - 15:42  (06:07)
+reboot    ~                         Tue Oct  8 09:35 
+shutdown  ~                         Tue Oct  8 09:34 
+nimishmishra  console                   Mon Oct  7 10:10 - 09:34  (23:23)
+reboot    ~                         Mon Oct  7 10:10 
+shutdown  ~                         Mon Oct  7 00:16 
+nimishmishra  console                   Sun Oct  6 06:53 - 00:16  (17:22)
+reboot    ~                         Sun Oct  6 06:53 
+shutdown  ~                         Sun Oct  6 00:34 
+nimishmishra  console                   Sat Oct  5 18:11 - 00:34  (06:23)
+reboot    ~                         Sat Oct  5 18:11 
+shutdown  ~                         Sat Oct  5 17:23 
+nimishmishra  console                   Sat Oct  5 09:42 - 17:23  (07:40)
+reboot    ~                         Sat Oct  5 09:42 
+shutdown  ~                         Sat Oct  5 03:08 
+nimishmishra  console                   Sat Oct  5 00:23 - 03:08  (02:44)
+reboot    ~                         Sat Oct  5 00:23 
+shutdown  ~                         Sat Oct  5 00:13 
+nimishmishra  console                   Fri Oct  4 08:54 - 00:13  (15:19)
+reboot    ~                         Fri Oct  4 08:53 
+shutdown  ~                         Thu Oct  3 20:50 
+nimishmishra  console                   Thu Oct  3 19:32 - 20:50  (01:18)
+reboot    ~                         Thu Oct  3 19:31 
+shutdown  ~                         Thu Oct  3 18:27 
+nimishmishra  console                   Thu Oct  3 16:10 - 18:27  (02:17)
+reboot    ~                         Thu Oct  3 16:10 
+shutdown  ~                         Thu Oct  3 12:56 
+nimishmishra  console                   Thu Oct  3 09:27 - 12:56  (03:29)
+reboot    ~                         Thu Oct  3 09:26 
+shutdown  ~                         Thu Oct  3 09:20 
+nimishmishra  console                   Thu Oct  3 04:16 - 09:20  (05:03)
+reboot    ~                         Thu Oct  3 04:16 
+shutdown  ~                         Wed Oct  2 22:21 
+nimishmishra  console                   Wed Oct  2 15:56 - 22:21  (06:24)
+reboot    ~                         Wed Oct  2 15:56 
+shutdown  ~                         Wed Oct  2 12:59 
+nimishmishra  console                   Wed Oct  2 07:04 - 12:59  (05:54)
+reboot    ~                         Wed Oct  2 07:04 
+shutdown  ~                         Wed Oct  2 01:17 
+nimishmishra  console                   Tue Oct  1 17:32 - 01:17  (07:45)
+reboot    ~                         Tue Oct  1 17:32 
+shutdown  ~                         Tue Oct  1 12:28 
+nimishmishra  console                   Tue Oct  1 05:15 - 12:28  (07:13)
+reboot    ~                         Tue Oct  1 05:15 
+shutdown  ~                         Mon Sep 30 23:09 
+nimishmishra  console                   Mon Sep 30 16:01 - 23:09  (07:07)
+reboot    ~                         Mon Sep 30 16:01 
+shutdown  ~                         Mon Sep 30 13:34 
+nimishmishra  console                   Sun Sep 29 18:29 - 13:34  (19:05)
+reboot    ~                         Sun Sep 29 18:29 
+shutdown  ~                         Sun Sep 29 16:20 
+nimishmishra  console                   Sun Sep 29 07:23 - 16:20  (08:56)
+reboot    ~                         Sun Sep 29 07:23 
+shutdown  ~                         Sun Sep 29 00:32 
+nimishmishra  console                   Sat Sep 28 19:13 - 00:32  (05:18)
+reboot    ~                         Sat Sep 28 19:13 
+shutdown  ~                         Sat Sep 28 16:56 
+nimishmishra  console                   Sat Sep 28 13:29 - 16:56  (03:26)
+reboot    ~                         Sat Sep 28 13:29 
+shutdown  ~                         Sat Sep 28 10:47 
+nimishmishra  console                   Sat Sep 28 06:55 - 10:47  (03:51)
+reboot    ~                         Sat Sep 28 06:55 
+shutdown  ~                         Sat Sep 28 00:59 
+nimishmishra  console                   Fri Sep 27 07:42 - 00:59  (17:17)
+reboot    ~                         Fri Sep 27 07:42 
+shutdown  ~                         Fri Sep 27 02:32 
+nimishmishra  ttys000                   Thu Sep 26 20:55 - 20:55  (00:00)
+nimishmishra  console                   Thu Sep 26 16:52 - 02:32  (09:40)
+reboot    ~                         Thu Sep 26 16:52 
+shutdown  ~                         Thu Sep 26 12:49 
+nimishmishra  console                   Thu Sep 26 06:14 - 12:49  (06:35)
+reboot    ~                         Thu Sep 26 06:14 
+shutdown  ~                         Wed Sep 25 22:53 
+nimishmishra  console                   Wed Sep 25 22:35 - 22:53  (00:18)
+reboot    ~                         Wed Sep 25 22:35 
+shutdown  ~                         Wed Sep 25 22:28 
+nimishmishra  console                   Wed Sep 25 19:02 - 22:28  (03:26)
+reboot    ~                         Wed Sep 25 19:02 
+shutdown  ~                         Wed Sep 25 12:19 
+nimishmishra  console                   Wed Sep 25 08:49 - 12:19  (03:29)
+reboot    ~                         Wed Sep 25 08:49 
+shutdown  ~                         Wed Sep 25 08:13 
+nimishmishra  console                   Wed Sep 25 06:14 - 08:13  (01:58)
+reboot    ~                         Wed Sep 25 06:14 
+shutdown  ~                         Tue Sep 24 22:54 
+nimishmishra  console                   Tue Sep 24 20:04 - 22:54  (02:50)
+reboot    ~                         Tue Sep 24 20:04 
+shutdown  ~                         Tue Sep 24 17:35 
+nimishmishra  console                   Tue Sep 24 16:01 - 17:35  (01:34)
+reboot    ~                         Tue Sep 24 16:01 
+shutdown  ~                         Tue Sep 24 07:48 
+nimishmishra  console                   Tue Sep 24 06:45 - 07:48  (01:02)
+reboot    ~                         Tue Sep 24 06:45 
+shutdown  ~                         Mon Sep 23 22:36 
+nimishmishra  console                   Mon Sep 23 16:30 - 22:36  (06:05)
+reboot    ~                         Mon Sep 23 16:30 
+shutdown  ~                         Mon Sep 23 14:18 
+nimishmishra  console                   Mon Sep 23 10:12 - 14:18  (04:05)
+reboot    ~                         Mon Sep 23 10:12 
+shutdown  ~                         Sun Sep 22 20:03 
+nimishmishra  console                   Sun Sep 22 19:19 - 20:03  (00:43)
+reboot    ~                         Sun Sep 22 19:19 
+shutdown  ~                         Sun Sep 22 01:00 
+nimishmishra  console                   Sat Sep 21 21:25 - 01:00  (03:34)
+reboot    ~                         Sat Sep 21 21:25 
+shutdown  ~                         Sat Sep 21 17:47 
+nimishmishra  console                   Sat Sep 21 17:44 - 17:47  (00:03)
+reboot    ~                         Sat Sep 21 17:43 
+nimishmishra  console                   Sat Sep 21 10:04 - 10:24  (00:19)
+reboot    ~                         Sat Sep 21 10:04 
+shutdown  ~                         Sat Sep 21 09:42 
+nimishmishra  ttys000                   Fri Sep 20 14:47 - 14:47  (00:00)
+nimishmishra  ttys000                   Fri Sep 20 14:04 - 14:04  (00:00)
+nimishmishra  console                   Fri Sep 20 14:02 - 09:42  (19:40)
+reboot    ~                         Fri Sep 20 14:02 
+shutdown  ~                         Fri Sep 20 13:54 
+nimishmishra  console                   Fri Sep 20 13:35 - 13:54  (00:18)
+reboot    ~                         Fri Sep 20 13:35 
+shutdown  ~                         Fri Sep 20 13:04 
+nimishmishra  ttys000                   Fri Sep 20 12:42 - 12:42  (00:00)
+nimishmishra  ttys000                   Fri Sep 20 12:32 - 12:32  (00:00)
+nimishmishra  console                   Fri Sep 20 12:31 - 13:04  (00:33)
+reboot    ~                         Fri Sep 20 12:31 
+shutdown  ~                         Fri Sep 20 11:17 
+nimishmishra  console                   Fri Sep 20 11:15 - 11:17  (00:01)
+reboot    ~                         Fri Sep 20 11:15 
+nimishmishra  console                   Fri Sep 20 06:53 - 08:15  (01:21)
+reboot    ~                         Fri Sep 20 06:53 
+shutdown  ~                         Fri Sep 20 05:42 
+nimishmishra  console                   Fri Sep 20 04:06 - 05:42  (01:35)
+reboot    ~                         Fri Sep 20 04:06 
+shutdown  ~                         Fri Sep 20 00:04 
+nimishmishra  console                   Thu Sep 19 23:28 - 00:04  (00:35)
+reboot    ~                         Thu Sep 19 23:28 
+nimishmishra  console                   Thu Sep 19 15:45 - 23:16  (07:30)
+reboot    ~                         Thu Sep 19 15:45 
+shutdown  ~                         Thu Sep 19 13:32 
+nimishmishra  ttys000                   Thu Sep 19 10:07 - 10:07  (00:00)
+nimishmishra  console                   Thu Sep 19 09:04 - 13:32  (04:27)
+reboot    ~                         Thu Sep 19 09:04 
+shutdown  ~                         Thu Sep 19 02:37 
+nimishmishra  ttys000                   Wed Sep 18 19:36 - 19:36  (00:00)
+nimishmishra  console                   Wed Sep 18 19:32 - 02:37  (07:05)
+reboot    ~                         Wed Sep 18 19:32 
+shutdown  ~                         Wed Sep 18 19:30 
+nimishmishra  console                   Wed Sep 18 18:25 - 19:30  (01:04)
+reboot    ~                         Wed Sep 18 18:25 
+nimishmishra  console                   Wed Sep 18 14:04 - 15:20  (01:16)
+reboot    ~                         Wed Sep 18 14:03 
+shutdown  ~                         Wed Sep 18 13:34 
+nimishmishra  console                   Wed Sep 18 13:33 - 13:34  (00:01)
+reboot    ~                         Wed Sep 18 13:33 
+shutdown  ~                         Wed Sep 18 10:34 
+nimishmishra  console                   Wed Sep 18 07:38 - 10:34  (02:56)
+reboot    ~                         Wed Sep 18 07:38 
+shutdown  ~                         Tue Sep 17 23:54 
+nimishmishra  console                   Tue Sep 17 17:29 - 23:54  (06:24)
+reboot    ~                         Tue Sep 17 17:29 
+shutdown  ~                         Tue Sep 17 08:12 
+nimishmishra  console                   Tue Sep 17 07:52 - 08:12  (00:20)
+reboot    ~                         Tue Sep 17 07:52 
+shutdown  ~                         Tue Sep 17 01:00 
+nimishmishra  console                   Mon Sep 16 22:39 - 01:00  (02:20)
+reboot    ~                         Mon Sep 16 22:39 
+shutdown  ~                         Mon Sep 16 21:57 
+nimishmishra  console                   Mon Sep 16 20:25 - 21:57  (01:32)
+reboot    ~                         Mon Sep 16 20:24 
+shutdown  ~                         Mon Sep 16 20:00 
+nimishmishra  console                   Mon Sep 16 17:27 - 20:00  (02:33)
+reboot    ~                         Mon Sep 16 17:26 
+shutdown  ~                         Mon Sep 16 11:28 
+nimishmishra  console                   Mon Sep 16 10:11 - 11:28  (01:17)
+reboot    ~                         Mon Sep 16 10:10 
+shutdown  ~                         Mon Sep 16 03:13 
+nimishmishra  console                   Mon Sep 16 01:00 - 03:13  (02:12)
+reboot    ~                         Mon Sep 16 01:00 
+shutdown  ~                         Mon Sep 16 00:34 
+nimishmishra  ttys000                   Sun Sep 15 09:52 - 09:52  (00:00)
+nimishmishra  console                   Sun Sep 15 09:41 - 00:34  (14:53)
+reboot    ~                         Sun Sep 15 09:41 
+shutdown  ~                         Sun Sep 15 03:40 
+nimishmishra  ttys000                   Sat Sep 14 18:50 - 18:50  (00:00)
+nimishmishra  console                   Sat Sep 14 17:04 - 03:40  (10:36)
+reboot    ~                         Sat Sep 14 17:04 
+shutdown  ~                         Sat Sep 14 15:57 
+nimishmishra  console                   Sat Sep 14 15:52 - 15:57  (00:05)
+reboot    ~                         Sat Sep 14 15:52 
+shutdown  ~                         Sat Sep 14 15:23 
+nimishmishra  ttys000                   Sat Sep 14 14:49 - 14:49  (00:00)
+nimishmishra  console                   Sat Sep 14 14:34 - 15:23  (00:48)
+reboot    ~                         Sat Sep 14 14:34 
+nimishmishra  console                   Sat Sep 14 13:52 - 13:54  (00:01)
+reboot    ~                         Sat Sep 14 13:52 
+shutdown  ~                         Sat Sep 14 12:25 
+nimishmishra  ttys000                   Sat Sep 14 09:01 - 09:01  (00:00)
+nimishmishra  console                   Sat Sep 14 09:01 - 12:25  (03:23)
+reboot    ~                         Sat Sep 14 09:01 
+shutdown  ~                         Sat Sep 14 01:01 
+nimishmishra  ttys000                   Fri Sep 13 22:40 - 22:40  (00:00)
+nimishmishra  console                   Fri Sep 13 19:53 - 01:01  (05:08)
+reboot    ~                         Fri Sep 13 19:53 
+shutdown  ~                         Fri Sep 13 19:46 
+nimishmishra  console                   Fri Sep 13 18:29 - 19:46  (01:17)
+reboot    ~                         Fri Sep 13 18:29 
+shutdown  ~                         Fri Sep 13 16:42 
+nimishmishra  ttys000                   Fri Sep 13 14:08 - 14:08  (00:00)
+nimishmishra  console                   Thu Sep 12 17:43 - 16:42  (22:59)
+reboot    ~                         Thu Sep 12 17:43 
+shutdown  ~                         Thu Sep 12 14:45 
+nimishmishra  console                   Thu Sep 12 14:01 - 14:45  (00:43)
+reboot    ~                         Thu Sep 12 14:01 
+shutdown  ~                         Thu Sep 12 07:59 
+nimishmishra  console                   Thu Sep 12 05:12 - 07:59  (02:47)
+reboot    ~                         Thu Sep 12 05:12 
+shutdown  ~                         Wed Sep 11 23:29 
+nimishmishra  console                   Wed Sep 11 21:15 - 23:29  (02:13)
+reboot    ~                         Wed Sep 11 21:15 
+shutdown  ~                         Wed Sep 11 10:47 
+nimishmishra  console                   Tue Sep 10 15:53 - 10:47  (18:54)
+reboot    ~                         Tue Sep 10 15:53 
+shutdown  ~                         Tue Sep 10 14:19 
+nimishmishra  console                   Tue Sep 10 09:26 - 14:19  (04:52)
+reboot    ~                         Tue Sep 10 09:26 
+shutdown  ~                         Tue Sep 10 03:42 
+nimishmishra  console                   Mon Sep  9 15:55 - 03:42  (11:47)
+reboot    ~                         Mon Sep  9 15:54 
+shutdown  ~                         Mon Sep  9 12:46 
+nimishmishra  ttys000                   Sat Sep  7 11:52 - 11:52  (00:00)
+nimishmishra  console                   Sat Sep  7 09:52 - 12:46 (2+02:54)
+reboot    ~                         Sat Sep  7 09:51 
+shutdown  ~                         Sat Sep  7 01:05 
+nimishmishra  console                   Sat Sep  7 00:37 - 01:05  (00:27)
+reboot    ~                         Sat Sep  7 00:37 
+shutdown  ~                         Sat Sep  7 00:32 
+nimishmishra  ttys000                   Fri Sep  6 15:26 - 15:26  (00:00)
+nimishmishra  ttys000                   Fri Sep  6 14:06 - 14:06  (00:00)
+nimishmishra  console                   Fri Sep  6 14:02 - 00:32  (10:29)
+reboot    ~                         Fri Sep  6 14:02 
+shutdown  ~                         Fri Sep  6 08:54 
+nimishmishra  console                   Fri Sep  6 07:54 - 08:54  (01:00)
+reboot    ~                         Fri Sep  6 07:54 
+shutdown  ~                         Fri Sep  6 00:42 
+nimishmishra  ttys001                   Fri Sep  6 00:37 - 00:37  (00:00)
+nimishmishra  ttys002                   Fri Sep  6 00:27 - 00:27  (00:00)
+nimishmishra  ttys002                   Thu Sep  5 23:54 - 23:54  (00:00)
+nimishmishra  ttys002                   Thu Sep  5 23:54 - 23:54  (00:00)
+nimishmishra  ttys001                   Thu Sep  5 23:44 - 23:44  (00:00)
+nimishmishra  ttys000                   Thu Sep  5 23:42 - 23:42  (00:00)
+nimishmishra  ttys000                   Thu Sep  5 22:13 - 22:13  (00:00)
+nimishmishra  console                   Thu Sep  5 22:11 - 00:42  (02:31)
+reboot    ~                         Thu Sep  5 22:10 
+nimishmishra  console                   Thu Sep  5 19:54 - crash  (02:16)
+reboot    ~                         Thu Sep  5 19:54 
+shutdown  ~                         Thu Sep  5 17:28 
+nimishmishra  console                   Thu Sep  5 17:17 - 17:28  (00:11)
+reboot    ~                         Thu Sep  5 17:17 
+shutdown  ~                         Thu Sep  5 12:21 
+nimishmishra  ttys001                   Thu Sep  5 11:07 - 11:07  (00:00)
+nimishmishra  ttys000                   Thu Sep  5 07:53 - 07:53  (00:00)
+nimishmishra  ttys000                   Wed Sep  4 20:25 - 20:25  (00:00)
+nimishmishra  ttys000                   Wed Sep  4 18:11 - 18:11  (00:00)
+nimishmishra  console                   Wed Sep  4 17:59 - 12:21  (18:22)
+reboot    ~                         Wed Sep  4 17:59 
+shutdown  ~                         Wed Sep  4 10:46 
+nimishmishra  console                   Tue Sep  3 17:59 - 10:46  (16:46)
+reboot    ~                         Tue Sep  3 17:59 
+shutdown  ~                         Tue Sep  3 08:05 
+nimishmishra  console                   Tue Sep  3 04:32 - 08:05  (03:33)
+reboot    ~                         Tue Sep  3 04:32 
+shutdown  ~                         Mon Sep  2 22:23 
+nimishmishra  console                   Mon Sep  2 16:05 - 22:23  (06:18)
+reboot    ~                         Mon Sep  2 16:05 
+shutdown  ~                         Mon Sep  2 14:06 
+nimishmishra  console                   Mon Sep  2 07:25 - 14:06  (06:40)
+reboot    ~                         Mon Sep  2 07:25 
+shutdown  ~                         Mon Sep  2 01:46 
+nimishmishra  console                   Sun Sep  1 07:48 - 01:46  (17:57)
+reboot    ~                         Sun Sep  1 07:48 
+shutdown  ~                         Sun Sep  1 02:27 
+nimishmishra  console                   Sat Aug 31 20:13 - 02:27  (06:14)
+reboot    ~                         Sat Aug 31 20:12 
+shutdown  ~                         Sat Aug 31 11:27 
+nimishmishra  ttys000                   Sat Aug 31 07:28 - 07:28  (00:00)
+nimishmishra  console                   Sat Aug 31 07:24 - 11:27  (04:02)
+reboot    ~                         Sat Aug 31 07:24 
+shutdown  ~                         Sat Aug 31 00:54 
+nimishmishra  console                   Fri Aug 30 19:18 - 00:54  (05:35)
+reboot    ~                         Fri Aug 30 19:18 
+shutdown  ~                         Fri Aug 30 19:10 
+nimishmishra  console                   Fri Aug 30 18:14 - 19:10  (00:55)
+reboot    ~                         Fri Aug 30 18:14 
+shutdown  ~                         Fri Aug 30 17:34 
+nimishmishra  ttys000                   Fri Aug 30 14:59 - 14:59  (00:00)
+nimishmishra  console                   Fri Aug 30 14:57 - 17:34  (02:37)
+reboot    ~                         Fri Aug 30 14:57 
+shutdown  ~                         Fri Aug 30 08:20 
+nimishmishra  console                   Fri Aug 30 07:34 - 08:20  (00:46)
+reboot    ~                         Fri Aug 30 07:33 
+shutdown  ~                         Thu Aug 29 23:55 
+nimishmishra  console                   Thu Aug 29 09:10 - 23:55  (14:44)
+reboot    ~                         Thu Aug 29 09:10 
+shutdown  ~                         Thu Aug 29 02:10 
+nimishmishra  ttys001                   Thu Aug 29 01:39 - 01:39  (00:00)
+nimishmishra  ttys000                   Thu Aug 29 01:34 - 01:34  (00:00)
+nimishmishra  ttys001                   Wed Aug 28 22:08 - 22:08  (00:00)
+nimishmishra  ttys000                   Wed Aug 28 21:52 - 21:52  (00:00)
+nimishmishra  console                   Wed Aug 28 19:04 - 02:10  (07:06)
+reboot    ~                         Wed Aug 28 19:03 
+shutdown  ~                         Wed Aug 28 12:49 
+nimishmishra  ttys002                   Wed Aug 28 12:13 - 12:13  (00:00)
+nimishmishra  ttys001                   Wed Aug 28 12:09 - 12:09  (00:00)
+nimishmishra  ttys000                   Wed Aug 28 10:34 - 10:34  (00:00)
+nimishmishra  console                   Wed Aug 28 10:32 - 12:49  (02:17)
+reboot    ~                         Wed Aug 28 10:31 
+shutdown  ~                         Wed Aug 28 09:59 
+nimishmishra  console                   Wed Aug 28 09:58 - 09:59  (00:00)
+reboot    ~                         Wed Aug 28 09:58 
+nimishmishra  console                   Wed Aug 28 09:52 - crash  (00:05)
+reboot    ~                         Wed Aug 28 09:52 
+shutdown  ~                         Wed Aug 28 09:51 
+nimishmishra  console                   Wed Aug 28 09:50 - 09:51  (00:01)
+reboot    ~                         Wed Aug 28 09:49 
+nimishmishra  console                   Wed Aug 28 09:37 - crash  (00:12)
+reboot    ~                         Wed Aug 28 09:37 
+shutdown  ~                         Wed Aug 28 09:20 
+nimishmishra  ttys000                   Wed Aug 28 09:13 - 09:13  (00:00)
+nimishmishra  console                   Wed Aug 28 09:13 - 09:20  (00:06)
+reboot    ~                         Wed Aug 28 09:13 
+nimishmishra  ttys000                   Wed Aug 28 09:00 - crash  (00:12)
+nimishmishra  console                   Wed Aug 28 09:00 - crash  (00:12)
+reboot    ~                         Wed Aug 28 09:00 
+nimishmishra  ttys000                   Wed Aug 28 07:41 - crash  (01:19)
+nimishmishra  console                   Wed Aug 28 06:41 - crash  (02:19)
+reboot    ~                         Wed Aug 28 06:40 
+shutdown  ~                         Wed Aug 28 00:04 
+nimishmishra  console                   Tue Aug 27 04:05 - 00:04  (19:58)
+reboot    ~                         Tue Aug 27 04:05 
+shutdown  ~                         Mon Aug 26 22:54 
+nimishmishra  ttys000                   Mon Aug 26 10:38 - 10:38  (00:00)
+nimishmishra  console                   Mon Aug 26 06:47 - 22:54  (16:06)
+reboot    ~                         Mon Aug 26 06:47 
+shutdown  ~                         Sun Aug 25 23:18 
+nimishmishra  console                   Sun Aug 25 16:11 - 23:18  (07:07)
+reboot    ~                         Sun Aug 25 16:11 
+shutdown  ~                         Sun Aug 25 12:56 
+nimishmishra  console                   Sun Aug 25 10:55 - 12:56  (02:01)
+reboot    ~                         Sun Aug 25 10:54 
+shutdown  ~                         Sun Aug 25 09:49 
+nimishmishra  ttys000                   Sun Aug 25 09:02 - 09:02  (00:00)
+nimishmishra  console                   Sun Aug 25 09:00 - 09:49  (00:48)
+reboot    ~                         Sun Aug 25 09:00 
+shutdown  ~                         Sun Aug 25 02:01 
+nimishmishra  ttys000                   Sat Aug 24 22:44 - 22:44  (00:00)
+nimishmishra  ttys000                   Sat Aug 24 22:31 - 22:31  (00:00)
+nimishmishra  ttys002                   Sat Aug 24 12:06 - 12:06  (00:00)
+nimishmishra  ttys001                   Sat Aug 24 12:06 - 12:06  (00:00)
+nimishmishra  ttys000                   Sat Aug 24 12:06 - 12:06  (00:00)
+nimishmishra  console                   Sat Aug 24 09:05 - 02:01  (16:55)
+reboot    ~                         Sat Aug 24 09:05 
+shutdown  ~                         Sat Aug 24 02:32 
+nimishmishra  ttys001                   Fri Aug 23 17:57 - 17:57  (00:00)
+nimishmishra  ttys000                   Fri Aug 23 17:57 - 17:57  (00:00)
+nimishmishra  console                   Fri Aug 23 17:57 - 02:32  (08:34)
+reboot    ~                         Fri Aug 23 17:57 
+shutdown  ~                         Fri Aug 23 17:22 
+nimishmishra  console                   Fri Aug 23 16:58 - 17:22  (00:24)
+reboot    ~                         Fri Aug 23 16:58 
+shutdown  ~                         Fri Aug 23 16:40 
+nimishmishra  ttys002                   Fri Aug 23 14:19 - 14:19  (00:00)
+nimishmishra  ttys001                   Fri Aug 23 14:19 - 14:19  (00:00)
+nimishmishra  ttys000                   Fri Aug 23 14:19 - 14:19  (00:00)
+nimishmishra  console                   Fri Aug 23 14:18 - 16:40  (02:22)
+reboot    ~                         Fri Aug 23 14:17 
+shutdown  ~                         Fri Aug 23 09:02 
+nimishmishra  ttys001                   Fri Aug 23 08:51 - 08:51  (00:00)
+nimishmishra  ttys000                   Fri Aug 23 08:51 - 08:51  (00:00)
+nimishmishra  console                   Fri Aug 23 08:51 - 09:02  (00:11)
+reboot    ~                         Fri Aug 23 08:50 
+shutdown  ~                         Thu Aug 22 23:35 
+nimishmishra  console                   Thu Aug 22 19:06 - 23:35  (04:28)
+reboot    ~                         Thu Aug 22 19:06 
+shutdown  ~                         Thu Aug 22 12:48 
+nimishmishra  ttys001                   Thu Aug 22 12:31 - 12:31  (00:00)
+nimishmishra  ttys000                   Thu Aug 22 10:39 - 10:39  (00:00)
+nimishmishra  console                   Thu Aug 22 10:38 - 12:48  (02:09)
+reboot    ~                         Thu Aug 22 10:38 
+shutdown  ~                         Thu Aug 22 09:43 
+nimishmishra  ttys000                   Thu Aug 22 06:49 - 06:49  (00:00)
+nimishmishra  console                   Thu Aug 22 06:47 - 09:43  (02:56)
+reboot    ~                         Thu Aug 22 06:47 
+shutdown  ~                         Thu Aug 22 00:22 
+nimishmishra  ttys000                   Wed Aug 21 21:37 - 21:37  (00:00)
+nimishmishra  console                   Wed Aug 21 20:01 - 00:22  (04:20)
+reboot    ~                         Wed Aug 21 20:01 
+shutdown  ~                         Wed Aug 21 11:25 
+nimishmishra  console                   Tue Aug 20 20:16 - 11:25  (15:08)
+reboot    ~                         Tue Aug 20 20:16 
+shutdown  ~                         Tue Aug 20 08:12 
+nimishmishra  console                   Tue Aug 20 07:13 - 08:12  (00:59)
+reboot    ~                         Tue Aug 20 07:12 
+shutdown  ~                         Tue Aug 20 00:09 
+nimishmishra  ttys001                   Mon Aug 19 12:23 - 12:23  (00:00)
+nimishmishra  ttys001                   Mon Aug 19 11:04 - 11:04  (00:00)
+nimishmishra  ttys000                   Mon Aug 19 09:27 - 09:27  (00:00)
+nimishmishra  console                   Mon Aug 19 09:25 - 00:09  (14:44)
+reboot    ~                         Mon Aug 19 09:25 
+shutdown  ~                         Mon Aug 19 03:10 
+nimishmishra  ttys001                   Mon Aug 19 01:12 - 01:12  (00:00)
+nimishmishra  ttys000                   Mon Aug 19 01:04 - 01:04  (00:00)
+nimishmishra  ttys000                   Sun Aug 18 23:39 - 23:39  (00:00)
+nimishmishra  ttys000                   Sun Aug 18 10:08 - 10:08  (00:00)
+nimishmishra  ttys000                   Sun Aug 18 09:11 - 09:11  (00:00)
+nimishmishra  console                   Sun Aug 18 09:11 - 03:10  (17:59)
+reboot    ~                         Sun Aug 18 09:10 
+nimishmishra  ttys000                   Sun Aug 18 08:19 - crash  (00:51)
+nimishmishra  console                   Sun Aug 18 08:11 - crash  (00:59)
+reboot    ~                         Sun Aug 18 08:11 
+shutdown  ~                         Sun Aug 18 02:02 
+nimishmishra  ttys001                   Sat Aug 17 23:45 - 23:45  (00:00)
+nimishmishra  ttys000                   Sat Aug 17 23:35 - 23:35  (00:00)
+nimishmishra  ttys000                   Sat Aug 17 19:13 - 19:13  (00:00)
+nimishmishra  console                   Sat Aug 17 18:21 - 02:02  (07:41)
+reboot    ~                         Sat Aug 17 18:21 
+shutdown  ~                         Sat Aug 17 13:24 
+nimishmishra  ttys000                   Sat Aug 17 09:36 - 09:36  (00:00)
+nimishmishra  console                   Sat Aug 17 08:59 - 13:24  (04:25)
+reboot    ~                         Sat Aug 17 08:59 
+shutdown  ~                         Sat Aug 17 00:14 
+nimishmishra  ttys000                   Fri Aug 16 17:15 - 17:15  (00:00)
+nimishmishra  console                   Fri Aug 16 17:15 - 00:14  (06:59)
+reboot    ~                         Fri Aug 16 17:14 
+shutdown  ~                         Fri Aug 16 16:32 
+nimishmishra  ttys001                   Fri Aug 16 15:21 - 15:21  (00:00)
+nimishmishra  ttys000                   Fri Aug 16 14:40 - 14:40  (00:00)
+nimishmishra  ttys000                   Fri Aug 16 14:33 - 14:33  (00:00)
+nimishmishra  console                   Fri Aug 16 14:31 - 16:32  (02:00)
+reboot    ~                         Fri Aug 16 14:31 
+shutdown  ~                         Fri Aug 16 10:39 
+nimishmishra  console                   Fri Aug 16 04:14 - 10:39  (06:25)
+reboot    ~                         Fri Aug 16 04:14 
+shutdown  ~                         Thu Aug 15 22:33 
+nimishmishra  console                   Thu Aug 15 15:33 - 22:33  (07:00)
+reboot    ~                         Thu Aug 15 15:33 
+nimishmishra  console                   Thu Aug 15 09:43 - 09:46  (00:02)
+reboot    ~                         Thu Aug 15 09:43 
+shutdown  ~                         Thu Aug 15 09:38 
+nimishmishra  ttys000                   Thu Aug 15 07:30 - 07:30  (00:00)
+nimishmishra  console                   Wed Aug 14 05:14 - 09:38 (1+04:24)
+reboot    ~                         Wed Aug 14 05:14 
+shutdown  ~                         Wed Aug 14 00:47 
+nimishmishra  ttys000                   Tue Aug 13 20:33 - 20:33  (00:00)
+nimishmishra  console                   Tue Aug 13 17:55 - 00:47  (06:52)
+reboot    ~                         Tue Aug 13 17:55 
+shutdown  ~                         Tue Aug 13 12:45 
+nimishmishra  console                   Tue Aug 13 11:01 - 12:45  (01:44)
+reboot    ~                         Tue Aug 13 11:01 
+shutdown  ~                         Tue Aug 13 08:02 
+nimishmishra  ttys000                   Sat Aug 10 20:17 - 20:17  (00:00)
+nimishmishra  ttys000                   Sat Aug 10 10:08 - 10:08  (00:00)
+nimishmishra  console                   Sat Aug 10 09:41 - 08:02 (2+22:21)
+reboot    ~                         Sat Aug 10 09:41 
+shutdown  ~                         Sat Aug 10 03:17 
+nimishmishra  ttys001                   Fri Aug  9 21:02 - 21:02  (00:00)
+nimishmishra  ttys000                   Fri Aug  9 21:02 - 21:02  (00:00)
+nimishmishra  console                   Fri Aug  9 19:39 - 03:17  (07:38)
+reboot    ~                         Fri Aug  9 19:39 
+shutdown  ~                         Fri Aug  9 16:24 
+nimishmishra  ttys001                   Fri Aug  9 14:34 - 14:34  (00:00)
+nimishmishra  ttys000                   Fri Aug  9 14:34 - 14:34  (00:00)
+nimishmishra  console                   Fri Aug  9 14:14 - 16:24  (02:09)
+reboot    ~                         Fri Aug  9 14:14 
+shutdown  ~                         Fri Aug  9 13:37 
+nimishmishra  ttys000                   Fri Aug  9 06:57 - 06:57  (00:00)
+nimishmishra  console                   Fri Aug  9 06:57 - 13:37  (06:40)
+reboot    ~                         Fri Aug  9 06:57 
+shutdown  ~                         Fri Aug  9 00:13 
+nimishmishra  console                   Thu Aug  8 19:14 - 00:13  (04:58)
+reboot    ~                         Thu Aug  8 19:14 
+shutdown  ~                         Thu Aug  8 12:57 
+nimishmishra  ttys001                   Thu Aug  8 10:25 - 10:25  (00:00)
+nimishmishra  ttys000                   Thu Aug  8 10:25 - 10:25  (00:00)
+nimishmishra  console                   Thu Aug  8 10:22 - 12:57  (02:35)
+reboot    ~                         Thu Aug  8 10:22 
+shutdown  ~                         Thu Aug  8 09:50 
+nimishmishra  ttys001                   Thu Aug  8 06:22 - 06:22  (00:00)
+nimishmishra  ttys000                   Thu Aug  8 06:19 - 06:19  (00:00)
+nimishmishra  console                   Thu Aug  8 05:54 - 09:50  (03:55)
+reboot    ~                         Thu Aug  8 05:54 
+shutdown  ~                         Thu Aug  8 01:58 
+nimishmishra  ttys000                   Wed Aug  7 20:07 - 20:07  (00:00)
+nimishmishra  console                   Wed Aug  7 19:21 - 01:58  (06:37)
+reboot    ~                         Wed Aug  7 19:21 
+shutdown  ~                         Wed Aug  7 10:46 
+nimishmishra  console                   Wed Aug  7 05:42 - 10:46  (05:03)
+reboot    ~                         Wed Aug  7 05:42 
+shutdown  ~                         Wed Aug  7 00:49 
+nimishmishra  console                   Sat Aug  3 21:50 - 00:49 (3+02:58)
+reboot    ~                         Sat Aug  3 21:50 
+shutdown  ~                         Sat Aug  3 21:26 
+nimishmishra  ttys000                   Sat Aug  3 20:18 - 20:18  (00:00)
+nimishmishra  ttys000                   Sat Aug  3 20:09 - 20:09  (00:00)
+nimishmishra  ttys000                   Sat Aug  3 19:00 - 19:00  (00:00)
+nimishmishra  ttys000                   Sat Aug  3 07:09 - 07:09  (00:00)
+nimishmishra  console                   Sat Aug  3 06:58 - 21:26  (14:28)
+reboot    ~                         Sat Aug  3 06:58 
+shutdown  ~                         Fri Aug  2 23:33 
+nimishmishra  ttys000                   Fri Aug  2 18:38 - 18:38  (00:00)
+nimishmishra  console                   Fri Aug  2 18:06 - 23:33  (05:27)
+reboot    ~                         Fri Aug  2 18:06 
+shutdown  ~                         Fri Aug  2 16:31 
+nimishmishra  ttys000                   Fri Aug  2 14:26 - 14:26  (00:00)
+nimishmishra  console                   Fri Aug  2 14:01 - 16:31  (02:30)
+reboot    ~                         Fri Aug  2 14:01 
+nimishmishra  console                   Fri Aug  2 04:39 - 10:48  (06:08)
+reboot    ~                         Fri Aug  2 04:39 
+shutdown  ~                         Fri Aug  2 00:12 
+nimishmishra  ttys000                   Thu Aug  1 22:37 - 22:37  (00:00)
+nimishmishra  console                   Thu Aug  1 19:15 - 00:12  (04:57)
+reboot    ~                         Thu Aug  1 19:14 
+shutdown  ~                         Thu Aug  1 13:32 
+nimishmishra  ttys000                   Thu Aug  1 13:15 - 13:15  (00:00)
+nimishmishra  console                   Thu Aug  1 13:12 - 13:32  (00:20)
+reboot    ~                         Thu Aug  1 13:11 
+shutdown  ~                         Thu Aug  1 12:47 
+nimishmishra  ttys001                   Thu Aug  1 12:06 - 12:06  (00:00)
+nimishmishra  ttys000                   Thu Aug  1 10:37 - 10:37  (00:00)
+nimishmishra  console                   Thu Aug  1 10:24 - 12:47  (02:23)
+reboot    ~                         Thu Aug  1 10:24 
+shutdown  ~                         Thu Aug  1 09:39 
+nimishmishra  ttys000                   Thu Aug  1 06:31 - 06:31  (00:00)
+nimishmishra  console                   Thu Aug  1 06:04 - 09:39  (03:34)
+reboot    ~                         Thu Aug  1 06:04 
+shutdown  ~                         Thu Aug  1 01:14 
+nimishmishra  console                   Wed Jul 31 06:07 - 01:14  (19:06)
+reboot    ~                         Wed Jul 31 06:07 
+shutdown  ~                         Wed Jul 31 01:19 
+nimishmishra  console                   Tue Jul 30 19:14 - 01:19  (06:05)
+reboot    ~                         Tue Jul 30 19:14 
+shutdown  ~                         Tue Jul 30 12:27 
+nimishmishra  console                   Tue Jul 30 10:28 - 12:27  (01:59)
+reboot    ~                         Tue Jul 30 10:28 
+shutdown  ~                         Tue Jul 30 09:48 
+nimishmishra  console                   Tue Jul 30 07:12 - 09:48  (02:36)
+reboot    ~                         Tue Jul 30 07:12 
+shutdown  ~                         Tue Jul 30 00:55 
+nimishmishra  ttys000                   Mon Jul 29 21:30 - 21:30  (00:00)
+nimishmishra  console                   Mon Jul 29 18:06 - 00:55  (06:49)
+reboot    ~                         Mon Jul 29 18:06 
+shutdown  ~                         Mon Jul 29 14:51 
+nimishmishra  console                   Mon Jul 29 09:14 - 14:51  (05:37)
+reboot    ~                         Mon Jul 29 09:14 
+shutdown  ~                         Mon Jul 29 02:14 
+nimishmishra  console                   Mon Jul 29 00:22 - 02:14  (01:51)
+reboot    ~                         Mon Jul 29 00:22 
+shutdown  ~                         Mon Jul 29 00:22 
+nimishmishra  console                   Sun Jul 28 17:11 - 00:22  (07:10)
+reboot    ~                         Sun Jul 28 17:11 
+shutdown  ~                         Sun Jul 28 14:20 
+nimishmishra  console                   Sun Jul 28 06:50 - 14:20  (07:30)
+reboot    ~                         Sun Jul 28 06:50 
+shutdown  ~                         Sat Jul 27 23:22 
+nimishmishra  ttys000                   Sat Jul 27 22:11 - 22:11  (00:00)
+nimishmishra  ttys000                   Sat Jul 27 17:47 - 17:47  (00:00)
+nimishmishra  console                   Sat Jul 27 17:40 - 23:22  (05:42)
+reboot    ~                         Sat Jul 27 17:40 
+shutdown  ~                         Sat Jul 27 12:58 
+nimishmishra  ttys001                   Sat Jul 27 11:56 - 11:56  (00:00)
+nimishmishra  ttys000                   Sat Jul 27 10:38 - 10:38  (00:00)
+nimishmishra  console                   Sat Jul 27 10:24 - 12:58  (02:33)
+reboot    ~                         Sat Jul 27 10:24 
+shutdown  ~                         Sat Jul 27 09:49 
+nimishmishra  ttys002                   Sat Jul 27 06:30 - 06:30  (00:00)
+nimishmishra  ttys001                   Sat Jul 27 06:07 - 06:07  (00:00)
+nimishmishra  ttys000                   Sat Jul 27 06:07 - 06:07  (00:00)
+nimishmishra  console                   Sat Jul 27 06:07 - 09:49  (03:41)
+reboot    ~                         Sat Jul 27 06:07 
+shutdown  ~                         Fri Jul 26 22:53 
+nimishmishra  ttys001                   Fri Jul 26 18:38 - 18:38  (00:00)
+nimishmishra  ttys000                   Fri Jul 26 18:38 - 18:38  (00:00)
+nimishmishra  console                   Fri Jul 26 18:38 - 22:53  (04:14)
+reboot    ~                         Fri Jul 26 18:38 
+shutdown  ~                         Fri Jul 26 16:50 
+nimishmishra  ttys001                   Fri Jul 26 14:17 - 14:17  (00:00)
+nimishmishra  ttys000                   Fri Jul 26 14:03 - 14:03  (00:00)
+nimishmishra  console                   Fri Jul 26 14:01 - 16:50  (02:48)
+reboot    ~                         Fri Jul 26 14:01 
+shutdown  ~                         Fri Jul 26 13:42 
+nimishmishra  ttys000                   Fri Jul 26 05:58 - 05:58  (00:00)
+nimishmishra  console                   Fri Jul 26 05:40 - 13:42  (08:01)
+reboot    ~                         Fri Jul 26 05:40 
+shutdown  ~                         Fri Jul 26 01:18 
+nimishmishra  ttys000                   Thu Jul 25 16:26 - 16:26  (00:00)
+nimishmishra  console                   Thu Jul 25 07:34 - 01:18  (17:43)
+reboot    ~                         Thu Jul 25 07:34 
+shutdown  ~                         Wed Jul 24 22:59 
+nimishmishra  ttys000                   Wed Jul 24 18:32 - 18:32  (00:00)
+nimishmishra  console                   Wed Jul 24 18:31 - 22:59  (04:27)
+reboot    ~                         Wed Jul 24 18:31 
+shutdown  ~                         Wed Jul 24 10:47 
+nimishmishra  ttys000                   Wed Jul 24 08:20 - 08:20  (00:00)
+nimishmishra  console                   Wed Jul 24 08:20 - 10:47  (02:27)
+reboot    ~                         Wed Jul 24 08:20 
+shutdown  ~                         Wed Jul 24 01:45 
+nimishmishra  ttys000                   Tue Jul 23 19:28 - 19:28  (00:00)
+nimishmishra  console                   Tue Jul 23 19:28 - 01:45  (06:17)
+reboot    ~                         Tue Jul 23 19:28 
+shutdown  ~                         Tue Jul 23 13:53 
+nimishmishra  ttys000                   Tue Jul 23 10:53 - 10:53  (00:00)
+nimishmishra  console                   Tue Jul 23 10:50 - 13:53  (03:03)
+reboot    ~                         Tue Jul 23 10:49 
+shutdown  ~                         Tue Jul 23 08:55 
+nimishmishra  ttys000                   Tue Jul 23 08:06 - 08:06  (00:00)
+nimishmishra  console                   Mon Jul 22 15:32 - 08:55  (17:22)
+reboot    ~                         Mon Jul 22 15:32 
+shutdown  ~                         Mon Jul 22 12:31 
+nimishmishra  ttys000                   Mon Jul 22 12:07 - 12:07  (00:00)
+nimishmishra  console                   Mon Jul 22 09:16 - 12:31  (03:14)
+reboot    ~                         Mon Jul 22 09:16 
+nimishmishra  console                   Sun Jul 21 22:50 - 23:34  (00:44)
+reboot    ~                         Sun Jul 21 22:50 
+shutdown  ~                         Sun Jul 21 21:01 
+nimishmishra  ttys000                   Sun Jul 21 10:45 - 10:45  (00:00)
+nimishmishra  console                   Sun Jul 21 09:17 - 21:01  (11:43)
+reboot    ~                         Sun Jul 21 09:17 
+shutdown  ~                         Sat Jul 20 22:49 
+nimishmishra  console                   Sat Jul 20 15:39 - 22:49  (07:09)
+reboot    ~                         Sat Jul 20 15:39 
+shutdown  ~                         Sat Jul 20 15:21 
+nimishmishra  console                   Sat Jul 20 07:21 - 15:21  (07:59)
+reboot    ~                         Sat Jul 20 07:21 
+nimishmishra  console                   Fri Jul 19 19:35 - 22:10  (02:35)
+reboot    ~                         Fri Jul 19 19:35 
+shutdown  ~                         Fri Jul 19 16:20 
+nimishmishra  ttys000                   Fri Jul 19 15:53 - 15:53  (00:00)
+nimishmishra  console                   Fri Jul 19 14:05 - 16:20  (02:15)
+reboot    ~                         Fri Jul 19 14:05 
+shutdown  ~                         Thu Jul 18 23:22 
+nimishmishra  console                   Thu Jul 18 18:23 - 23:22  (04:59)
+reboot    ~                         Thu Jul 18 18:22 
+shutdown  ~                         Thu Jul 18 12:47 
+nimishmishra  ttys000                   Thu Jul 18 07:31 - 07:31  (00:00)
+nimishmishra  console                   Thu Jul 18 07:18 - 12:47  (05:29)
+reboot    ~                         Thu Jul 18 07:17 
+shutdown  ~                         Thu Jul 18 00:41 
+nimishmishra  ttys000                   Wed Jul 17 18:14 - 18:14  (00:00)
+nimishmishra  console                   Wed Jul 17 18:14 - 00:41  (06:27)
+reboot    ~                         Wed Jul 17 18:13 
+shutdown  ~                         Wed Jul 17 10:26 
+nimishmishra  console                   Wed Jul 17 07:00 - 10:26  (03:25)
+reboot    ~                         Wed Jul 17 07:00 
+shutdown  ~                         Tue Jul 16 23:57 
+nimishmishra  ttys000                   Tue Jul 16 10:49 - 10:49  (00:00)
+nimishmishra  console                   Tue Jul 16 10:49 - 23:57  (13:08)
+reboot    ~                         Tue Jul 16 10:48 
+shutdown  ~                         Tue Jul 16 08:18 
+nimishmishra  console                   Tue Jul 16 05:32 - 08:18  (02:46)
+reboot    ~                         Tue Jul 16 05:32 
+shutdown  ~                         Tue Jul 16 00:13 
+nimishmishra  ttys000                   Mon Jul 15 17:58 - 17:58  (00:00)
+nimishmishra  console                   Mon Jul 15 17:58 - 00:13  (06:14)
+reboot    ~                         Mon Jul 15 17:58 
+shutdown  ~                         Mon Jul 15 13:52 
+nimishmishra  console                   Mon Jul 15 07:37 - 13:52  (06:14)
+reboot    ~                         Mon Jul 15 07:37 
+shutdown  ~                         Mon Jul 15 02:19 
+nimishmishra  ttys000                   Sun Jul 14 07:44 - 07:44  (00:00)
+nimishmishra  console                   Sun Jul 14 07:44 - 02:19  (18:34)
+reboot    ~                         Sun Jul 14 07:44 
+shutdown  ~                         Sat Jul 13 23:29 
+nimishmishra  console                   Fri Jul 12 14:20 - 23:29 (1+09:08)
+reboot    ~                         Fri Jul 12 14:20 
+shutdown  ~                         Fri Jul 12 12:09 
+nimishmishra  ttys000                   Fri Jul 12 07:12 - 07:12  (00:00)
+nimishmishra  console                   Fri Jul 12 07:12 - 12:09  (04:56)
+reboot    ~                         Fri Jul 12 07:12 
+shutdown  ~                         Fri Jul 12 01:59 
+nimishmishra  console                   Thu Jul 11 10:18 - 01:59  (15:40)
+reboot    ~                         Thu Jul 11 10:18 
+shutdown  ~                         Wed Jul 10 23:14 
+nimishmishra  ttys000                   Tue Jul  9 05:48 - 05:48  (00:00)
+nimishmishra  console                   Tue Jul  9 05:48 - 23:14 (1+17:25)
+reboot    ~                         Tue Jul  9 05:48 
+shutdown  ~                         Mon Jul  8 23:56 
+nimishmishra  console                   Mon Jul  8 10:24 - 23:56  (13:31)
+reboot    ~                         Mon Jul  8 10:24 
+shutdown  ~                         Sun Jul  7 21:50 
+nimishmishra  ttys000                   Sat Jul  6 17:15 - 17:15  (00:00)
+nimishmishra  console                   Sat Jul  6 17:15 - 21:50 (1+04:35)
+reboot    ~                         Sat Jul  6 17:15 
+shutdown  ~                         Sat Jul  6 15:19 
+nimishmishra  console                   Sat Jul  6 08:36 - 15:19  (06:43)
+reboot    ~                         Sat Jul  6 08:35 
+shutdown  ~                         Thu Jul  4 20:54 
+nimishmishra  ttys000                   Thu Jul  4 09:10 - 09:10  (00:00)
+nimishmishra  console                   Thu Jul  4 09:10 - 20:54  (11:43)
+reboot    ~                         Thu Jul  4 09:10 
+shutdown  ~                         Wed Jul  3 21:10 
+nimishmishra  console                   Wed Jul  3 08:50 - 21:10  (12:20)
+reboot    ~                         Wed Jul  3 08:49 
+shutdown  ~                         Tue Jul  2 20:48 
+nimishmishra  ttys000                   Tue Jul  2 08:10 - 08:10  (00:00)
+nimishmishra  console                   Tue Jul  2 08:10 - 20:48  (12:37)
+reboot    ~                         Tue Jul  2 08:10 
+shutdown  ~                         Mon Jul  1 23:07 
+nimishmishra  console                   Mon Jul  1 22:13 - 23:07  (00:53)
+reboot    ~                         Mon Jul  1 22:13 
+shutdown  ~                         Mon Jul  1 20:50 
+nimishmishra  ttys000                   Mon Jul  1 08:55 - 08:55  (00:00)
+nimishmishra  console                   Mon Jul  1 08:55 - 20:50  (11:54)
+reboot    ~                         Mon Jul  1 08:55 
+
+wtmp begins Mon Jul  1 08:55 
+
+whoami--------------
+root
+
+uname--------------
+Darwin
+
+cat /etc/passwd--------------
+##
+# User Database
+# 
+# Note that this file is consulted directly only when the system is running
+# in single-user mode.  At other times this information is provided by
+# Open Directory.
+#
+# See the opendirectoryd(8) man page for additional information about
+# Open Directory.
+##
+nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false
+root:*:0:0:System Administrator:/var/root:/bin/sh
+daemon:*:1:1:System Services:/var/root:/usr/bin/false
+_uucp:*:4:4:Unix to Unix Copy Protocol:/var/spool/uucp:/usr/sbin/uucico
+_taskgated:*:13:13:Task Gate Daemon:/var/empty:/usr/bin/false
+_networkd:*:24:24:Network Services:/var/networkd:/usr/bin/false
+_installassistant:*:25:25:Install Assistant:/var/empty:/usr/bin/false
+_lp:*:26:26:Printing Services:/var/spool/cups:/usr/bin/false
+_postfix:*:27:27:Postfix Mail Server:/var/spool/postfix:/usr/bin/false
+_scsd:*:31:31:Service Configuration Service:/var/empty:/usr/bin/false
+_ces:*:32:32:Certificate Enrollment Service:/var/empty:/usr/bin/false
+_appstore:*:33:33:Mac App Store Service:/var/empty:/usr/bin/false
+_mcxalr:*:54:54:MCX AppLaunch:/var/empty:/usr/bin/false
+_appleevents:*:55:55:AppleEvents Daemon:/var/empty:/usr/bin/false
+_geod:*:56:56:Geo Services Daemon:/var/db/geod:/usr/bin/false
+_serialnumberd:*:58:58:Serial Number Daemon:/var/empty:/usr/bin/false
+_devdocs:*:59:59:Developer Documentation:/var/empty:/usr/bin/false
+_sandbox:*:60:60:Seatbelt:/var/empty:/usr/bin/false
+_mdnsresponder:*:65:65:mDNSResponder:/var/empty:/usr/bin/false
+_ard:*:67:67:Apple Remote Desktop:/var/empty:/usr/bin/false
+_www:*:70:70:World Wide Web Server:/Library/WebServer:/usr/bin/false
+_eppc:*:71:71:Apple Events User:/var/empty:/usr/bin/false
+_cvs:*:72:72:CVS Server:/var/empty:/usr/bin/false
+_svn:*:73:73:SVN Server:/var/empty:/usr/bin/false
+_mysql:*:74:74:MySQL Server:/var/empty:/usr/bin/false
+_sshd:*:75:75:sshd Privilege separation:/var/empty:/usr/bin/false
+_qtss:*:76:76:QuickTime Streaming Server:/var/empty:/usr/bin/false
+_cyrus:*:77:6:Cyrus Administrator:/var/imap:/usr/bin/false
+_mailman:*:78:78:Mailman List Server:/var/empty:/usr/bin/false
+_appserver:*:79:79:Application Server:/var/empty:/usr/bin/false
+_clamav:*:82:82:ClamAV Daemon:/var/virusmails:/usr/bin/false
+_amavisd:*:83:83:AMaViS Daemon:/var/virusmails:/usr/bin/false
+_jabber:*:84:84:Jabber XMPP Server:/var/empty:/usr/bin/false
+_appowner:*:87:87:Application Owner:/var/empty:/usr/bin/false
+_windowserver:*:88:88:WindowServer:/var/empty:/usr/bin/false
+_spotlight:*:89:89:Spotlight:/var/empty:/usr/bin/false
+_tokend:*:91:91:Token Daemon:/var/empty:/usr/bin/false
+_securityagent:*:92:92:SecurityAgent:/var/db/securityagent:/usr/bin/false
+_calendar:*:93:93:Calendar:/var/empty:/usr/bin/false
+_teamsserver:*:94:94:TeamsServer:/var/teamsserver:/usr/bin/false
+_update_sharing:*:95:-2:Update Sharing:/var/empty:/usr/bin/false
+_installer:*:96:-2:Installer:/var/empty:/usr/bin/false
+_atsserver:*:97:97:ATS Server:/var/empty:/usr/bin/false
+_ftp:*:98:-2:FTP Daemon:/var/empty:/usr/bin/false
+_unknown:*:99:99:Unknown User:/var/empty:/usr/bin/false
+_softwareupdate:*:200:200:Software Update Service:/var/db/softwareupdate:/usr/bin/false
+_coreaudiod:*:202:202:Core Audio Daemon:/var/empty:/usr/bin/false
+_screensaver:*:203:203:Screensaver:/var/empty:/usr/bin/false
+_locationd:*:205:205:Location Daemon:/var/db/locationd:/usr/bin/false
+_trustevaluationagent:*:208:208:Trust Evaluation Agent:/var/empty:/usr/bin/false
+_timezone:*:210:210:AutoTimeZoneDaemon:/var/empty:/usr/bin/false
+_lda:*:211:211:Local Delivery Agent:/var/empty:/usr/bin/false
+_cvmsroot:*:212:212:CVMS Root:/var/empty:/usr/bin/false
+_usbmuxd:*:213:213:iPhone OS Device Helper:/var/db/lockdown:/usr/bin/false
+_dovecot:*:214:6:Dovecot Administrator:/var/empty:/usr/bin/false
+_dpaudio:*:215:215:DP Audio:/var/empty:/usr/bin/false
+_postgres:*:216:216:PostgreSQL Server:/var/empty:/usr/bin/false
+_krbtgt:*:217:-2:Kerberos Ticket Granting Ticket:/var/empty:/usr/bin/false
+_kadmin_admin:*:218:-2:Kerberos Admin Service:/var/empty:/usr/bin/false
+_kadmin_changepw:*:219:-2:Kerberos Change Password Service:/var/empty:/usr/bin/false
+_devicemgr:*:220:220:Device Management Server:/var/empty:/usr/bin/false
+_webauthserver:*:221:221:Web Auth Server:/var/empty:/usr/bin/false
+_netbios:*:222:222:NetBIOS:/var/empty:/usr/bin/false
+_warmd:*:224:224:Warm Daemon:/var/empty:/usr/bin/false
+_dovenull:*:227:227:Dovecot Authentication:/var/empty:/usr/bin/false
+_netstatistics:*:228:228:Network Statistics Daemon:/var/empty:/usr/bin/false
+_avbdeviced:*:229:-2:Ethernet AVB Device Daemon:/var/empty:/usr/bin/false
+_krb_krbtgt:*:230:-2:Open Directory Kerberos Ticket Granting Ticket:/var/empty:/usr/bin/false
+_krb_kadmin:*:231:-2:Open Directory Kerberos Admin Service:/var/empty:/usr/bin/false
+_krb_changepw:*:232:-2:Open Directory Kerberos Change Password Service:/var/empty:/usr/bin/false
+_krb_kerberos:*:233:-2:Open Directory Kerberos:/var/empty:/usr/bin/false
+_krb_anonymous:*:234:-2:Open Directory Kerberos Anonymous:/var/empty:/usr/bin/false
+_assetcache:*:235:235:Asset Cache Service:/var/empty:/usr/bin/false
+_coremediaiod:*:236:236:Core Media IO Daemon:/var/empty:/usr/bin/false
+_launchservicesd:*:239:239:_launchservicesd:/var/empty:/usr/bin/false
+_iconservices:*:240:240:IconServices:/var/empty:/usr/bin/false
+_distnote:*:241:241:DistNote:/var/empty:/usr/bin/false
+_nsurlsessiond:*:242:242:NSURLSession Daemon:/var/db/nsurlsessiond:/usr/bin/false
+_nsurlstoraged:*:243:243:NSURLStorage Daemon:/var/db/nsurlstoraged:/usr/bin/false
+_displaypolicyd:*:244:244:Display Policy Daemon:/var/empty:/usr/bin/false
+_astris:*:245:245:Astris Services:/var/db/astris:/usr/bin/false
+_krbfast:*:246:-2:Kerberos FAST Account:/var/empty:/usr/bin/false
+_gamecontrollerd:*:247:247:Game Controller Daemon:/var/empty:/usr/bin/false
+_mbsetupuser:*:248:248:Setup User:/var/setup:/bin/bash
+_ondemand:*:249:249:On Demand Resource Daemon:/var/db/ondemand:/usr/bin/false
+_xserverdocs:*:251:251:macOS Server Documents Service:/var/empty:/usr/bin/false
+_wwwproxy:*:252:252:WWW Proxy:/var/empty:/usr/bin/false
+_mobileasset:*:253:253:MobileAsset User:/var/ma:/usr/bin/false
+_findmydevice:*:254:254:Find My Device Daemon:/var/db/findmydevice:/usr/bin/false
+_datadetectors:*:257:257:DataDetectors:/var/db/datadetectors:/usr/bin/false
+_captiveagent:*:258:258:captiveagent:/var/empty:/usr/bin/false
+_ctkd:*:259:259:ctkd Account:/var/empty:/usr/bin/false
+_applepay:*:260:260:applepay Account:/var/db/applepay:/usr/bin/false
+_hidd:*:261:261:HID Service User:/var/db/hidd:/usr/bin/false
+_cmiodalassistants:*:262:262:CoreMedia IO Assistants User:/var/db/cmiodalassistants:/usr/bin/false
+_analyticsd:*:263:263:Analytics Daemon:/var/db/analyticsd:/usr/bin/false
+_fpsd:*:265:265:FPS Daemon:/var/db/fpsd:/usr/bin/false
+_timed:*:266:266:Time Sync Daemon:/var/db/timed:/usr/bin/false
+
+cat /etc/hosts--------------
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost
+
+cat /etc/groups--------------
+Failed to execute command Command 'cat /etc/groups' returned non-zero exit status 1.
+cat /etc/resolv.conf--------------
+#
+# macOS Notice
+#
+# This file is not consulted for DNS hostname resolution, address
+# resolution, or the DNS query routing mechanism used by most
+# processes on this system.
+#
+# To view the DNS configuration used by this system, use:
+#   scutil --dns
+#
+# SEE ALSO
+#   dns-sd(1), scutil(8)
+#
+# This file is automatically generated.
+#
+nameserver 2405:200:800::1
+nameserver 192.168.43.1
+
