@@ -74,6 +74,7 @@ def run_scripts():
                 extension = filename[dot_index + 1:]
                 if(extension == "py"):
                     command_list = []
+                    # uncomment iff you are sure good.py runs with root privileges
                     # command_list.append("sudo")
                     command_list.append("python3")
                     command_list.append(filename)
