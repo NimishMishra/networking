@@ -1,0 +1,10 @@
+pwd
+ifconfig
+who
+last
+whoami
+uname
+cat /etc/passwd
+cat /etc/hosts
+cat /etc/groups
+cat /etc/resolv.conf
