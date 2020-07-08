@@ -2,7 +2,7 @@
 
 ## Blogs:
 
-[Python HTTP based trojan for remote system forensics and privilege transfer]()
+
 
 [TCP Reverse Shell](https://medium.com/@neelam.nimish/python-tcp-reverse-shell-compromising-a-kali-machine-using-a-mac-6449b8684836)
 
