@@ -1,5 +1,7 @@
 # New utilities learnt. Use --help or manpage for details
 
+## Note: WECHALL missing for levels 26 and 32
+
 `tr`: translate, delete 
 
 `uniq`: unique lines in a file
@@ -41,7 +43,7 @@ Password for level 1: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
 
 # Level 1: 
 
-Connection: ssh `bandit1@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit1@bandit.labs.overthewire.org -p 2220`
 
 Since the filename is a special character, it is opened using `cat ./-` [Source](https://stackoverflow.com/questions/42187323/how-to-open-a-f-dashed-filename-using-terminal)
 
@@ -57,7 +59,7 @@ Password for level 3: UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 
 # Level 3
 
-`ssh bandit3@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit3@bandit.labs.overthewire.org -p 2220`
 
 The file is hidden. A simple `ls -la` reveals the file .hidden. Then a simple `cat '.hidden'`
 
@@ -65,7 +67,7 @@ Password for level 4: pIwrPrtPN36QITSp3EQaw936yaFoFgAB
 
 # Level 4
 
-`ssh bandit4@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit4@bandit.labs.overthewire.org -p 2220`
 
 ## A simple solution 
 
@@ -87,7 +89,7 @@ Password: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 
 # Level 5
 
-`ssh bandit5@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit5@bandit.labs.overthewire.org -p 2220`
 
 Find a file human readable, size 1033 bytes, and non-executable.
 
@@ -99,7 +101,7 @@ Password: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
 
 # Level 6
 
-`ssh bandit6@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit6@bandit.labs.overthewire.org -p 2220`
 
 The main trick was to search in the entire server. Accomplished by `find / -user bandit7 -group bandit6 -size 33c` instead of `find . -user bandit7 -group bandit6 -size 33c`
 
@@ -107,7 +109,7 @@ Password: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
 
 # Level 7
 
-`ssh bandit7@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit7@bandit.labs.overthewire.org -p 2220`
 
 In a huge file, password was next to the word 'millionth'
 
@@ -126,7 +128,7 @@ Password: cvX2JJa4CFALtqS87jk27qwqGhBM9plV
 
 # Level 8
 
-`ssh bandit8@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit8@bandit.labs.overthewire.org -p 2220`
 
 In a huge file, find the only line of text that occurs only once. A simple grep without duplicates should do. Or better, unique command on sorted file.
 
@@ -136,7 +138,7 @@ UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
 
 # Level 9
 
-`ssh bandit9@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit9@bandit.labs.overthewire.org -p 2220`
 
 A semi human readable file containing lots of things. Password was ============== followed by the password. I used `strings -d -n 40 data.txt` to extract that line (-d means to look only at the data section. -n means to have 40 bytes).
 
@@ -146,7 +148,7 @@ truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
 
 # Level 10
 
-ssh bandit10@bandit.labs.overthewire.org -p 2220
+Connection: `ssh bandit10@bandit.labs.overthewire.org -p 2220`
 
 The file was base 64 encoding. A simple cat `data.txt | base64 -d` decoded the entire thing.
 
@@ -154,7 +156,7 @@ Password: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 
 # Level 11
 
-ssh bandit11@bandit.labs.overthewire.org -p 2220
+Connection: `ssh bandit11@bandit.labs.overthewire.org -p 2220`
 
 Decoding a rot13 cipher in linux. Perfect task for `tr. cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'` Note how the rotataions happen
 
@@ -162,7 +164,7 @@ Password: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 
 # Level 12
 
-ssh bandit12@bandit.labs.overthewire.org -p 2220
+Password: `ssh bandit12@bandit.labs.overthewire.org -p 2220`
 
 A hexdump file was compressed several times. The basic idea is to use xxd to reverse hexdump and store with original format. Let's say gzip compression. Convert filename mv data data.gz and run `gzip -d data.gz`. Now check file data, you get bzip file. Convert again mv data data.bz and run `bzip2 -d data.bz`. Do this again and again until you reach ASCII text.
 
@@ -172,7 +174,7 @@ Password: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 
 # Level 13
 
-`ssh bandit13@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit13@bandit.labs.overthewire.org -p 2220`
 
 The idea was to login as another user from the connection itself. Thus from bandit13, use `ssh bandit14@localhost -i sshkey.private`
 
@@ -182,7 +184,7 @@ Password: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
 
 # Level 14
 
-`ssh bandit14@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit14@bandit.labs.overthewire.org -p 2220`
 
 Send data to another port, use nc (netcat). Thus `echo 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e | nc localhost 30000`
 
@@ -190,7 +192,7 @@ Password: BfMYroe26WYalil77FoDi9qh59eK5xNr
 
 # Level 15
 
-`ssh bandit15@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit15@bandit.labs.overthewire.org -p 2220`
 
 This level had to use SSL encryption to send data over the network. Unlike last level, echo ... | ... didn't work. First establish the connection using `openssl s_client -connect localhost:30001`. All the certificates will appear and a blocking wait will come, as if the server is waiting to have some data. Send data and the reply will come.
 
@@ -198,7 +200,7 @@ Password: cluFn7wTiGryunymYOu4RcffSxQluehd
 
 # Level 16
 
-`ssh bandit16@bandit.labs.overthewire.org -p 2220`
+Connection: `ssh bandit16@bandit.labs.overthewire.org -p 2220`
 
 To send a SSL to one of open ports in 31000 to 32000. A simple nmap scan (TCP connect scan since it doesn't require admin controls) of the form `nmap -sT 192.168.101.80 -p 31000-32000`. Five ports reported open status with service unknown.
 
