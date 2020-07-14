@@ -30,6 +30,8 @@ ltrace is a program that simply runs the specified command until it exits. It in
 
 On running `ltrace`, there's a point where `strcmp(__input__, "sex")` which is the `strcmp` for password. Thus `sex` is the password the this `setuid`. Once run, privileges are escalted and then a simple `cat /etc/leviathan_pass/leviathan2` does the trick.
 
+What is obvious from both `ltrace` and `strings` is that on correct password, this `setuid` opens `/bin/sh` from where accessing the password is simple.
+
 Password: ougahZi8Ta
 
 # Level 2
@@ -40,3 +42,11 @@ URL: ```ssh leviathan2@leviathan.labs.overthewire.org -p 2223```
 ltrace output: (line in 342-344)
 
 __libc_start_main(0x804852b, 2, 0xffffd764, 0x8048610 <unfinished ...>
+
+### Analysing strings output
+
+Among the human readable things, some interesting findings:
+
+1. `printfile.c`: the current `setuid` is an executable of C source code.
+
+2. 
