@@ -1,8 +1,10 @@
 # networking
 
+## Profiles
+
+[Wechall](https://www.wechall.net/profile/ellessar): Global rank: 3415/22851 (Last update: July 16, 2020)
+
 ## Blogs:
-
-
 
 [TCP Reverse Shell](https://medium.com/@neelam.nimish/python-tcp-reverse-shell-compromising-a-kali-machine-using-a-mac-6449b8684836)
 
@@ -12,4 +14,6 @@
 
 ## OverTheWire challenge walkthrough
 
-[Bandit challenge](https://overthewire.org/wargames/bandit/); [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/bandit)
+[Bandit](https://overthewire.org/wargames/bandit/); [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/bandit)
+
+[Natas](https://overthewire.org/wargames/natas/); [Walkthrough]()
