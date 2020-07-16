@@ -1419,6 +1419,8 @@ Password: D0vlad33nQF0Hz2EP255TP5wSW9ZsRSE
 
 # Level 23
 
+## PHP strstr vulnerability
+
 URL: http://natas23.natas.labs.overthewire.org
 
 ```php
@@ -1452,6 +1454,8 @@ def exploit():
 Password: OsRmXFguozKpTZZ5X14zNO43379LZveg
 
 # Level 24
+
+## PHP strcmp vulnerability
 
 URL: http://natas24.natas.labs.overthewire.org
 
