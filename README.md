@@ -16,4 +16,4 @@
 
 [Bandit](https://overthewire.org/wargames/bandit/); [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/bandit)
 
-[Natas](https://overthewire.org/wargames/natas/); [Walkthrough]()
+[Natas](https://overthewire.org/wargames/natas/); [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/natas)
