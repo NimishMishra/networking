@@ -1574,3 +1574,5 @@ Password: oGgWAJ7zcGT28vYazGo4rkhOPDhBu34T
 # Level 26
 
 URL: http://natas26.natas.labs.overthewire.org
+
+Let's go...
