@@ -71,6 +71,10 @@ Opening: `msfconsole`
 
 Access: `/usr/share/metasploit-framework/modules`
 
+### Staged and unstaged payloads
+
+Whether the exploit delivers the payload at once or in stages. Forward slashes in the payload implies staged payload.
+
 ### SMB enumeration
 
 1. `search smb_version` gives an auxiliary smb scanner (`auxiliary/scanner/smb/smb_version`).
@@ -83,7 +87,17 @@ Access: `/usr/share/metasploit-framework/modules`
 
 5. Search for other exploits on some database, like `exploit/windows/smb/ms08_067_netapi` and use it like `use exploit/windows/smb/ms08_067_netapi` from within the auxiliary scanner already set up.
 
-6. 
+6. [MS17-010](https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010): a very critical SMB vulnerability. And [EternalBlue](https://research.checkpoint.com/2017/eternalblue-everything-know/) exploit.
+
+#### Searching for Eternal Blue
+
+This might be crash the machine, so heads up.
+
+1. `msfconsole`
+
+2. `search ms17-010`
+
+3. `use auxiliary/scanner/smb/smb_ms17_010`
 
 # Meterpreter
 

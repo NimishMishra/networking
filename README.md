@@ -2,7 +2,7 @@
 
 ## Profiles
 
-[Wechall](https://www.wechall.net/profile/ellessar): Global rank: 3415 / 22851 (Last update: July 16, 2020)
+[Wechall](https://www.wechall.net/profile/ellessar): Global rank: 3379 / 22851 (Last update: July 18, 2020)
 
 ## Blogs:
 
@@ -12,8 +12,10 @@
 
 [ARP Poison](https://medium.com/@neelam.nimish/sniffing-a-system-from-outside-a-network-tcp-reverse-shell-arp-poisoning-using-scapy-77a57b545cf6)
 
-## OverTheWire challenge walkthrough
+[HTTP based python trojan for remote code execution](https://medium.com/bugbountywriteup/python-http-based-trojan-for-remote-system-forensics-and-privilege-transfer-ae128891b4de?source=activity---post_recommended_rollup)
 
-[Bandit](https://overthewire.org/wargames/bandit/); [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/bandit)
+## OverTheWire walkthroughs
 
-[Natas](https://overthewire.org/wargames/natas/); [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/natas)
+[Bandit](https://overthewire.org/wargames/bandit/) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/bandit)
+
+[Natas](https://overthewire.org/wargames/natas/) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/natas)
