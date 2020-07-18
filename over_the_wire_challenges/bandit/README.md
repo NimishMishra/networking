@@ -180,6 +180,8 @@ The idea was to login as another user from the connection itself. Thus from band
 
 -i provides access to the private RSA key used to authenticate the connection
 
+Then run `cat /etc/bandit_pass/bandit14`.
+
 Password: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
 
 # Level 14
