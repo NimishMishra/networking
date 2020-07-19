@@ -71,6 +71,8 @@ Opening: `msfconsole`
 
 Access: `/usr/share/metasploit-framework/modules`
 
+HTTP scanners: [link](https://www.offensive-security.com/metasploit-unleashed/scanner-http-auxiliary-modules/)
+
 ### Staged and unstaged payloads
 
 Whether the exploit delivers the payload at once or in stages. Forward slashes in the payload implies staged payload.
