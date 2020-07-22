@@ -288,7 +288,7 @@ Password: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
 
 I had almost figured out the method. It was working fine, except I kept targeting a wrong port. I ran a nmap, and targeted an open port. Had I run nc first, it would have open another port of my choosing. Hence the idea is to run nc first, then ./suconnect.
 
-`nc localhost 40000` doesn't run (that's the client code). Use `nc -l localhost -p 40000` to open up the port.
+`nc localhost 40000` doesn't run (that's the client code). Use `nc -l -p 40000` [Fundamental nc listener](https://www.sans.org/security-resources/sec560/netcat_cheat_sheet_v1.pdf) to open up the port.
 
 Connect using `./suconnect 40000` (use another login or set up the first command in the background using &)
 
