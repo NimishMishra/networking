@@ -429,7 +429,7 @@ Password: 5b90576bedb2cc04c86a9e924ce42faf
 
 `ssh bandit30@bandit.labs.overthewire.org -p 2220`
 
-This time the password was hidden in a git tag. A simple `git show secret` did the trick
+This time the password was hidden in a git tag (`git tag`). A simple `git show secret` did the trick
 
 Password: 47e603bb428404d265f59c42920d81e5
 
