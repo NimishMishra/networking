@@ -2,7 +2,7 @@
 
 ## Profiles
 
-[Wechall](https://www.wechall.net/profile/ellessar): Global rank: 3243 / 22851 (Last update: July 27, 2020)
+[Wechall](https://www.wechall.net/profile/ellessar): Global rank: 3211 / 22851 (Last update: July 28, 2020)
 
 ## Blogs:
 
