@@ -1739,3 +1739,10 @@ Things to consider:
 4. I tried and saw permission denied in `./`. So the only position to log is `./img/log.php`
 
 Password: 55TBjpPZUUJgVP5b3BnbG6ON9uDPVzCJ
+
+# Level 27
+
+## 
+
+URL: http://natas27.natas.labs.overthewire.org
+
