@@ -399,6 +399,8 @@ Found a private RSA. Copied it into the system and make it private (`chmod 600`)
 
 This is an interesting level. It uses a different shell than bash. Going into the previous level shell and investigating /etc/passwd tells the shell being used. Opening the code for the shell points to a `more` command. Thus, resizing the terminal to force the `more` command is the trick.
 
+`./bandit27-do cat /etc/bandit_pass/bandit27`
+
 Password: 3ba3118a22e93127a4ed485be72ef5ea
 
 # Level 27
