@@ -114,3 +114,19 @@ Reverse shell
 3. hashdump: Dump the SAM table and thus the user passwords.
 
 4. shell
+
+# TMUX
+
+Default prefix: `Ctrl + B`. Press at the same time (or in quick succession), release, and then press one of the key bindings.
+
+1. % : pane split left and right
+
+2. " : split it into top and bottom
+
+3. arrow-keys: switching panes
+
+4. c : create a new window
+
+5. d : detach the current session
+
+6. , : renaming the current window

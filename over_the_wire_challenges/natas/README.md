@@ -1746,3 +1746,148 @@ Password: 55TBjpPZUUJgVP5b3BnbG6ON9uDPVzCJ
 
 URL: http://natas27.natas.labs.overthewire.org
 
+Here's some information about the database we are targeting:
+
+```s
+// database gets cleared every 5 min 
+
+/*
+CREATE TABLE `users` (
+  `username` varchar(64) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL
+); 
+```
+
+The main stuff is as follows:
+
+```s
+if(array_key_exists("username", $_REQUEST) and array_key_exists("password", $_REQUEST)) {
+    $link = mysql_connect('localhost', 'natas27', '<censored>');
+    mysql_select_db('natas27', $link);
+   
+
+    if(validUser($link,$_REQUEST["username"])) {
+        //user exists, check creds
+        if(checkCredentials($link,$_REQUEST["username"],$_REQUEST["password"])){
+            echo "Welcome " . htmlentities($_REQUEST["username"]) . "!<br>";
+            echo "Here is your data:<br>";
+            $data=dumpData($link,$_REQUEST["username"]);
+            print htmlentities($data);
+        }
+        else{
+            echo "Wrong password for user: " . htmlentities($_REQUEST["username"]) . "<br>";
+        }        
+    } 
+    else {
+        //user doesn't exist
+        if(createUser($link,$_REQUEST["username"],$_REQUEST["password"])){ 
+            echo "User " . htmlentities($_REQUEST["username"]) . " was created!";
+        }
+    }
+
+    mysql_close($link);
+}
+```
+
+Notice the following workflow:
+
+1. If a POST has both the username and password, `mysql_connect` gets called. This extension was deprecated in PHP 5.5.0, and it was removed in PHP 7.0.0; so the server relies on quite an old version of PHP. The stuff `mysql_connect('localhost', 'natas27', '<censored>')` has the first parameter to be the server of the database (localhost), while the next two parameters are the `username` and `password`. It returns a `link identifier on success` and `FALSE` on failure.
+
+2. `mysql_select_db('natas27', $link)` was also extension was deprecated in PHP 5.5.0, and it was removed in PHP 7.0.0. Selects the current active database. Every subsequent call to `mysql_query()` will be made on the active database. So `natas27` is the database selected on the localhost. Returns a simple `TRUE` or `FALSE`.
+
+3. Now it checks `validUser($link,$_REQUEST["username"])` happens which is a user-defined function. If the user exists, checks the creds in `checkCredentials($link,$_REQUEST["username"],$_REQUEST["password"]))`. If first passes, on to step 4. If the first check fails, on to step 5.
+
+4. Displays password or wrong password message is second check fails.
+
+5. Create the user.
+
+Now on to the first check function.
+
+```s
+function validUser($link,$usr){
+    
+    $user=mysql_real_escape_string($usr);
+    
+    $query = "SELECT * from users where username='$user'";
+    $res = mysql_query($query, $link);
+    if($res) {
+        if(mysql_num_rows($res) > 0) {
+            return True;
+        }
+    }
+    return False;
+} 
+```
+
+1. `mysql_real_escape_string($usr)`. This extension was deprecated in PHP 5.5.0, and it was removed in PHP 7.0.0. Escapes special characters in the unescaped_string, taking into account the current character set of the connection. The default character set must be carefully set for this.
+
+2. The escaped string is made into a query.
+
+3. `mysql_query()` makes the query and returns the number of rows. If at least 1 row is returned, the user exists and thus return true. Else return false.
+
+Now on to the checking of the credentials:
+
+```s
+function checkCredentials($link,$usr,$pass){
+ 
+    $user=mysql_real_escape_string($usr);
+    $password=mysql_real_escape_string($pass);
+    
+    $query = "SELECT username from users where username='$user' and password='$password' ";
+    $res = mysql_query($query, $link);
+    if(mysql_num_rows($res) > 0){
+        return True;
+    }
+    return False;
+} 
+```
+
+Same stuff as before. Now is the function for dumping the data:
+
+```s
+function dumpData($link,$usr){
+    
+    $user=mysql_real_escape_string($usr);
+    
+    $query = "SELECT * from users where username='$user'";
+    $res = mysql_query($query, $link);
+    if($res) {
+        if(mysql_num_rows($res) > 0) {
+            while ($row = mysql_fetch_assoc($res)) {
+                // thanks to Gobo for reporting this bug!  
+                //return print_r($row);
+                return print_r($row,true);
+            }
+        }
+    }
+    return False;
+} 
+```
+
+1. An interesting line is `thanks to Gobo for reporting this bug!`. The thing is that `print_r($row)` prints the stuff while `print_r($row,true)` returns the stuff.
+
+
+Finally, moving on to `createUser()`.
+
+```s
+function createUser($link, $usr, $pass){
+
+    $user=mysql_real_escape_string($usr);
+    $password=mysql_real_escape_string($pass);
+    
+    $query = "INSERT INTO users (username,password) values ('$user','$password')";
+    $res = mysql_query($query, $link);
+    if(mysql_affected_rows() > 0){
+        return True;
+    }
+    return False;
+} 
+```
+
+Nothing cool here as of now. Anyway, some `htmlentities()` related stuff:
+
+1. [Buffer overflow](https://seclists.org/fulldisclosure/2006/Nov/34)
+
+2. [UTF-7 based JS code injection](http://origin.shiflett.org/blog/2005/google-xss-example)
+
+3. [httpentities bypass](http://hackwithalpha.blogspot.com/2015/01/how-can-we-bypass-htmlentities-tutorial.html)
