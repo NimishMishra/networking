@@ -1891,3 +1891,12 @@ Nothing cool here as of now. Anyway, some `htmlentities()` related stuff:
 2. [UTF-7 based JS code injection](http://origin.shiflett.org/blog/2005/google-xss-example)
 
 3. [httpentities bypass](http://hackwithalpha.blogspot.com/2015/01/how-can-we-bypass-htmlentities-tutorial.html)
+
+At the end, there are a couple of things to consider in SQL queries:
+
+1. To the `dumpData` function, `natas28` and `natas28    ` are same.
+
+2. You can create a user `natas28` by `natas28 `.
+
+
+Password: JWwR438wkgTsNKBbcJoowyysdM82YjeF
