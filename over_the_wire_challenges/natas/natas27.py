@@ -50,7 +50,6 @@ def exploit():
     sess = requests.Session()
     auth_username = "natas27"
     auth_password = "55TBjpPZUUJgVP5b3BnbG6ON9uDPVzCJ"
-    headers = {'Content-Type':'text/html;charset=utf-7'}
     response = sess.get("http://natas27.natas.labs.overthewire.org/", auth=HTTPBasicAuth(auth_username, auth_password))
     # dissect_response(response)
     

@@ -49,4 +49,6 @@ Among the human readable things, some interesting findings:
 
 1. `printfile.c`: the current `setuid` is an executable of C source code.
 
-2. 
+Since the `printfile` is from leviathan 3, creating a filename of the form `file.txt;bash -p` and running the `printfile` does the trick to elevate the permissions.
+
+Password: Ahdiemoo1j
