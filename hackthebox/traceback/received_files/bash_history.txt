@@ -1,0 +1,59 @@
+ls -la
+sudo -l
+nano privesc.lua
+sudo -u sysadmin /home/sysadmin/luvit privesc.lua 
+rm privesc.lua
+logout
+su root
+perl —e 'exec "/bin/bash";'
+perl -e 'exec "/bin/bash";'
+exit
+ls
+ls -lah
+cat .luvit_history 
+cat .bash_history 
+cd ..
+cd -
+ls
+cd sysadmin/
+/home/sysadmin/luvit
+find / -perm -4000
+find / -perm -4000 2>/dev/null
+ls /tmp
+ls
+cd webadmin/
+ls
+ls -la
+cat privesc.lua 
+w
+cat .bash_history 
+sudo -u sysadmin /home/sysadmin/luvit privesc.lua
+sudo -u sysadmin
+sudo -u sysadmin ls
+sudo -u sysadmin /home/sysadmin/luvit
+ls
+cd .ssh
+ls
+cat authorized_keys 
+exit
+ls
+cd ..
+ls
+cd home/
+ls
+cd sysadmin/
+ls
+cd ..
+ls
+cd mnt/
+ls
+cd ..
+ls
+cd ..
+exit
+ls
+cat note.txt
+sudo -l
+sudo -u sysadmin /home/sysadmin/luvit
+cd ..
+exit
