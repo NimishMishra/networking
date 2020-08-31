@@ -1742,7 +1742,7 @@ Password: 55TBjpPZUUJgVP5b3BnbG6ON9uDPVzCJ
 
 # Level 27
 
-## 
+## SQL problems
 
 URL: http://natas27.natas.labs.overthewire.org
 
@@ -1900,3 +1900,9 @@ At the end, there are a couple of things to consider in SQL queries:
 
 
 Password: JWwR438wkgTsNKBbcJoowyysdM82YjeF
+
+# Level 28
+
+URL: http://natas28.natas.labs.overthewire.org
+
+We have no source, just a simple search bar that takes in a string and outputs a joke. The main idea is to output all jokes that contain the string inputted. Two things: `search.php` gives a simple `mep`. And directly giving something to `search.php?query=` gives a `Incorrect amount of PKCS#7 padding for blocksize`
