@@ -19,3 +19,7 @@
 [Bandit](https://overthewire.org/wargames/bandit/) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/bandit)
 
 [Natas](https://overthewire.org/wargames/natas/) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/over_the_wire_challenges/natas)
+
+## HackTheBox walkthroughs
+
+[Traceback](https://www.hackthebox.eu/home/machines/profile/233)   -   [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/traceback)
