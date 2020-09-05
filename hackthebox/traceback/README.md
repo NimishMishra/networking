@@ -106,7 +106,7 @@ Upgrade the shell using `python3 -c 'import pty;pty.spawn("/bin/bash")'`
 
 Go to the `user.txt` in `home` to get the user flag.
 
-# Privelege escalation to root
+# Privilege escalation to root
 
 Further searching reveals `OpenSSH RSA public key` file in `.ssh` directory within `sysadmin` in `home`. Then tried to add a known host to those files for a passwordless login:
 
