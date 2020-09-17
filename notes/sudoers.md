@@ -43,3 +43,9 @@ Controls which environment variables can be inherited by the command.
     - Specs: like `admins` can run what commands
 
 - In case overlapping entries, the last entry for the user is used.
+
+## Tags
+
+- `SETENV` and `NOSETENV`: These tags override the value of the setenv option on a per-command basis. 
+
+-
