@@ -1,0 +1,27 @@
+# Nmap 7.80 scan initiated Sun Aug 16 20:35:00 2020 as: nmap -sV -sC -T4 -v -oA fullscan 10.10.10.187
+Nmap scan report for 10.10.10.187
+Host is up (0.27s latency).
+Not shown: 993 closed ports
+PORT     STATE    SERVICE        VERSION
+21/tcp   open     ftp            vsftpd 3.0.3
+22/tcp   open     ssh            OpenSSH 7.4p1 Debian 10+deb9u7 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 4a:71:e9:21:63:69:9d:cb:dd:84:02:1a:23:97:e1:b9 (RSA)
+|   256 c5:95:b6:21:4d:46:a4:25:55:7a:87:3e:19:a8:e7:02 (ECDSA)
+|_  256 d0:2d:dd:d0:5c:42:f8:7b:31:5a:be:57:c4:a9:a7:56 (ED25519)
+80/tcp   open     http           Apache httpd 2.4.25 ((Debian))
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+| http-robots.txt: 1 disallowed entry 
+|_/admin-dir
+|_http-server-header: Apache/2.4.25 (Debian)
+|_http-title: Admirer
+1078/tcp filtered avocent-proxy
+1233/tcp filtered univ-appserver
+4111/tcp filtered xgrid
+9917/tcp filtered unknown
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Aug 16 20:35:54 2020 -- 1 IP address (1 host up) scanned in 54.32 seconds

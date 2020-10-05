@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.80 scan initiated Sun Aug 16 20:37:30 2020 as: nmap -sV -sC -T4 -v -oA fullscan2 -p- 10.10.10.187 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -T4 -v -oA fullscan2 -p- 10.10.10.187" start="1597590450" startstr="Sun Aug 16 20:37:30 2020" version="7.80" xmloutputversion="1.04">
+<scaninfo type="connect" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="1"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1597590451"/>
+<taskend task="NSE" time="1597590451"/>
+<taskbegin task="NSE" time="1597590451"/>
+<taskend task="NSE" time="1597590451"/>
+<taskbegin task="NSE" time="1597590451"/>
+<taskend task="NSE" time="1597590451"/>
+<taskbegin task="Ping Scan" time="1597590451"/>
+<taskend task="Ping Scan" time="1597590451" extrainfo="1 total hosts"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1597590451"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1597590451"/>
+<taskbegin task="Connect Scan" time="1597590451"/>
+<taskprogress task="Connect Scan" time="1597590482" percent="1.54" remaining="1980" etc="1597592462"/>
+<taskprogress task="Connect Scan" time="1597590512" percent="2.23" remaining="2674" etc="1597593186"/>
+<taskprogress task="Connect Scan" time="1597590542" percent="2.61" remaining="3396" etc="1597593938"/>
+<taskprogress task="Connect Scan" time="1597590572" percent="4.13" remaining="2808" etc="1597593379"/>
+<taskprogress task="Connect Scan" time="1597590608" percent="4.99" remaining="2989" etc="1597593597"/>
+<taskprogress task="Connect Scan" time="1597590662" percent="6.96" remaining="2820" etc="1597593482"/>
+<taskprogress task="Connect Scan" time="1597590692" percent="8.40" remaining="2627" etc="1597593318"/>
+<taskprogress task="Connect Scan" time="1597590815" percent="12.82" remaining="2476" etc="1597593290"/>
+<taskprogress task="Connect Scan" time="1597590941" percent="17.46" remaining="2316" etc="1597593257"/>
+<taskprogress task="Connect Scan" time="1597590983" percent="19.77" remaining="2160" etc="1597593142"/>
+<taskprogress task="Connect Scan" time="1597591052" percent="22.99" remaining="2013" etc="1597593065"/>
+<taskprogress task="Connect Scan" time="1597591106" percent="25.86" remaining="1879" etc="1597592984"/>
+<taskprogress task="Connect Scan" time="1597591280" percent="32.26" remaining="1741" etc="1597593021"/>
+<taskprogress task="Connect Scan" time="1597591325" percent="35.22" remaining="1608" etc="1597592932"/>
+<taskprogress task="Connect Scan" time="1597591382" percent="38.59" remaining="1482" etc="1597592864"/>
+<taskprogress task="Connect Scan" time="1597591457" percent="42.55" remaining="1359" etc="1597592815"/>
+<taskprogress task="Connect Scan" time="1597591538" percent="46.74" remaining="1239" etc="1597592777"/>
+<taskprogress task="Connect Scan" time="1597591607" percent="50.83" remaining="1119" etc="1597592725"/>
+<taskprogress task="Connect Scan" time="1597591676" percent="55.06" remaining="1000" etc="1597592676"/>
+<taskprogress task="Connect Scan" time="1597591769" percent="59.84" remaining="885" etc="1597592653"/>
+<taskprogress task="Connect Scan" time="1597592066" percent="67.67" remaining="772" etc="1597592838"/>
+<taskprogress task="Connect Scan" time="1597592165" percent="72.53" remaining="650" etc="1597592814"/>
+<taskprogress task="Connect Scan" time="1597592324" percent="78.14" remaining="524" etc="1597592848"/>
+<taskprogress task="Connect Scan" time="1597592468" percent="83.32" remaining="404" etc="1597592872"/>
+<taskprogress task="Connect Scan" time="1597592561" percent="88.22" remaining="282" etc="1597592843"/>
+<taskprogress task="Connect Scan" time="1597592678" percent="93.27" remaining="161" etc="1597592839"/>
+<taskprogress task="Connect Scan" time="1597592765" percent="98.33" remaining="40" etc="1597592804"/>
+<taskend task="Connect Scan" time="1597592872" extrainfo="65535 total ports"/>
+<taskbegin task="Service scan" time="1597592872"/>
+<taskend task="Service scan" time="1597592879" extrainfo="3 services on 1 host"/>
+<taskbegin task="NSE" time="1597592879"/>
+<taskend task="NSE" time="1597592889"/>
+<taskbegin task="NSE" time="1597592889"/>
+<taskend task="NSE" time="1597592892"/>
+<taskbegin task="NSE" time="1597592892"/>
+<taskend task="NSE" time="1597592892"/>
+<host starttime="1597590451" endtime="1597592892"><status state="up" reason="conn-refused" reason_ttl="0"/>
+<address addr="10.10.10.187" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="65177">
+<extrareasons reason="conn-refused" count="65177"/>
+</extraports>
+<extraports state="filtered" count="355">
+<extrareasons reason="no-responses" count="355"/>
+</extraports>
+<port protocol="tcp" portid="21"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ftp" product="vsftpd" version="3.0.3" ostype="Unix" method="probed" conf="10"><cpe>cpe:/a:vsftpd:vsftpd:3.0.3</cpe></service></port>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ssh" product="OpenSSH" version="7.4p1 Debian 10+deb9u7" extrainfo="protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:7.4p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssh-hostkey" output="&#xa;  2048 4a:71:e9:21:63:69:9d:cb:dd:84:02:1a:23:97:e1:b9 (RSA)&#xa;  256 c5:95:b6:21:4d:46:a4:25:55:7a:87:3e:19:a8:e7:02 (ECDSA)&#xa;  256 d0:2d:dd:d0:5c:42:f8:7b:31:5a:be:57:c4:a9:a7:56 (ED25519)"><table>
+<elem key="fingerprint">4a71e92163699dcbdd84021a2397e1b9</elem>
+<elem key="key">AAAAB3NzaC1yc2EAAAADAQABAAABAQDaQHjxkc8zeXPgI5C7066uFJaB6EjvTGDEwbfl0cwM95npP9G8icv1F/YQgKxqqcGzl+pVaAybRnQxiZkrZHbnJlMzUzNTxxI5cy+7W0dRZN4VH4YjkXFrZRw6dx/5L1wP4qLtdQ0tLHmgzwJZO+111mrAGXMt0G+SCnQ30U7vp95EtIC0gbiGDx0dDVgMeg43+LkzWG+Nj+mQ5KCQBjDLFaZXwCp5Pqfrpf3AmERjoFHIE8Df4QO3lKT9Ov1HWcnfFuqSH/pl5+m83ecQGS1uxAaokNfn9Nkg12dZP1JSk+Tt28VrpOZDKhVvAQhXWONMTyuRJmVg/hnrSfxTwbM9</elem>
+<elem key="bits">2048</elem>
+<elem key="type">ssh-rsa</elem>
+</table>
+<table>
+<elem key="fingerprint">c595b6214d46a425557a873e19a8e702</elem>
+<elem key="key">AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNHgxoAB6NHTQnBo+/MqdfMsEet9jVzP94okTOAWWMpWkWkT+X4EEWRzlxZKwb/dnt99LS8WNZkR0P9HQxMcIII=</elem>
+<elem key="bits">256</elem>
+<elem key="type">ecdsa-sha2-nistp256</elem>
+</table>
+<table>
+<elem key="fingerprint">d02dddd05c42f87b315abe57c4a9a756</elem>
+<elem key="key">AAAAC3NzaC1lZDI1NTE5AAAAIBqp21lADoWZ+184z0m9zCpORbmmngq+h498H9JVf7kP</elem>
+<elem key="bits">256</elem>
+<elem key="type">ssh-ed25519</elem>
+</table>
+</script></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="http" product="Apache httpd" version="2.4.25" extrainfo="(Debian)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.25</cpe></service><script id="http-methods" output="&#xa;  Supported Methods: GET HEAD POST OPTIONS"><table key="Supported Methods">
+<elem>GET</elem>
+<elem>HEAD</elem>
+<elem>POST</elem>
+<elem>OPTIONS</elem>
+</table>
+</script><script id="http-robots.txt" output="1 disallowed entry &#xa;/admin-dir"/><script id="http-server-header" output="Apache/2.4.25 (Debian)"><elem>Apache/2.4.25 (Debian)</elem>
+</script><script id="http-title" output="Admirer"><elem key="title">Admirer</elem>
+</script></port>
+</ports>
+<times srtt="325243" rttvar="42176" to="493947"/>
+</host>
+<taskbegin task="NSE" time="1597592892"/>
+<taskend task="NSE" time="1597592892"/>
+<taskbegin task="NSE" time="1597592892"/>
+<taskend task="NSE" time="1597592892"/>
+<taskbegin task="NSE" time="1597592892"/>
+<taskend task="NSE" time="1597592892"/>
+<runstats><finished time="1597592892" timestr="Sun Aug 16 21:18:12 2020" elapsed="2442.41" summary="Nmap done at Sun Aug 16 21:18:12 2020; 1 IP address (1 host up) scanned in 2442.41 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

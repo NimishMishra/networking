@@ -1,0 +1,5 @@
+# Nmap 7.80 scan initiated Sun Aug 16 20:37:30 2020 as: nmap -sV -sC -T4 -v -oA fullscan2 -p- 10.10.10.187
+# Ports scanned: TCP(65535;1-65535) UDP(0;) SCTP(0;) PROTOCOLS(0;)
+Host: 10.10.10.187 ()	Status: Up
+Host: 10.10.10.187 ()	Ports: 21/open/tcp//ftp//vsftpd 3.0.3/, 22/open/tcp//ssh//OpenSSH 7.4p1 Debian 10+deb9u7 (protocol 2.0)/, 80/open/tcp//http//Apache httpd 2.4.25 ((Debian))/
+# Nmap done at Sun Aug 16 21:18:12 2020 -- 1 IP address (1 host up) scanned in 2442.41 seconds
