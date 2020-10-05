@@ -23,3 +23,5 @@
 ## HackTheBox walkthroughs
 
 [Traceback](https://www.hackthebox.eu/home/machines/profile/233)   -   [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/traceback)
+
+[Admirer](https://www.hackthebox.eu/home/machines/profile/248) -   [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/admirer)
