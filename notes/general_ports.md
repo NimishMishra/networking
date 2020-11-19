@@ -8,6 +8,16 @@
 
 # Information about general ports.
 
+# Port 25
+
+- SMTP (Simple Mail Transfer Protocol) is for **sending** emails.
+
+- Useful commands:
+
+```s
+smtp-user-enum -p 25 -t 10.10.10.197 -U emails -M VRFY
+```
+
 # Port 110
 
 - POP3
