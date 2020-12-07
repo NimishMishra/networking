@@ -6,6 +6,8 @@
 
 - Progress is not moving forward on the problem. It is learning more. If you are learning ways that don't work, you are progressing and don't qualify to ask/look for hints. 
 
+- Applications break on bad inputs, not on good ones. Developers forget to consider bad inputs or edge test cases, they are your go-to.
+
 ## Profiles
 
 [Wechall](https://www.wechall.net/profile/ellessar): Global rank: 3078 / 22851 (Last update: Sept 17, 2020)
@@ -31,3 +33,5 @@
 [Traceback](https://www.hackthebox.eu/home/machines/profile/233)   -   [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/traceback)
 
 [Admirer](https://www.hackthebox.eu/home/machines/profile/248) -   [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/admirer)
+
+[Blunder]
