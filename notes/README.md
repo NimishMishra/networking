@@ -4,6 +4,8 @@
 
 2. Tools
 
+    - Jackson deserialization vulnerability
+
 3. General attack vectors
     
     - JSON based attacks
