@@ -2,7 +2,7 @@
 
 ## The Code
 
-- Try Harder
+- Try Harder 
 
 - Progress is not moving forward on the problem. It is learning more. If you are learning ways that don't work, you are progressing and don't qualify to ask/look for hints. 
 
