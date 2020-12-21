@@ -2,9 +2,13 @@
 
 1. General port information
 
-2. Tools
+2. General ideas
 
-    - Jackson deserialization vulnerability
+    - `cewl`
+
+    - Jackson deserialization vulnerability (HTB Time)
+    
+    - Snap (HTB Time)
 
 3. General attack vectors
     
