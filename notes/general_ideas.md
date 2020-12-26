@@ -10,6 +10,8 @@
 
 - **snapd** based privilege escalation (**dirty-sock**)
 
+- Linux privilege escalation: [linpeas.sh](https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh)
+
 ## Mountpoint
 
 Mount point is a directory in the filesystem where additional information is logically connected to a storage location outside the OS's root drive. To mount, in this context, is to make a group of files in a file system structure accessible to a user or user group.
