@@ -57,6 +57,10 @@ In short, this allows you to host an infected payload somewhere, and call a Java
 
 - JSON starting with **[** is JSON array.
 
+## Drupal
+
+Drupal is a CMS (a content management system), particularly a web content management system. Something related to Drupal came up in HTB Ready. Recheck that box for more details.
+
 ## Snap
 
 Snap is a linux based package manager. First encountered in HTB Time. Some thoughts about snap and whether it is open to exploitation.
