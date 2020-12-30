@@ -4,15 +4,17 @@
 
 2. General ideas
 
-    - `cewl`
+	- `cewl`
 
-    - Jackson deserialization vulnerability (HTB Time)
+	- Jackson deserialization vulnerability (HTB Time)
     
-    - Snap (HTB Time)
+	- Snap (HTB Time)
+	
+	- GitLab runners and CI/CD
 
 3. General attack vectors
     
-    - JSON based attacks
+	- JSON based attacks
 
 3. Regarding PortSwigger's Web Security Academy.
 
