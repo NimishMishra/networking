@@ -91,3 +91,10 @@ The snap directory in `/` contains mountpoints for snaps. By the meaning of moun
 
 Snap has a certain vulnerability [dirty-sock](https://0xdf.gitlab.io/2019/02/13/playing-with-dirty-sock.html). Any version above 2.37.1 is patched and beyond us.
 
+## GitLab
+
+- GitLab comes with an interesting CI/CD (continous integration/continuous deployment) that allows one to run tests, checks for things, and do other stuff.
+
+- In `.gitlab-ci.yml`, one can have shell scripts. Upon running the pipeline, the script is run by a `runner` (which can be a local VM or a hosted environment). The idea is that if somehow a runner is configured on the machine to compromise and the pipeline is executed, the commands should run on the given machine and you should be able to get a connection to a remote computer. (?)
+
+- Another exploit for GitLab runners given [here](https://frichetten.com/blog/abusing-gitlab-runners/). Given only the runner token (which is used to register the runner with GitLab), upon pushing to a repo which is configured for the runner, the runner will POST to `/api/v4/jobs/request` and will receive a JSON with information it requires to run the job. The attack is to set up a separate runner to steal the job (pipeline checks when code is pushed) and get the data. A normal runner queries things once every 3 minutes, but we could do it endlessly, thereby almost ensuring we always get the job. Our imposter runner will spit out much data this way. 
