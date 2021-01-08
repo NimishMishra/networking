@@ -21,3 +21,5 @@
 Solved labs:
 
 4. Linux privilege escalation and the sudoers file
+
+5. General notes on bounty hunting
