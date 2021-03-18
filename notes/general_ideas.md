@@ -1,6 +1,6 @@
 # General Ideas
 
-# Privesc
+## Privesc
 
 - **cron** joins repeat regularly. Can you fit something there?
 
@@ -11,6 +11,16 @@
 - **snapd** based privilege escalation (**dirty-sock**)
 
 - Linux privilege escalation: [linpeas.sh](https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh)
+
+- Docker container escape. Read more on the Ready writeup.
+
+## cgroups
+
+- Very important concept in containerized technology wherein cgroups allocate resources — such as CPU time, system memory, network bandwidth, or combinations of these resources — among user-defined groups of tasks (processes) running on a system.
+
+- How they are helpful in containers? Because the core OS is just one and there are these isolated boxes running which have different resource allocation.
+
+- Linux process hierarchy is a tree rooted at the `init` process. cgroups hierachy consists of several trees because there are many resources: cpu, cpuset, devices etc.
 
 ## Mountpoint
 
@@ -98,3 +108,14 @@ Snap has a certain vulnerability [dirty-sock](https://0xdf.gitlab.io/2019/02/13/
 - In `.gitlab-ci.yml`, one can have shell scripts. Upon running the pipeline, the script is run by a `runner` (which can be a local VM or a hosted environment). The idea is that if somehow a runner is configured on the machine to compromise and the pipeline is executed, the commands should run on the given machine and you should be able to get a connection to a remote computer. (?)
 
 - Another exploit for GitLab runners given [here](https://frichetten.com/blog/abusing-gitlab-runners/). Given only the runner token (which is used to register the runner with GitLab), upon pushing to a repo which is configured for the runner, the runner will POST to `/api/v4/jobs/request` and will receive a JSON with information it requires to run the job. The attack is to set up a separate runner to steal the job (pipeline checks when code is pushed) and get the data. A normal runner queries things once every 3 minutes, but we could do it endlessly, thereby almost ensuring we always get the job. Our imposter runner will spit out much data this way. 
+
+## Docker escape
+
+- Read more at the Ready writeup.
+
+- Finding if you are within a container:
+
+	-- Run the `linpeas` script. It tells you.
+	-- Check the `cgroup` information of the `init` from `/proc/1/cgroup`. If it is not `/`, it's a container.
+
+- Find if the container is privileged by running a command that requires the docker container to have specified the `--privileged` flag. Like `ip link add dummy0 type dummy`
