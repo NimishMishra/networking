@@ -12,6 +12,10 @@
 	
 	- GitLab runners and CI/CD
 
+	- Docker escapes
+
+	- cgroups
+
 3. General attack vectors
     
 	- JSON based attacks

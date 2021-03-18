@@ -119,3 +119,11 @@ Snap has a certain vulnerability [dirty-sock](https://0xdf.gitlab.io/2019/02/13/
 	-- Check the `cgroup` information of the `init` from `/proc/1/cgroup`. If it is not `/`, it's a container.
 
 - Find if the container is privileged by running a command that requires the docker container to have specified the `--privileged` flag. Like `ip link add dummy0 type dummy`
+
+- Find the rest of the things here: `https://blog.trailofbits.com/2019/07/19/understanding-docker-container-escapes/`. The core problem is that when the cgroup ends, the cgroup executes the command given in its `release_agents` file in the cgroup's hierarchy's root directory.
+
+```
+When the last task in a cgroup leaves (by exiting or attaching to another cgroup), a command supplied in the release_agent file is executed. The intended use for this is to help prune abandoned cgroups. This command, when invoked, is run as a fully privileged root on the host.
+```
+
+The reason for this command running as root is very simple: it needs to prune the `cgroup` and end everything. So if this command is overridden in a dummy cgroup and destroy it, the command shall be executed as the root of the highest privilege in the hierarchy.
