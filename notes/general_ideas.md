@@ -127,3 +127,9 @@ When the last task in a cgroup leaves (by exiting or attaching to another cgroup
 ```
 
 The reason for this command running as root is very simple: it needs to prune the `cgroup` and end everything. So if this command is overridden in a dummy cgroup and destroy it, the command shall be executed as the root of the highest privilege in the hierarchy.
+
+- There are two things of interest: 
+
+	-- `notify_on_release` which as named notifies when the last task is done. A `1` must be written to this file.
+
+	-- `release_agent` which contains the command to be executed
