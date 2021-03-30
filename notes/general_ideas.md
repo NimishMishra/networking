@@ -122,7 +122,7 @@ Snap has a certain vulnerability [dirty-sock](https://0xdf.gitlab.io/2019/02/13/
 
 - Find the rest of the things here: `https://blog.trailofbits.com/2019/07/19/understanding-docker-container-escapes/`. The core problem is that when the cgroup ends, the cgroup executes the command given in its `release_agents` file in the cgroup's hierarchy's root directory.
 
-```
+```s
 When the last task in a cgroup leaves (by exiting or attaching to another cgroup), a command supplied in the release_agent file is executed. The intended use for this is to help prune abandoned cgroups. This command, when invoked, is run as a fully privileged root on the host.
 ```
 
@@ -133,3 +133,11 @@ The reason for this command running as root is very simple: it needs to prune th
 	-- `notify_on_release` which as named notifies when the last task is done. A `1` must be written to this file.
 
 	-- `release_agent` which contains the command to be executed
+
+## HTTP 418 Teapot
+
+- Came up in `Laboratory` writeup
+
+- The response code implies the server's response to the client's request implying that I am a teapot, find a coffee maker.
+
+- In the literal sense, this means I can't handle this request, find another server.
