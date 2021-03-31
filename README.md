@@ -42,4 +42,4 @@
 
 [Ready](https://www.hackthebox.eu/home/machines/profile/304) - [Walkthrough](https://www.hackthebox.eu/home/machines/profile/304) Rooted the box but will upload the walkthrough once the box retires
 
-[Laboratory](https://app.hackthebox.eu/machines/Laboratory) - [Walkthrough](https://app.hackthebox.eu/machines/Laboratory) - owned user. Box not retired yet.
+[Laboratory](https://app.hackthebox.eu/machines/Laboratory) - [Walkthrough](https://app.hackthebox.eu/machines/Laboratory) - owned root. Box not retired yet.
