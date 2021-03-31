@@ -12,7 +12,7 @@
 
 [Wechall](https://www.wechall.net/profile/ellessar): Global rank: 3091 / 22851 (Last update: Mar 18, 2021)
 
-[HackTheBox](https://www.hackthebox.eu/home/users/profile/362918): 753 (Last Update: 18 March, 2021)
+[HackTheBox](https://www.hackthebox.eu/home/users/profile/362918): 732 (Last Update: 31 March, 2021)
 
 ## Blogs:
 
@@ -41,3 +41,5 @@
 [Time](https://www.hackthebox.eu/home/machines/profile/286) - [Walkthrough](https://www.hackthebox.eu/home/machines/profile/286) Rooted the box but will upload the walkthrough once the box is retired.
 
 [Ready](https://www.hackthebox.eu/home/machines/profile/304) - [Walkthrough](https://www.hackthebox.eu/home/machines/profile/304) Rooted the box but will upload the walkthrough once the box retires
+
+[Laboratory](https://app.hackthebox.eu/machines/Laboratory) - [Walkthrough](https://app.hackthebox.eu/machines/Laboratory) - owned user. Box not retired yet.
