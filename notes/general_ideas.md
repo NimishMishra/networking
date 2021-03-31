@@ -14,6 +14,9 @@
 
 - Docker container escape. Read more on the Ready writeup.
 
+- Sometimes, linpeas will not find things. You must find them yourself.
+
+	-- On HTB Laboratory, find the SUID binaries through: `find / -user root -perm 400 -exec ls -ldb {} 2>/dev/null`. HTB Laboratory requires hijacking a file used inside the SUID binary. This can be found through `ltrace` (which tells you what the binary is doing). Quite often, people write the binaries without giving absolute paths. These can be hijacked. It is similar to python import hijacking. 
 ## cgroups
 
 - Very important concept in containerized technology wherein cgroups allocate resources — such as CPU time, system memory, network bandwidth, or combinations of these resources — among user-defined groups of tasks (processes) running on a system.
