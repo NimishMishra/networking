@@ -156,10 +156,11 @@ From ippsec's [Apocalyst](https://www.youtube.com/watch?v=TJVghYBByIA)
 
 - `wpscan`
 
-        -- `wpscan --url ... -e vp,tt,u,ap --log wpscan.txt` this also enumerates vulnerable plugins.
+        -- `wpscan --url ... -e vp,tt,u` this also enumerates vulnerable plugins.
         -- Bruteforce usernames and passwords
                 --- create a wordlist using cewl
 
 - To get code execution on the website, edit some files. Wordpress allows editing things. So in the ap>
 
 - `readme.html` exposes the wordpress version through its system requirements. `wpscan` also finds it.
+
