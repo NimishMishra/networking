@@ -164,3 +164,12 @@ From ippsec's [Apocalyst](https://www.youtube.com/watch?v=TJVghYBByIA)
 
 - `readme.html` exposes the wordpress version through its system requirements. `wpscan` also finds it.
 
+## PHP
+
+- [Used in Tenet HTB] The following snippet set $input to the first argument if it is not null, else it sets to the second string.
+
+```php
+$string = NULL;
+$input = $string ?? 's';
+```
+- [Used in Tenet HTB] `__destruct()` is called when there are no more references to a particular class. The way this vulnerability arises when used in conjunction with `unserialize` is that user input can be sent to match just the class needed in order to maybe write a new PHP file. 
