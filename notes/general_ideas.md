@@ -147,3 +147,19 @@ The reason for this command running as root is very simple: it needs to prune th
 - The response code implies the server's response to the client's request implying that I am a teapot, find a coffee maker.
 
 - In the literal sense, this means I can't handle this request, find another server.
+
+## Wordpress penetration testing
+
+From ippsec's [Apocalyst](https://www.youtube.com/watch?v=TJVghYBByIA)
+
+- The reason you shall not see themes is because wordpress uses absolute URLs to its stylesheets (like>
+
+- `wpscan`
+
+        -- `wpscan --url ... -e vp,tt,u,ap --log wpscan.txt` this also enumerates vulnerable plugins.
+        -- Bruteforce usernames and passwords
+                --- create a wordlist using cewl
+
+- To get code execution on the website, edit some files. Wordpress allows editing things. So in the ap>
+
+- `readme.html` exposes the wordpress version through its system requirements. `wpscan` also finds it.
