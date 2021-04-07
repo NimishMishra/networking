@@ -173,3 +173,24 @@ $string = NULL;
 $input = $string ?? 's';
 ```
 - [Used in Tenet HTB] `__destruct()` is called when there are no more references to a particular class. The way this vulnerability arises when used in conjunction with `unserialize` is that user input can be sent to match just the class needed in order to maybe write a new PHP file. 
+
+- Decent serializer can be found [here](https://serialize.onlinephpfunctions.com/)
+
+## Netcat
+
+- There are two versions of netcat. The most common one is one from `nmap.org` website. The other ones are also there that don't have the option `-e` for instance. Took me a look time to realise why Tenet HTB was not replying to my local listener.
+
+- A brilliant way to upgrade a simple shell to tab autocomplete shell.
+
+```sh
+get the shell
+python3 -c "import pty; pty.spawn('/bin/bash');"
+Now Crtl+z to push onto background
+stty raw -echo
+fg
+```
+## sudo
+
+- `sudo -l` lists the user's privileges or the commands the user can run.
+
+- `(ALL : ALL) NOPASSWD` means this stuff can be run without requiring a password.
