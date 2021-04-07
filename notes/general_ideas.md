@@ -17,6 +17,9 @@
 - Sometimes, linpeas will not find things. You must find them yourself.
 
 	-- On HTB Laboratory, find the SUID binaries through: `find / -user root -perm 400 -exec ls -ldb {} 2>/dev/null`. HTB Laboratory requires hijacking a file used inside the SUID binary. This can be found through `ltrace` (which tells you what the binary is doing). Quite often, people write the binaries without giving absolute paths. These can be hijacked. It is similar to python import hijacking. 
+
+- In some shell scripts, complete path would not be given. Like `cat .....` instead of `/bin/cat ...`. Here, the path can be hijacked through updating $PATH and creating a malicious payload through the name `cat` something in $PATH.
+
 ## cgroups
 
 - Very important concept in containerized technology wherein cgroups allocate resources — such as CPU time, system memory, network bandwidth, or combinations of these resources — among user-defined groups of tasks (processes) running on a system.
@@ -194,3 +197,15 @@ fg
 - `sudo -l` lists the user's privileges or the commands the user can run.
 
 - `(ALL : ALL) NOPASSWD` means this stuff can be run without requiring a password.
+
+## mktemp (HTB Tenet)
+
+- A special utility that creates a temporary file and returns its name.
+
+- Like `mktemp -u ssh-XXXXXXXX` gives a temprary file as `ssh-0DKS10dj`
+
+## umask (HTB Tenet)
+
+- A special utility to set the permissions mask for the file. 
+
+- `(umask 110; touch file)` will create a file `file` and give permissions `rw_` to each entity. So `110` got masked with permissions `111` and became the same permissions for all entities: root, user, and group.
