@@ -12,7 +12,7 @@
 
 [Wechall](https://www.wechall.net/profile/ellessar): Global rank: 3091 / 22851 (Last update: Mar 18, 2021)
 
-[HackTheBox](https://www.hackthebox.eu/home/users/profile/362918): 711 (Last Update: 31 March, 2021)
+[HackTheBox](https://www.hackthebox.eu/home/users/profile/362918): 711 (Last Update: April 7, 2021)
 
 ## Blogs:
 
