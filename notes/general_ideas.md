@@ -209,3 +209,45 @@ fg
 - A special utility to set the permissions mask for the file. 
 
 - `(umask 110; touch file)` will create a file `file` and give permissions `rw_` to each entity. So `110` got masked with permissions `111` and became the same permissions for all entities: root, user, and group.
+
+## TXT resource record (Easy Phish challenge, HTB)
+
+- provide the ability to associate arbitrary text with a host or other name
+
+## SPF TXT record (Easy Phish challenge, HTB)
+
+- Can be seen directly on `https://mxtoolbox.com/`
+
+- SPF or sender policy framework is an email authentication technique protecting against email spoofing attacks
+
+- Setting up an SPF record helps to prevent malicious persons from using your domain to send unauthorized (malicious) emails
+
+- SPF record lists all authorized hostnames / IP addresses that are permitted to send email on behalf of your domain.
+
+- `v=spf1` is the version number: sender policy framework version 1.
+
+- `all` comes in many flavours:
+
+	-- `-all` : servers that aren't listed in the SPF record are not authorized to send email 
+	-- `~all` :  If the email is received from a server that isn't listed, the email will be marked as a soft fail (emails will be accepted but marked).
+	-- `+all` : any server to send email from your domain.
+	-- `?all` : 
+
+- Presence of `a` and `mx` in SPF mean that all the A records and all the A records for the MX records are tested. If the client IP is found, the mechanism matches.
+
+- "v=spf1 mx -all" authorizes any IP that is also a MX for the sending domain.
+
+## DMARC (Easy Phish Challenge, HTB)
+
+- Can be seen directly on `https://mxtoolbox.com/`
+
+- `Domain Message Authentication Reporting and Conformance` involves reporting back regarding failed messages
+
+- The basic idea is if the email received fails the DMARC test, then there shall be a report somewhere. That is exactly what querying the DMARC records can tell someone.
+
+- `v=DMARC1` is the DMARC version
+
+- `v=DMARC1;p=none;` separated by semicolon, p defines the policy to undertake failed emails. Here, `p=none` could be `quarantine` or `reject`.
+
+
+
