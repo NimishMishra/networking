@@ -45,3 +45,7 @@
 [Laboratory](https://app.hackthebox.eu/machines/Laboratory) - [Walkthrough](https://app.hackthebox.eu/machines/Laboratory) - owned root. Box not retired yet.
 
 [Tenet](https://app.hackthebox.eu/machines/Tenet) - [Walkthrough](https://app.hackthebox.eu/machines/Tenet) Owned user. Working on root.
+
+## HackTheBox challenges
+
+[OSINT Easy Phish](https://app.hackthebox.eu/challenges/Easy-Phish) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)

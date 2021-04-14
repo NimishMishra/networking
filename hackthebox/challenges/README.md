@@ -44,3 +44,6 @@ dig TXT linuxincluded.com
 dig TXT dkim._domainkey.linuxincluded.com
 dig TXT _dmarc. linuxincluded.com
 ```
+### Money Flowz
+
+[Money Flowz](https://app.hackthebox.eu/challenges/Money-Flowz)
