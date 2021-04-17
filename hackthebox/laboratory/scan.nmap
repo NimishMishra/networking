@@ -1,0 +1,22 @@
+# Nmap 7.80 scan initiated Thu Dec 31 00:50:14 2020 as: nmap -sC -sV -oA scan 10.10.10.216
+Nmap scan report for 10.10.10.216
+Host is up (0.33s latency).
+Not shown: 997 filtered ports
+PORT    STATE SERVICE  VERSION
+22/tcp  open  ssh      OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+80/tcp  open  http     Apache httpd 2.4.41
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Did not follow redirect to https://laboratory.htb/
+443/tcp open  ssl/http Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: The Laboratory
+| ssl-cert: Subject: commonName=laboratory.htb
+| Subject Alternative Name: DNS:git.laboratory.htb
+| Not valid before: 2020-07-05T10:39:28
+|_Not valid after:  2024-03-03T10:39:28
+| tls-alpn: 
+|_  http/1.1
+Service Info: Host: laboratory.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Dec 31 00:51:13 2020 -- 1 IP address (1 host up) scanned in 59.08 seconds

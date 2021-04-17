@@ -1,0 +1,82 @@
+# Laboratory
+
+Machine IP:  10.10.10.216 
+
+## Initial enumeration 
+
+`nmap -sC -sV 10.10.10.216`
+```s
+Nmap 7.80 scan initiated 
+Thu Dec 31 00:50:14 2020 as: nmap -sC -sV -oA scan 10.10.10.216 
+Nmap scan report for 10.10.10.216 Host is up (0.33s latency). 
+Not shown: 997 filtered ports 
+PORT STATE SERVICE VERSION 
+22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0) 
+80/tcp open http Apache httpd 2.4.41
+ |_http-server-header: Apache/2.4.41 (Ubuntu)
+ |_http-title: Did not follow redirect to https://laboratory.htb/
+443/tcp open ssl/http Apache httpd 2.4.41 ((Ubuntu))
+ |_http-server-header: Apache/2.4.41 (Ubuntu)
+ |_http-title: The Laboratory
+ | ssl-cert: Subject: commonName=laboratory.htb
+ | Subject Alternative Name: DNS:git.laboratory.htb
+ | Not valid before: 2020-07-05T10:39:28
+ |_Not valid after: 2024-03-03T10:39:28
+ | tls-alpn:
+ |_ http/1.1
+Service Info:
+ Host: laboratory.htb;
+ OS: Linux;
+ CPE: cpe:/o:linux:linux_kernel 
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . 
+Nmap done at Thu Dec 31 00:51:13 2020 -- 1 IP address (1 host up) scanned in 59.08 seconds
+```
+
+The address resolution for `http://10.10.10.216:80/` will redirect to `https://laboratory.htb` (Notice the secure HTTP connection and port 443 open (which works for encrypted HTTP traffic)). Add this to `/etc/hosts`.
+
+## Port 80
+
+Redirects to port 443
+
+## Port 443
+
+- Has a single webpage. All links remain on the same webpage. Source of `index.html` points to two pages (commented code) `generic.html` and `element.html` but both are non-existent.
+
+- Has the directory `assets/` visible which seems strange. Normal folders (`/css`, `/js`, and `/fonts`). An interesting subdirectory is the `/sass` subdirectory. Contains `.scss` files which are like CSS but with better formatting.
+
+- Another open directory `images/`
+
+- Another forbidden directory 'server-status/'
+
+## Getting to the virtual host
+
+- There was nothing in the actual site, so there was something I was missing. And it was always before me. The nmap scan revealed `git.laboratory.htb` as the alternative DNS. Adding it to `/etc/hosts` and we arrive to the Gitlab Community Version.
+
+- The certificate to the site is self-signed.
+
+- You might see that any sample email domain is not taken in by the Register page. So I wondered the only domain correct was `@laboratory.htb` and it was right. After all the developers wanted only their people to get on-board.
+
+- The exploit for Ready does not work in here for some reason.
+
+- There is `robots.txt` available which is similar to the file found in Ready.
+
+- Two decent users come up: `https://git.laboratory.htb/dexter` and `https://git.laboratory.htb/seven`.
+
+- dexter has in his repo that old website. Nothing exciting there. But seven has raised an issue against the website:
+
+```
+Hi, I cloned this website and when I try to launch my server it gives a HTTP 418 response. How to fix please?
+```
+
+Two things come out of this: they cloned it and the response is HTTP 418. HTTP 418 is 'I'm a teapot' thing. This implies the server responds back it can't handle the request, but there may be other servers who can. This isn't very helpful to us in this case.
+
+## Finding an exploit
+
+- To find an exploit, need a version for the GitLab. After signing in, there's a help section which reveals the section `GitLab Community Edition 12.8.1`.
+
+- Arbitrary file read: `https://github.com/thewhiteh4t/cve-2020-10977`
+
+- RCE: `https://github.com/dotPY-hax/gitlab_RCE`
+
+- A report: `https://hackerone.com/reports/827052` (read `vakzz`'s report regarding the RCE using the same thing)
+2
