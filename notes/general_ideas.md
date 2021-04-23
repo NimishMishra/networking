@@ -249,5 +249,27 @@ fg
 
 - `v=DMARC1;p=none;` separated by semicolon, p defines the policy to undertake failed emails. Here, `p=none` could be `quarantine` or `reject`.
 
+## Jinja2 (Templated challenge, HTB)
 
+- [Jinja2](https://flask.palletsprojects.com/en/1.1.x/templating/) is a template engine for python's flask.
 
+- All template engines, using this one too, focuses on separating the logic of the application and the content to be displayed (a makeover from the old days when everything had to be inside the same file).
+
+- A better understanding of the thing can be found [here](https://code.tutsplus.com/tutorials/templating-with-jinja2-in-flask-essentials--cms-25571)
+
+## favicon.ico
+
+- Modern browsers will show an icon to the left of the URL. This known as the 'favicon.ico' and is typically fetched from website.com/favicon.ico. Your browser will automatically request it when browsing to different sites. If your browser receives a valid favicon.ico file, it will display this icon. If it fails, it will not display a special icon.
+
+## Server side template injection (Templated challenge, HTB)
+
+- SSTI information [here](https://portswigger.net/research/server-side-template-injection)
+
+- Jinja2 exploitation steps [here](https://medium.com/@nyomanpradipta120/ssti-in-flask-jinja2-20b068fdaeee)
+
+```s
+{{ config.items() }} <-- notice initial configuration
+{{ config.from_object('os') }} <-- add OS things to the configuration
+{{ config.items() }} <-- notice OS functions added now
+{{ ''.__class__.__mro__[1].__subclasses__()[414:] }} <-- Popen offset
+```
