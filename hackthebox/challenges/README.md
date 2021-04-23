@@ -1,5 +1,29 @@
 # Challenges
 
+## Web
+
+### Emdee five for life 
+
+[Emdee five for life](https://app.hackthebox.eu/challenges/Emdee-five-for-life)
+
+Can you encrypt fast enough? Surely we need scripting here. A very simply python script capturing the webpage input, hashing the thing, and posting it back will give the flag. 
+
+Flag: HTB{N1c3_ScrIpt1nG_B0i!}
+
+### Templated
+
+[Templated](https://app.hackthebox.eu/challenges/Templated)
+
+Can you exploit this simple mistake? 
+
+At first glance, one would think this supports a simple GET, so what's the big deal about this. After all, there are no apparent ways to send input to the server. The source code is simple two line HTML. However, if you look at `host/xyz`, you shall see the value displayed on the 404 page. A very simple misconfiguration, but deadly. Now on to craft a SSTI payload. SSTI can be confirmed through `http://..../{{3*3}}` and getting back a 9.
+
+```s
+{{ config.items() }}
+{{ config.from_object('os') }}
+{{"".__class__.__mro__[1].__subclasses__()[414].__init__.__globals__["__builtins__"]["__import__"]("os").popen("cat flag.txt").read()}}
+```
+
 ## OSINT
 
 The idea is to engage with data in publicy available domains to get a sense of the target in general.
