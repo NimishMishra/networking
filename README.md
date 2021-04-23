@@ -49,3 +49,7 @@
 ## HackTheBox challenges
 
 [OSINT Easy Phish](https://app.hackthebox.eu/challenges/Easy-Phish) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
+
+[Web Emdee five for life](https://app.hackthebox.eu/challenges/Emdee-five-for-life) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
+
+[Web Templated](https://app.hackthebox.eu/challenges/Templated) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
