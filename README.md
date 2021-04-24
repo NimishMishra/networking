@@ -53,3 +53,5 @@
 [Web Emdee five for life](https://app.hackthebox.eu/challenges/Emdee-five-for-life) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
 
 [Web Templated](https://app.hackthebox.eu/challenges/Templated) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
+
+[Web Phonebook](https://app.hackthebox.eu/challenges/Phonebook) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
