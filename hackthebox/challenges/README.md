@@ -23,6 +23,31 @@ At first glance, one would think this supports a simple GET, so what's the big d
 {{ config.from_object('os') }}
 {{"".__class__.__mro__[1].__subclasses__()[414].__init__.__globals__["__builtins__"]["__import__"]("os").popen("cat flag.txt").read()}}
 ```
+### Phonebook
+
+[Phonebook](https://app.hackthebox.eu/challenges/Phonebook)
+
+Who is lucky enough to be included in the phonebook?
+
+So the actual page has a login system which did not work for SQLi. Viewing the source reveals certain HTML resources from a weird directory `964430b4cdd199af19b986eaf2193b21f32542d0` which when opened gives the search functionality. Reading the source code gives some jquery that seems like making a POST to `/search` and getting an access denied everytime.
+
+```s
+function search(form) {
+      var searchObject = new Object();
+      searchObject.term = $("#searchfield").val();
+      $.ajax({
+        type: "POST",
+        url: "/search",
+        data: JSON.stringify(searchObject),
+        success: success,
+        dataType: "json",
+    });
+    };
+```
+A simple asterisk (*) works as the username and password (typical LDAP injection) and leads to the same page as before. Now we have a session cookie attached which wasn't there before. So now POST to `/search` work perfectly and we get information back on `resse`. The search functionality with `term` is matching the presence of the value of the term in the mail. After a while, it is realised that this is not our usual json.stringify problem. It is rather an LDAP injection wherein the password can be bruteforced using normal [LDAP injection](https://www.netsparker.com/blog/web-security/ldap-injection-how-to-prevent/). Basically, a brute force attack on user `reese` and password `HTB{@*` where information is put into @ leads to recovery of the flag. Knowing that password of reese is the flag we are looking for is more of a challenge specific thing. Add LDAP to the list of things understood. In hindsight, the structure of the challenge: information of users being stored in a directory and offering search capability was a giveaway for LDAP services and trying to inject LDAP.
+
+Flag: HTB{d1rectory_h4xx0r_is_k00l}
+
 
 ## OSINT
 

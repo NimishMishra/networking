@@ -253,7 +253,7 @@ fg
 
 - [Jinja2](https://flask.palletsprojects.com/en/1.1.x/templating/) is a template engine for python's flask.
 
-- All template engines, using this one too, focuses on separating the logic of the application and the content to be displayed (a makeover from the old days when everything had to be inside the same file).
+- All template engines, using this one too, focuses on separating the logic of the application and the content to be displayed (a makeover from the old days when everything had to be inside the same file). This comes very handy if you have something you wish to display based on user input. Rather than making one page for every user, we make a template and let the parameters submitted by the user dictate the rendering pattern of the page.
 
 - A better understanding of the thing can be found [here](https://code.tutsplus.com/tutorials/templating-with-jinja2-in-flask-essentials--cms-25571)
 
@@ -263,7 +263,7 @@ fg
 
 ## Server side template injection (Templated challenge, HTB)
 
-- SSTI information [here](https://portswigger.net/research/server-side-template-injection)
+- SSTI information [here](https://portswigger.net/research/server-side-template-injection) From templates, it is clear that user input is processed in some form by the backend to render the template. This is where injection can occur.
 
 - Jinja2 exploitation steps [here](https://medium.com/@nyomanpradipta120/ssti-in-flask-jinja2-20b068fdaeee)
 
@@ -273,3 +273,17 @@ fg
 {{ config.items() }} <-- notice OS functions added now
 {{ ''.__class__.__mro__[1].__subclasses__()[414:] }} <-- Popen offset
 ```
+- mro is the method resolution order that is used by Python to resolve methods in the face of multiple inheritance. mro aids in displaying the hierarchy of classes wherein the actual class one is looking for can be found.
+
+- `from_object` is a special jinja function that allows the configuration to load stuff from objects. Here, the configuration loads support for all class and functions defined in the `os` package in python.
+
+- This [link](https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/) lists a lot of different payload types that can be used while crafting SSTI payload, even without {{}}.
+
+
+## LDAP (Lightweight Directory Access Protocol, in HTB web challenge Phonebook)
+
+- mechanism for interacting with directory servers. Organizations typically store information about users and resources in a central directory (such as Active Directory), and applications can access and manipulate this information using LDAP statements.
+
+- It's often used for authentication and storing information about users, groups, and applications, but an LDAP directory server is a fairly general-purpose data storage system.
+
+- Read about LDAP injection [here](https://www.netsparker.com/blog/web-security/ldap-injection-how-to-prevent/). The main thing is that LDAP involves wildcards in its search filters.
