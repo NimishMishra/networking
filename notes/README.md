@@ -4,26 +4,14 @@
 
 2. General ideas
 
-	- `cewl`
-
-	- Jackson deserialization vulnerability (HTB Time)
-    
-	- Snap (HTB Time)
-	
-	- GitLab runners and CI/CD
-
-	- Docker escapes
-
-	- cgroups
-
 3. General attack vectors
     
-	- JSON based attacks
+4. PortSwigger's Web Security Academy.
 
-3. Regarding PortSwigger's Web Security Academy.
+5. Linux privilege escalation and the sudoers file
 
-Solved labs:
+6. General notes on bounty hunting
 
-4. Linux privilege escalation and the sudoers file
+7. CTFs
 
-5. General notes on bounty hunting
+
