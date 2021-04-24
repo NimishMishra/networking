@@ -48,6 +48,13 @@ A simple asterisk (*) works as the username and password (typical LDAP injection
 
 Flag: HTB{d1rectory_h4xx0r_is_k00l}
 
+### Weather App
+
+A pit of eternal darkness, a mindless journey of abeyance, this feels like a never-ending dream. I think I'm hallucinating with the memories of my past life, it's a reflection of how thought I would have turned out if I had tried enough. A weatherman, I said! Someone my community would look up to, someone who is to be respected. I guess this is my way of telling you that I've been waiting for someone to come and save me. This weather application is notorious for trapping the souls of ambitious weathermen like me. Please defeat the evil bruxa that's operating this website and set me free!
+
+- Registration on `/register` is only working through localhost. This can be seen through `routes/index.js` which is giving a 401 for non-localhost sources, as well as in database.js wherein there's a comment `// TODO: add parameterization and roll public` which suggests the registration has not yet rolled public.
+
+- `admin` password is randomly generated, and logging as admin on `login` shall give the flag.  
 
 ## OSINT
 

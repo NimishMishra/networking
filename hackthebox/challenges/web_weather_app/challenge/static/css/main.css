@@ -1,0 +1,89 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #111 !important;
+    color: #ccc !important;
+}
+
+#weather {
+    background-color: #ccc;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    min-height: 100px;
+    max-width: 700px;
+    color: #111;
+    padding: 20px;
+}
+
+.nes-container.with-title>.title {
+    background-color: transparent !important;
+}
+
+img {
+    object-fit: contain;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+article {
+    color: #ccc;
+    width: 50%;
+    height: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.padded-top {
+    color: #FF2281;
+    padding-top: 40px;
+} 
+
+.icon-sun {
+    margin: auto;
+    margin-bottom: 50px;
+    text-align: center;
+    background: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/296766/8bitsprites.png') no-repeat -186px -29px;
+    width: 92px;
+    height: 95px;
+}
+
+.icon-clouds {
+    margin: auto;
+    margin-bottom: 50px;
+    text-align: center;
+    background: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/296766/8bitsprites.png') no-repeat -496px -32px;
+    width: 108px;
+    height: 103px;
+}
+
+.icon-snow {
+    margin: auto;
+    margin-bottom: 50px;
+    text-align: center;
+    background: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/296766/8bitsprites.png') no-repeat -496px -182px;
+    width: 108px;
+    height: 75px;
+}
+
+.icon-storm {
+    margin: auto;
+    margin-bottom: 50px;
+    text-align: center;
+    background: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/296766/8bitsprites.png') no-repeat -663px -179px;
+    width: 108px;
+    height: 73px;
+}
+
+.icon-rain {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+    background: url('//s3-us-west-2.amazonaws.com/s.cdpn.io/296766/8bitsprites.png') no-repeat -338px -174px;
+    width: 108px;
+    height: 72px;
+}
