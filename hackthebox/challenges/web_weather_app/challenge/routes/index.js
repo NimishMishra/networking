@@ -17,10 +17,9 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-    
-    // only localhost registration
 	
 	if (req.socket.remoteAddress.replace(/^.*:/, '') != '127.0.0.1') {
+		//console.log(req.socket.remoteAddress.replace(/^.*:/, ''));
 		return res.status(401).end();
 	}
 

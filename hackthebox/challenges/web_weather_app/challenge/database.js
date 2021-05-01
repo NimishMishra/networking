@@ -20,9 +20,7 @@ class Database {
                 username   VARCHAR(255) NOT NULL UNIQUE,
                 password   VARCHAR(255) NOT NULL
             );
-            
-            // admin password is randomised, so no chance at bruteforcing or guessing 
-            
+
             INSERT INTO users (username, password) VALUES ('admin', '${ crypto.randomBytes(32).toString('hex') }');
         `);
     }

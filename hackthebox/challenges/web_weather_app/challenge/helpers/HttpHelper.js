@@ -2,6 +2,7 @@ const http = require('http');
 
 module.exports = {
 	HttpGet(url) {
+	    console.log(http.get(url).output); // added line
 		return new Promise((resolve, reject) => {
 			http.get(url, res => {
 				let body = '';
