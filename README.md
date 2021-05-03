@@ -44,7 +44,7 @@
 
 [Laboratory](https://app.hackthebox.eu/machines/Laboratory) - [Walkthrough](https://app.hackthebox.eu/machines/Laboratory) - owned root. Box not retired yet.
 
-[Tenet](https://app.hackthebox.eu/machines/Tenet) - [Walkthrough](https://app.hackthebox.eu/machines/Tenet) Owned user. Working on root.
+[Tenet](https://app.hackthebox.eu/machines/Tenet) - [Walkthrough](https://app.hackthebox.eu/machines/Tenet) Rooted. Walkthrough comes after the box is retired.
 
 ## HackTheBox challenges
 
