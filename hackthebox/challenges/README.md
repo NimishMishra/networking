@@ -1,5 +1,7 @@
 # Challenges
 
+- Added HTB cyber-apocalypse post-CTF analysis (check out `./cyberapocalypse`) 
+
 ## Web
 
 ### Emdee five for life 
