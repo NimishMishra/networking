@@ -24,3 +24,5 @@ Flag: **CHTB{wh47?!_f23qu3ncy_h0pp1n9_1n_4_532141_p2070c01?!!!52}**
 
 **Challenge info**: An embedded device in our serial network exploited a misconfiguration which resulted in the compromisation of several of our slave devices in it, leaving the base camp exposed to intruders. We must find what alterations the device did over the network in order to revert them before its too late.
 
+Flag: 
+CHTB{nu11_732m1n47025_c4n_8234k_4_532141_5y573m!@52)@%}
