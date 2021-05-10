@@ -19,3 +19,8 @@ Post CTF solving and analysis...
 ![Final baud](./hardware/hw_serial_logs/hardware_serial_logs_backup_baud.png)
 
 Flag: **CHTB{wh47?!_f23qu3ncy_h0pp1n9_1n_4_532141_p2070c01?!!!52}**
+
+### Compromised
+
+**Challenge info**: An embedded device in our serial network exploited a misconfiguration which resulted in the compromisation of several of our slave devices in it, leaving the base camp exposed to intruders. We must find what alterations the device did over the network in order to revert them before its too late.
+
