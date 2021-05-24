@@ -68,6 +68,16 @@ Have a look:
 
 ![Stack structure](./images/stack-frame-structure.png)
 
+Even if you are not sure about the offset: simply see the comparison
+
+```s
+   0x08049246 <+100>:	cmp    DWORD PTR [ebp+0x8],0xdeadbeef
+   0x0804924d <+107>:	jne    0x8049269 <flag+135>
+   0x0804924f <+109>:	cmp    DWORD PTR [ebp+0xc],0xc0ded00d
+   0x08049256 <+116>:	jne    0x804926c <flag+138>
+```
+When you reach this statement, check `x/128x $ebp` and `x/x $ebp+0x8`. By carefully overwritting values after EIP, you should be able to determine the offset wherein the argument should be placed.
+
 Flag: HTB{0ur_Buff3r_1s_not_healthy}
 
 ## Web
