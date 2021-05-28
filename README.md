@@ -8,6 +8,7 @@
 
 - Applications break on bad inputs, not on good ones. Developers forget to consider bad inputs or edge test cases, they are your go-to.
 
+
 ## Profiles
 
 [Wechall](https://www.wechall.net/profile/ellessar): Global rank: 3091 / 22851 (Last update: Mar 18, 2021)
