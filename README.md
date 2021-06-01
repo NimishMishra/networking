@@ -66,4 +66,4 @@
 A list of **replayed** CTFs
 
 
-- San Diego CTF 2021: [ctftime.org](https://ctftime.org/event/1255) - [walthroughs]()
+- San Diego CTF 2021: [ctftime.org](https://ctftime.org/event/1255) - [walthroughs](https://github.com/NimishMishra/networking/tree/master/replayed-ctfs)
