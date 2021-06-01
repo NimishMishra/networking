@@ -41,7 +41,7 @@
 
 [Time](https://www.hackthebox.eu/home/machines/profile/286) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/time) Have to work on ippsec's approach.
 
-[Ready](https://www.hackthebox.eu/home/machines/profile/304) - [Walkthrough](https://www.hackthebox.eu/home/machines/profile/304) Rooted the box but will upload the walkthrough once the box retires
+[Ready](https://www.hackthebox.eu/home/machines/profile/304) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/ready)
 
 [Laboratory](https://app.hackthebox.eu/machines/Laboratory) - [Walkthrough](https://app.hackthebox.eu/machines/Laboratory) - owned root. Box not retired yet.
 
