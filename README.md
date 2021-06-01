@@ -56,3 +56,13 @@
 [Web Templated](https://app.hackthebox.eu/challenges/Templated) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
 
 [Web Phonebook](https://app.hackthebox.eu/challenges/Phonebook) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
+
+[You-know-0xDiablos](https://app.hackthebox.eu/challenges/You-know-0xDiablos) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
+
+[Space](https://app.hackthebox.eu/challenges/Space) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
+
+## CTF replays
+
+A list of **replayed** CTFs
+
+
