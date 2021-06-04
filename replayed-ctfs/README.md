@@ -31,3 +31,44 @@ b't2q}*\x7f&n[5V\xb42a\x7f3\xac\x87\xe6\xb4'  =   b't2q}*\x7f&n[5V\xb42a\x7f3\xa
 So these aren't equivalent.
 
 **Flag**: sdctf{v3ry-t4sty-sph4g3tt1}
+
+### Crypto
+
+- **Lost in transmission**: I had my friend send me the flag, but it seems a bit…off.
+
+The given file is a `Non-ISO extended-ASCII text, with no line terminators`. This is most likely a *text* file from the lack of control characters (byte values 0-31) other than line breaks. This is *extended-ASCII* because there are characters outside the ASCII range (byte values >=128). This is *non-ISO* because there are characters in the 128-159 range (ISO 8859 reserves this range for control characters). I tried things like `recode` but it's best to open it with python with open(..., `rb`).
+
+```py
+'\xe6\xc8\xc6\xe8\xcc\xf6\xae`\xdc\x88f\xe4\xcc\xaa\x98\xbe\xda\xb2\xbe\x8e``\xc8\xbe\xe6b\xa4\xfa'
+```
+
+So anyways, converting this to decimal gives a sequence wherein each integer is twice the value of decimal conversion of the flag `sdctf{W0nD3rfUL_mY_G00d_s1R}`
+
+
+- **A Prime Hash Candidate**: After the rather embarrassing first attempt at securing our login, our student intern has drastically improved our security by adding more parameters. Good luck getting in now!
+
+```py
+PASSWD = 91918419847262345220747548257014204909656105967816548490107654667943676632784144361466466654437911844
+
+def hash(data):
+    out = 0
+    data = [ord(x) ^ ord(y) for x,y in zip(data,secret1*len(data))]
+    data.extend([ord(c) for c in secret2])
+    for c in data:
+        out *= secret3
+        out += c
+    return out
+
+if hash(data) == PASSWD:
+    print(SUCCESS)
+    break
+```
+Note how `out` is built incrementally. `zip` simply returns tuples (first character of data mapped with first character of secret), multiplication with `len(data)` simply increases the length. Extend simply adds things to the end of the list. We know the first few characters: `sdctf{`. We can figure out things.
+
+[Solution but I didn't understand it](https://qiita.com/mikecat_mixc/items/5a0c45751b15c8a8513b). But important points:
+
+- Guessed the multiplier through ratio of the hashed values (since the hash values are effectively summed up)
+
+- Then using remainders, the rest of the things was guessed.
+
+- It's an adaptive attack. The attacker is able to get hashes of chosen plaintexts.
