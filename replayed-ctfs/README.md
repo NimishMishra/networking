@@ -32,6 +32,10 @@ So these aren't equivalent.
 
 **Flag**: sdctf{v3ry-t4sty-sph4g3tt1}
 
+- **una acies**
+
+Couldn't solve it. I did see XORing but couldn't get the thing back. Refer here: https://szymanski.ninja/en/ctfwriteups/2021/sdctf/una-acies/
+
 ### Crypto
 
 - **Lost in transmission**: I had my friend send me the flag, but it seems a bit…off.
@@ -72,3 +76,21 @@ Note how `out` is built incrementally. `zip` simply returns tuples (first charac
 - Then using remainders, the rest of the things was guessed.
 
 - It's an adaptive attack. The attacker is able to get hashes of chosen plaintexts.
+
+### Pwn
+
+- **Haxlab**: Welcome to HAXLAB, the world’s most secure MaaS® (math-as-a-service) with advanced functionality.
+
+A pretty straightforward problem. `compile` compiles a python code and `exec` would simply execute it. For instance, the following would work: `code = compile('import os; os.system("ls")', '<string>', 'single')`. However, remote system doesn't allow anything except simple input, result. Basically it wasn't disallowed to access properties of Python objects and the same has been taken advantage of.
+
+```py
+>>> print(dir(flag1))
+['-flag1-', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+>>> print(flag1.__getattribute__('-flag1-'))
+REDACTED
+>>> print(flag1.__getattribute__('-flag1-')[:-1])
+sdctf{...}
+```
+- **printFAILED**: I’m new to C. I just learned printf and everything just worked™. But my friend Greg, who works at a security company, tells me that some strings crashed the program but refused to tell me specifically which ones. (He wanted to publish those in DEF CON). Can you find the magic string before he carry out his evil plan?
+
+There is a classic format string vulnerability here: `%x %x %x %s` reveals the scrambled flag, which is simply ASCII_VALUE + 1 for each character. It took a while to figure out the exact identifiers. It's best to try %s for the words and see when it stops giving segfault. Or check the number of arguments when `printf` is called.
