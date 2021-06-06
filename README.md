@@ -47,6 +47,8 @@
 
 [Tenet](https://app.hackthebox.eu/machines/Tenet) - [Walkthrough](https://app.hackthebox.eu/machines/Tenet) Rooted. Walkthrough comes after the box is retired.
 
+[Knife](https://app.hackthebox.eu/machines/Knife) - [Walkthrough](https://app.hackthebox.eu/machines/Knife) Rooted. Walkthrough comes after the box is retired
+
 ## HackTheBox challenges
 
 [OSINT Easy Phish](https://app.hackthebox.eu/challenges/Easy-Phish) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/challenges)
