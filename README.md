@@ -43,7 +43,7 @@
 
 [Ready](https://www.hackthebox.eu/home/machines/profile/304) - [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/ready)
 
-[Laboratory](https://app.hackthebox.eu/machines/Laboratory) - [Walkthrough](https://app.hackthebox.eu/machines/Laboratory) - owned root. Box not retired yet.
+[Laboratory](https://app.hackthebox.eu/machines/Laboratory) -  [Walkthrough](https://github.com/NimishMishra/networking/tree/master/hackthebox/laboratory)
 
 [Tenet](https://app.hackthebox.eu/machines/Tenet) - [Walkthrough](https://app.hackthebox.eu/machines/Tenet) Rooted. Walkthrough comes after the box is retired.
 
