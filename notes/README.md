@@ -38,6 +38,16 @@
 
 - In some machines (like HTB Knife), you must look at the technology supporting the server to find vulnerabilities there. For instance, HTB Knife had `X-Powered-By` header revealing a vulnerable PHP version that allowed malicious custom header `User-Agentt` to gain RCE.
 
+- Password reuse is a great menace. HTB Cap showed this. So always try creds for the same user in all possible accounts. 
+
+- File capabilities are dangerous. For instance, HTB Cap had `cap_setuid` capability on `/usr/bin/python3.8` and thus a `setuid` run with `python3.8` escalates to root.
+
+## File capabilities
+
+- Capabilities basically provide finer grain of control over privileges. Privilege is basically a binary system: privileged or non-privileged. But capabilities allow finer grain of control. Suppose a web server normally runs at port 80 and we also know that we need root permissions to start listening on one of the lower ports (<1024). This web server daemon needs to be able to listen to port 80. Instead of giving this daemon all root permissions, we can set a capability on the related binary, like CAP_NET_BIND_SERVICE. With this specific capability, it can open up port 80 in a much easier way.
+
+- HTB Cap has such an example. A certain file was given `cap_setuid` which means it is allowed to `setuid` without granting it complete root privileges. This was exploited.
+
 ## cgroups
 
 - Very important concept in containerized technology wherein cgroups allocate resources — such as CPU time, system memory, network bandwidth, or combinations of these resources — among user-defined groups of tasks (processes) running on a system.
